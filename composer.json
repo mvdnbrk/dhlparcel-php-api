@@ -1,0 +1,62 @@
+{
+    "name": "mvdnbrk/dhlparcel-php-api",
+    "description": "DHL Parcel API client for PHP",
+    "keywords": [
+        "dhl",
+        "parcel",
+        "api"
+    ],
+    "homepage": "https://github.com/mvdnbrk/dhlparcel-php-api",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mark van den Broek",
+            "email": "mvdnbrk@gmail.com",
+            "homepage": "https://github.com/mvdnbrk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "composer/ca-bundle": "^1.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "tightenco/collect": "^5.7"
+    },
+    "require-dev": {
+        "larapack/dd": "^1.1",
+        "nunomaduro/collision": "^2.1",
+        "orchestra/testbench": "^3.7",
+        "phpunit/phpunit": "^7.0",
+        "squizlabs/php_codesniffer": "^3.3",
+        "vlucas/phpdotenv": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mvdnbrk\\DhlParcel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mvdnbrk\\DhlParcel\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Mvdnbrk\\DhlParcel\\DhlParcelServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
