@@ -69,7 +69,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/mvdnbrk/dhlparcel-php-api.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/mvdnbrk/dhlparcel-php-api.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/mvdnbrk/dhlparcel-php-api.svg?style=flat-square
-[ico-style-ci]: https://styleci.io/repos/.../shield?branch=master
+[ico-style-ci]: https://styleci.io/repos/171006427/shield?branch=master
 
 [link-packagist]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
 [link-travis]: https://travis-ci.org/mvdnbrk/dhlparcel-php-api
@@ -78,4 +78,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-downloads]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
 [link-author]: https://github.com/mvdnbrk
 [link-contributors]: ../../contributors
-[link-style-ci]: https://styleci.io/repos/...
+[link-style-ci]: https://styleci.io/repos/171006427
