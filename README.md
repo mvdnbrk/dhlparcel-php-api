@@ -21,7 +21,7 @@ composer require mvdnbrk/dhlparcel-php-api
 Initialize the DHL Parcel client and set your credentials.
 
 ``` php
-$dhlparcel = new \Mvdnbrk\DhlParcel\dhlparcel();
+$dhlparcel = new \Mvdnbrk\DhlParcel\Client();
 
 $dhlparcel->setUserId('your-user-id');
 $dhlparcel->setApiKey('your-api-key');
