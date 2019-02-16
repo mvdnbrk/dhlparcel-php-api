@@ -8,6 +8,8 @@
 [![StyleCI][ico-style-ci]][link-style-ci]
 [![Total Downloads][ico-downloads]][link-downloads]
 
+[DHL Parcel API documentation](https://api-gw.dhlparcel.nl/docs/)
+
 ## Installation
 
 You can install the package via composer:
