@@ -21,6 +21,7 @@
         "php": "^7.1",
         "composer/ca-bundle": "^1.1",
         "guzzlehttp/guzzle": "^6.3",
+        "lcobucci/jwt": "^3.2",
         "ramsey/uuid": "^3.8",
         "tightenco/collect": "^5.7"
     },
