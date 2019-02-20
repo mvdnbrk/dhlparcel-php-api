@@ -1,0 +1,76 @@
+<?php
+
+namespace Mvdnbrk\DhlParcel\Resources;
+
+use DateTimeImmutable;
+use Lcobucci\JWT\Parser;
+
+class AccessToken
+{
+    /**
+     * @var array
+     */
+    public $accounts;
+
+    /**
+     * @var int
+     */
+    public $expiresAt;
+
+    /**
+     * @var array
+     */
+    public $roles;
+
+    /**
+     * @var string
+     */
+    public $token;
+
+    /**
+     * Create a new AccessToken instance.
+     *
+     * @param  string  $token
+     * @return  Void
+     */
+    public function __construct($token)
+    {
+        $this->token = $token;
+
+        $this->parseToken();
+    }
+
+    /**
+     * Parse the token claims.
+     *
+     * @return void
+     */
+    private function parseToken()
+    {
+        $token = (new Parser)->parse($this->token);
+
+        $this->expiresAt = (new DateTimeImmutable)->setTimestamp($token->getClaim('exp'));
+        $this->accounts = $token->getClaim('accounts');
+        $this->roles = $token->getClaim('roles');
+    }
+
+    /**
+     * Determine if the access token is expired.
+     *
+     * @return bool
+     */
+    public function isExpired()
+    {
+        return $this->expiresAt < (new DateTimeImmutable)->setTimestamp(time());
+    }
+
+    /**
+     * Retrieve the account id from the token.
+     *
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return collect($this->accounts)->first();
+    }
+}
