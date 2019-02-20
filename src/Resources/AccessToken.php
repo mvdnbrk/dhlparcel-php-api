@@ -13,7 +13,7 @@ class AccessToken
     public $accounts;
 
     /**
-     * @var int
+     * @var \DateTimeImmutable
      */
     public $expiresAt;
 
