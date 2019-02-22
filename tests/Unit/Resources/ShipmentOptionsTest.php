@@ -15,6 +15,8 @@ class ShipmentOptionsTest extends TestCase
         ]);
 
         $this->assertEquals('Test', $options->label_description);
+        $this->assertFalse($options->signature);
+        $this->assertFalse($options->only_recipient);
     }
 
     /** @test */
