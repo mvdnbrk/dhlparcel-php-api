@@ -11,10 +11,10 @@ class ShipmentOptionsTest extends TestCase
     public function creating_a_shipments_options_resource()
     {
         $options = new ShipmentOptions([
-            'label_description' => 'Test description',
+            'label_description' => 'Test',
         ]);
 
-        $this->assertEquals('Test description', $options->label_description);
+        $this->assertEquals('Test', $options->label_description);
     }
 
     /** @test */
@@ -26,5 +26,19 @@ class ShipmentOptionsTest extends TestCase
 
         $this->assertEquals('Test', $recipient->label_description);
         $this->assertEquals('Test', $recipient->description);
+    }
+
+    /** @test */
+    public function description_gets_truncated_to_fifteen_characters()
+    {
+        $recipient = new ShipmentOptions([
+            'label_description' => 'Long Description Test',
+        ]);
+
+        $this->assertEquals('Long Descriptio', $recipient->description);
+
+        $recipient->description = 'Another Long Description';
+
+        $this->assertEquals('Another Long De', $recipient->description);
     }
 }

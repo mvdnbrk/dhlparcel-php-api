@@ -74,14 +74,25 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
-     * Sets the description. Alias for label_description.
+     * Set the label description.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setLabelDescriptionAttribute($value)
+    {
+        $this->label_description = Str::limit(trim($value), 15, '');
+    }
+
+    /**
+     * Alias for label_description.
      *
      * @param  string  $value
      * @return void
      */
     public function setDescriptionAttribute($value)
     {
-        $this->label_description = Str::limit(trim($value), 15);
+        $this->setLabelDescriptionAttribute($value);
     }
 
     /**
