@@ -56,6 +56,15 @@ class BaseResourceTest extends TestCase
     }
 
     /** @test */
+    public function get_attribute_value()
+    {
+        $resource = new ResourceStub();
+        $resource->foo = 'test';
+
+        $this->assertEquals('test', $resource->getAttributeValue('foo'));
+    }
+
+    /** @test */
     public function to_array_test()
     {
         $resource = new ResourceStub([
