@@ -55,4 +55,84 @@ class ShipmentOptionsTest extends TestCase
 
         $this->assertEquals(['key' => 'DOOR'], $array[0]);
     }
+
+    /** @test */
+    public function to_array_with_label_description()
+    {
+        $options = new ShipmentOptions([
+            'label_description' => 'Test',
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertInternalType('array', $array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR'
+            ],
+            [
+                'key' => 'REFERENCE',
+                'input' => 'Test'
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_signature()
+    {
+        $options = new ShipmentOptions([
+            'signature' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertInternalType('array', $array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR'
+            ],
+            [
+                'key' => 'HANDT',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_recipient_only()
+    {
+        $options = new ShipmentOptions([
+            'only_recipient' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertInternalType('array', $array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR'
+            ],
+            [
+                'key' => 'NBB',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_mailbox_package()
+    {
+        $options = new ShipmentOptions([
+            'signature' => true,
+            'only_recipient' => true,
+        ]);
+        $options->setMailboxPackage();
+
+        $array = $options->toArray();
+
+        $this->assertInternalType('array', $array);
+
+        $this->assertEquals(['key' => 'BP'], $array[0]);
+    }
 }
