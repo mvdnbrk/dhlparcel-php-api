@@ -29,6 +29,93 @@ $dhlparcel->setUserId('your-user-id');
 $dhlparcel->setApiKey('your-api-key');
 ```
 
+### Create a parcel
+
+```php
+$parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
+    'reference' => 'your own reference for the parcel',
+    'recipient' => [
+        'first_name' => 'John',
+        'last_name' => 'Doe'
+        'street' => 'Poststraat',
+        'number' => '1',
+        'number_suffix' => 'A',
+        'postal_code' => '1234AA',
+        'city' => 'Amsterdam',
+        'cc' => 'NL',
+    ],
+    'sender' => [
+        'company_name' => 'Your Company',
+        'street' => 'Pakketstraat',
+        'number' => '99',
+        'postal_code' => '9999AA',
+        'city' => 'Amsterdam',
+        'cc' => 'NL',
+    ]
+]);
+```
+
+### Create the shipment
+
+``` php
+$shipment = $dhlparcel->shipments->create($parcel);
+
+$shipment->id;
+$shipment->label_id;
+$shipment->barcode;
+```
+
+You have created your first shipment!
+
+### Retrieving a label
+
+A label can be retrieved by using the `label_id`.
+This will return a PDF label as a string.
+
+```
+$dhlparcel->labels->get($shipment->label_id);
+```
+Or you may pass the `Shipment` instance directly to this method:
+```
+$myparcel->labels->get($shipment);
+```
+
+### Setting delivery options for a parcel
+
+You can set delivery options for a parcel by passing in the options directly when you create a parcel:
+
+``` php
+$parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
+    ...
+    'recipient' => [
+        ...
+    ],
+    'options' => [
+        'description' => 'Order #123',
+        'signature' => true,
+        'only_recipient' => true,   
+        ...
+    ],
+]);
+```
+
+Or you may use a method like `signature()`, `onlyRecipient()` and `labelDescription()`.  
+You may call any of these after constructing the parcel.
+
+``` php
+$parcel->onlyRecipient()
+       ->signature()
+       ->labelDescription('Order #123');
+```
+
+**Mailbox package**
+
+If you would like to send a parcel that fits in a standard mailbox you may use the `mailboxpackage()` method:
+
+``` php
+$parcel->mailboxpackage();
+```
+
 ## Usage with Laravel
 
 Add your credentials to the `.env` file:
