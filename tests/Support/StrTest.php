@@ -8,6 +8,14 @@ use Mvdnbrk\DhlParcel\Tests\TestCase;
 class StrTest extends TestCase
 {
     /** @test */
+    public function limit()
+    {
+        $this->assertEquals('Lorem', Str::limit('Lorem', 5));
+        $this->assertEquals('Lorem ipsu', Str::limit('Lorem ipsu', 10));
+        $this->assertEquals('Lorem ipsu...', Str::limit('Lorem ipsum dolor sit amet', 10));
+   }
+
+    /** @test */
     public function studly()
     {
         $this->assertEquals('MvdnbrkTestStringPhp', Str::studly('mvdnbrk_test_string_php'));
