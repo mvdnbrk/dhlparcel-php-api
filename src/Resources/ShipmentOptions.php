@@ -63,7 +63,8 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
-     * Get the description for the shipment. Alias for label_description.
+     * Get the description for the shipment.
+     * Alias for label_description.
      *
      * @return string
      */
