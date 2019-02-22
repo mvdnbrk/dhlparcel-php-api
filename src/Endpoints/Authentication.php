@@ -21,7 +21,7 @@ class Authentication extends BaseEndpoint
         $response = $this->performApiCall(
             'POST',
             'authenticate/api-key',
-            $this->getHttpBody(),
+            $this->getHttpBody()
         );
 
         return new AccessToken($response->accessToken);
