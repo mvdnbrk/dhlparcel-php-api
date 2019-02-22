@@ -5,7 +5,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 
-class ShipmentTest extends TestCase
+class ShipmentsTest extends TestCase
 {
     /** @test */
     public function create_a_new_shipment()
