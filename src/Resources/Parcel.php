@@ -17,12 +17,12 @@ class Parcel extends BaseResource
     public $options;
 
     /**
-     * @var \Mvdnbrk\MyParcel\Resources\Recipient
+     * @var \Mvdnbrk\DhlParcel\Resources\Recipient
      */
     public $recipient;
 
     /**
-     * @var \Mvdnbrk\MyParcel\Resources\Recipient
+     * @var \Mvdnbrk\DhlParcel\Resources\Recipient
      */
     public $sender;
 
