@@ -13,7 +13,7 @@ class StrTest extends TestCase
         $this->assertEquals('Lorem', Str::limit('Lorem', 5));
         $this->assertEquals('Lorem ipsu', Str::limit('Lorem ipsu', 10));
         $this->assertEquals('Lorem ipsu...', Str::limit('Lorem ipsum dolor sit amet', 10));
-   }
+    }
 
     /** @test */
     public function studly()

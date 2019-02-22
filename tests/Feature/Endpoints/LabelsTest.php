@@ -6,7 +6,7 @@ use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 
 /** @group integration */
-class ShipmentLabelsTest extends TestCase
+class LabelsTest extends TestCase
 {
     public function setUp()
     {
