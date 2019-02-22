@@ -119,7 +119,6 @@ class ParcelTest extends TestCase
 
         $parcel->onlyRecipient();
 
-        $this->assertInstanceOf(Parcel::class, $parcel);
         $this->assertTrue($parcel->options->only_recipient);
     }
 
@@ -129,6 +128,24 @@ class ParcelTest extends TestCase
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->onlyRecipient());
+    }
+
+    /** @test */
+    public function it_can_set_a_parcel_to_be_a_mailbox_package()
+    {
+        $parcel = new Parcel();
+
+        $parcel->mailboxpackage();
+
+        $this->assertEquals(['key' => 'BP'], $parcel->options->toArray()[0]);
+    }
+
+    /** @test */
+    public function calling_the_mailboxpackage_method_returns_the_same_parcel_instance()
+    {
+        $parcel = new Parcel();
+
+        $this->assertSame($parcel, $parcel->mailboxpackage());
     }
 
     /** @test */
