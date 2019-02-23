@@ -2,7 +2,7 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-use Illuminate\Support\Str;
+use Mvdnbrk\DhlParcel\Support\Str;
 use Mvdnbrk\DhlParcel\Resources\BaseResource;
 
 class ShipmentOptions extends BaseResource
