@@ -2,6 +2,11 @@
 
 All notable changes to `dhlparcel-php-api` will be documented in this file
 
+## [0.1.2] - 2019-02-23
+
+### Fixed
+- Convert a shipment to an array correctly. [`91b2cb73`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/91b2cb73af77a097b596f950c48aa03705890f78)
+
 ## [0.1.1] - 2019-02-23
 
 ### Fixed
@@ -11,6 +16,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/mvdnbrk/dhlparcel-php-api/tree/v0.1.0
