@@ -8,7 +8,7 @@ use Mvdnbrk\DhlParcel\Resources\Shipment;
 class ShipmentTest extends TestCase
 {
     /** @test */
-    public function create_a_new_shipment()
+    public function creating_a_new_shipment_resource()
     {
         $shipment = new Shipment([
             'id' => '123456',
