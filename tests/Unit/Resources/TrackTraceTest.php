@@ -5,7 +5,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\TrackTrace;
 
-class ShipmentTest extends TestCase
+class TrackTraceTest extends TestCase
 {
     /** @test */
     public function creating_a_new_track_trace_resource()
