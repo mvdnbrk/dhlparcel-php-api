@@ -8,7 +8,7 @@ use Mvdnbrk\DhlParcel\Resources\Parcel;
 /** @group integration */
 class LabelsTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -38,7 +38,7 @@ class LabelsTest extends TestCase
     {
         $pdf = $this->client->labels->get($this->shipment->label_id);
 
-        $this->assertInternalType('string', $pdf);
+        $this->assertIsString('string', $pdf);
     }
 
     /** @test */
@@ -46,7 +46,7 @@ class LabelsTest extends TestCase
     {
         $pdf = $this->client->labels->get($this->shipment);
 
-        $this->assertInternalType('string', $pdf);
+        $this->assertIsString('string', $pdf);
     }
 
     /** @test */

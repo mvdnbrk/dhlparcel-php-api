@@ -57,16 +57,16 @@ class RecipientTest extends TestCase
 
         $array = $recipient->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
 
         $this->assertArrayHasKey('name', $array);
-        $this->assertInternalType('array', $array['name']);
+        $this->assertIsArray($array['name']);
         $this->assertEquals('John', $array['name']['firstName']);
         $this->assertEquals('Doe', $array['name']['lastName']);
         $this->assertEquals('Test Company B.V.', $array['name']['companyName']);
 
         $this->assertArrayHasKey('address', $array);
-        $this->assertInternalType('array', $array['address']);
+        $this->assertIsArray($array['address']);
         $this->assertEquals('Poststraat', $array['address']['street']);
         $this->assertEquals('1', $array['address']['number']);
         $this->assertEquals('1234AA', $array['address']['postalCode']);

@@ -73,7 +73,7 @@ class BaseResourceTest extends TestCase
 
         $array = $resource->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
         $this->assertEquals('bar', $array['foo']);
     }
 

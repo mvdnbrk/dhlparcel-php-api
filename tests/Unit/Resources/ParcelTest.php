@@ -155,7 +155,7 @@ class ParcelTest extends TestCase
 
         $array = $parcel->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
 
         $this->assertArrayHasKey('receiver', $array);
         $this->assertArrayHasKey('shipper', $array);

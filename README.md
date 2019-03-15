@@ -77,7 +77,7 @@ $dhlparcel->labels->get($shipment->label_id);
 ```
 Or you may pass the `Shipment` instance directly to this method:
 ```
-$myparcel->labels->get($shipment);
+$dhlparcel->labels->get($shipment);
 ```
 
 ### Setting delivery options for a parcel
@@ -114,6 +114,15 @@ If you would like to send a parcel that fits in a standard mailbox you may use t
 
 ``` php
 $parcel->mailboxpackage();
+```
+
+### Tracking a shipment
+
+``` php
+$tracktrace = $dhlparcel->tracktrace->get('JVGL...');
+
+// Check if the shipment is delivered:
+$tracktrace->isDelivered;
 ```
 
 ## Usage with Laravel

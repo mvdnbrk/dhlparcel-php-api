@@ -51,7 +51,7 @@ class ShipmentOptionsTest extends TestCase
 
         $array = $options->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
 
         $this->assertEquals(['key' => 'DOOR'], $array[0]);
     }
@@ -65,7 +65,7 @@ class ShipmentOptionsTest extends TestCase
 
         $array = $options->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
 
         $this->assertEquals([
             [
@@ -87,7 +87,7 @@ class ShipmentOptionsTest extends TestCase
 
         $array = $options->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
 
         $this->assertEquals([
             [
@@ -108,7 +108,7 @@ class ShipmentOptionsTest extends TestCase
 
         $array = $options->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
 
         $this->assertEquals([
             [
@@ -131,7 +131,7 @@ class ShipmentOptionsTest extends TestCase
 
         $array = $options->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
 
         $this->assertEquals(['key' => 'BP'], $array[0]);
     }

@@ -91,7 +91,7 @@ class AddressTest extends TestCase
 
         $array = $address->toArray();
 
-        $this->assertInternalType('string', $array['number']);
+        $this->assertIsString($array['number']);
         $this->assertEquals('999', $array['number']);
     }
 
@@ -112,7 +112,7 @@ class AddressTest extends TestCase
 
         $array = $address->toArray();
 
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
         $this->assertFalse($array['isBusiness']);
         $this->assertEquals('Poststraat', $array['street']);
         $this->assertEquals('1', $array['number']);
