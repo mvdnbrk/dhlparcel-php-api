@@ -77,7 +77,7 @@ $dhlparcel->labels->get($shipment->label_id);
 ```
 Or you may pass the `Shipment` instance directly to this method:
 ```
-$myparcel->labels->get($shipment);
+$dhlparcel->labels->get($shipment);
 ```
 
 ### Setting delivery options for a parcel
