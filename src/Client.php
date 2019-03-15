@@ -8,6 +8,7 @@ use Composer\CaBundle\CaBundle;
 use GuzzleHttp\Client as HttpClient;
 use Mvdnbrk\DhlParcel\Endpoints\Labels;
 use Mvdnbrk\DhlParcel\Endpoints\Shipments;
+use Mvdnbrk\DhlParcel\Endpoints\TrackTrace;
 use Mvdnbrk\DhlParcel\Endpoints\Authentication;
 use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
@@ -54,6 +55,11 @@ class Client
     public $shipments;
 
     /**
+     * @var \Mvdnbrk\DhlParcel\Endpoints\TrackTrace
+     */
+    public $tracktrace;
+
+    /**
      * Create a new Client instance.
      *
      * @return void
@@ -76,6 +82,7 @@ class Client
         $this->authentication = new Authentication($this);
         $this->labels = new Labels($this);
         $this->shipments = new Shipments($this);
+        $this->tracktrace = new TrackTrace($this);
     }
 
     /**

@@ -116,6 +116,15 @@ If you would like to send a parcel that fits in a standard mailbox you may use t
 $parcel->mailboxpackage();
 ```
 
+### Tracking a shipment
+
+``` php
+$tracktrace = $dhlparcel->tracktrace->get('JVGL...');
+
+// Check if the shipment is delivered:
+$tracktrace->isDelivered;
+```
+
 ## Usage with Laravel
 
 Add your credentials to the `.env` file:
