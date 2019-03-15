@@ -32,7 +32,7 @@ class ClientTest extends TestCase
     {
         $client = (new Client)->setApiKey('test-key')->setUserId('1234');
 
-        $this->assertInternalType('array', $client->credentials());
+        $this->assertIsArray($client->credentials());
         $this->assertEquals(['key' => 'test-key', 'userId' => '1234'], $client->credentials());
     }
 
