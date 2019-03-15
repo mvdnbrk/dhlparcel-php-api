@@ -8,7 +8,7 @@ use Mvdnbrk\DhlParcel\Resources\Parcel;
 /** @group integration */
 class LabelsTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

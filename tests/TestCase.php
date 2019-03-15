@@ -11,7 +11,7 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         try {
             (new Dotenv('./', '.env'))->load();
