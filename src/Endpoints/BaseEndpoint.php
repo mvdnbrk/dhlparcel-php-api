@@ -42,6 +42,20 @@ abstract class BaseEndpoint
     {
     }
 
+    /**
+     * Build a query string.
+     *
+     * @param  array  $filters
+     * @return string
+     */
+    protected function buildQueryString(array $filters)
+    {
+        if (empty($filters)) {
+            return '';
+        }
+        return '?' . http_build_query($filters);
+    }
+
     protected function requestHeaders($headers)
     {
         return collect($headers)
