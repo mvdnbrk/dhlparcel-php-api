@@ -64,6 +64,6 @@ class DhlParcelServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [Client::class, 'dhlparcel'];
+        return ['dhlparcel'];
     }
 }
