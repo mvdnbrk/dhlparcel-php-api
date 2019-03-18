@@ -10,7 +10,7 @@ class TrackTrace extends BaseEndpoint
     {
         $response = $this->performApiCall(
             'GET',
-            'track-trace?key='.$value
+            'track-trace'.$this->buildQueryString(['key' => $value])
         );
 
         return new TrackTraceResource(
