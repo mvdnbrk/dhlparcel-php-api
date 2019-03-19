@@ -53,7 +53,8 @@ abstract class BaseEndpoint
         if (empty($filters)) {
             return '';
         }
-        return '?' . http_build_query($filters);
+
+        return '?'.http_build_query($filters);
     }
 
     protected function requestHeaders($headers)
