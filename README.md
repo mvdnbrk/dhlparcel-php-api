@@ -116,6 +116,24 @@ If you would like to send a parcel that fits in a standard mailbox you may use t
 $parcel->mailboxpackage();
 ```
 
+**Deliver a parcel to a DHL service point**
+
+You may send a parcel to a DHL service point where a customer can pick up the parcel.
+The ID of the service point can be set directly when creating a parcel
+or with the `servicePoint` method:
+
+``` php
+$parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
+    ...
+    'options' => [
+        'service_point_id' => '8004-NL-272403',
+        ...
+    ],
+]);
+
+$parcel->servicePoint('8004-NL-272403');
+```
+
 ### Tracking a shipment
 
 ``` php

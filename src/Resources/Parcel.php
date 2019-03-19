@@ -131,6 +131,19 @@ class Parcel extends BaseResource
     }
 
     /**
+     * Set the service point id where this parcel should be delivered to.
+     *
+     * @param  string  $value
+     * @return  $this
+     */
+    public function servicePoint($value)
+    {
+        $this->options->setServicePointIdAttribute($value);
+
+        return $this;
+    }
+
+    /**
      * Set the sneder for this parcel.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources|array  $value
