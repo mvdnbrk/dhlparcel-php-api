@@ -80,7 +80,12 @@ abstract class BaseEndpoint
      */
     protected function performApiCall($httpMethod, $apiMethod, $httpBody = null, $requestHeaders = [])
     {
-        $response = $this->apiClient->performHttpCall($httpMethod, $apiMethod, $httpBody, $this->requestHeaders($requestHeaders));
+        $response = $this->apiClient->performHttpCall(
+            $httpMethod,
+            $apiMethod,
+            $httpBody,
+            $this->requestHeaders($requestHeaders)
+        );
 
         if (collect($response->getHeader('Content-Type'))->first() == 'application/octet-stream') {
             return $response->getBody()->getContents();
