@@ -43,6 +43,16 @@ class AddressTest extends TestCase
     }
 
     /** @test */
+    public function addition_may_be_used_as_an_alias_to_number_suffix()
+    {
+        $address = new Address([
+            'addition' => 'A'
+        ]);
+
+        $this->assertEquals('A', $address->number_suffix);
+    }
+
+    /** @test */
     public function country_code_may_be_used_as_an_alias_to_cc()
     {
         $address = new Address([

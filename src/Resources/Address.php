@@ -45,6 +45,17 @@ class Address extends BaseResource
     public $cc;
 
     /**
+     * Sets the number suffix. Alias for number_suffix.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setAdditionAttribute($value)
+    {
+        $this->number_suffix = $value;
+    }
+
+    /**
      * Set country code.
      *
      * @param  string  $value
