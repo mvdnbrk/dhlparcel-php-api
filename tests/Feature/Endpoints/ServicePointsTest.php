@@ -5,7 +5,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
 
-class ServicePointTest extends TestCase
+class ServicePointsTest extends TestCase
 {
     /** @test */
     public function it_can_set_the_postal_code()
