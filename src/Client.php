@@ -9,6 +9,7 @@ use GuzzleHttp\Client as HttpClient;
 use Mvdnbrk\DhlParcel\Endpoints\Labels;
 use Mvdnbrk\DhlParcel\Endpoints\Shipments;
 use Mvdnbrk\DhlParcel\Endpoints\TrackTrace;
+use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
 use Mvdnbrk\DhlParcel\Endpoints\Authentication;
 use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
@@ -50,6 +51,11 @@ class Client
     public $labels;
 
     /**
+     * @var \Mvdnbrk\DhlParcel\Endpoints\ServicePoints
+     */
+    public $servicePoints;
+
+    /**
      * @var \Mvdnbrk\DhlParcel\Endpoints\Shipments
      */
     public $shipments;
@@ -81,6 +87,7 @@ class Client
     {
         $this->authentication = new Authentication($this);
         $this->labels = new Labels($this);
+        $this->servicePoints = new ServicePoints($this);
         $this->shipments = new Shipments($this);
         $this->tracktrace = new TrackTrace($this);
     }

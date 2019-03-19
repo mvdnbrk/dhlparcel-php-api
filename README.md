@@ -125,6 +125,25 @@ $tracktrace = $dhlparcel->tracktrace->get('JVGL...');
 $tracktrace->isDelivered;
 ```
 
+### Retrieving service points
+
+```php
+$servicepoints = $dhlparcel->servicePoints->setPostalcode('1012AA')->setHousenumber('1')->get();
+```
+
+This will return a collection of `ServicePoint` objects:
+
+```
+$servicepoints->each(function ($item) {
+    $item->id;
+    $item->name;
+    $item->latitude;
+    $item->longitude;
+    $item->distance;
+    $item->distanceForHumans();
+});
+```
+
 ## Usage with Laravel
 
 Add your credentials to the `.env` file:
