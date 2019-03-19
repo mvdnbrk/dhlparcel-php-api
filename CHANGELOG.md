@@ -2,6 +2,15 @@
 
 All notable changes to `dhlparcel-php-api` will be documented in this file
 
+## [Unreleased]
+
+## [0.3.0] - 2019-03-19
+
+### Added
+- Added an option to send a parcel to a service point. [`#6`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/6)
+- Added an endpoint to retrieve service point locations. [`#5`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/5)
+- Added an `addition` alias to set a number suffix for an address. [`#4`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/4)
+
 ## [0.2.0] - 2019-03-15
 
 ### Added
@@ -21,7 +30,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.0...v0.1.1
