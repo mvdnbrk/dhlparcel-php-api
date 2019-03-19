@@ -149,6 +149,37 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_the_service_point_id()
+    {
+        $parcel = new Parcel([
+            'options' => [
+                'service_point_id' => '1234-NL-112233',
+            ]
+        ]);
+
+        $this->assertEquals([
+            'key' => 'PS',
+            'input' => '1234-NL-112233',
+        ], $parcel->options->toArray()[0]);
+
+        $parcel = new Parcel();
+        $parcel->servicePoint('5678-NL-445566');
+
+        $this->assertEquals([
+            'key' => 'PS',
+            'input' => '5678-NL-445566',
+        ], $parcel->options->toArray()[0]);
+    }
+
+    /** @test */
+    public function calling_the_service_point_method_returns_the_same_parcel_instance()
+    {
+        $parcel = new Parcel();
+
+        $this->assertSame($parcel, $parcel->servicePoint('8004-NL-272403'));
+    }
+
+    /** @test */
     public function to_array()
     {
         $parcel = new Parcel;

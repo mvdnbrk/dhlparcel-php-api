@@ -16,6 +16,13 @@ class ShipmentOptions extends BaseResource
     protected $delivery_type;
 
     /**
+     * The ID of the service point where a parcel should be delivered.
+     *
+     * @var string
+     */
+    protected $service_point_id;
+
+    /**
      * The description that will appear on the shipment label.
      *
      * @var string
@@ -96,7 +103,7 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
-     * Sets the options for a mailbox package
+     * Sets the options for a mailbox package.
      *
      * @return void
      */
@@ -108,6 +115,22 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
+     * Set the service point id where the
+     * parcel should be delievred to.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setServicePointIdAttribute($value)
+    {
+        $this->setDefaultOptions();
+
+        $this->delivery_type = 'PS';
+
+        $this->service_point_id = $value;
+    }
+
+    /**
       * Convert the options to an array.
       *
       * @return array
@@ -115,7 +138,17 @@ class ShipmentOptions extends BaseResource
     public function toArray()
     {
         return collect()
-            ->push(['key' => $this->delivery_type])
+            ->when($this->delivery_type !== 'PS', function ($collection) {
+                return $collection->push([
+                    'key' => $this->delivery_type,
+                ]);
+            })
+            ->when($this->delivery_type === 'PS', function ($collection) {
+                return $collection->push([
+                    'key' => $this->delivery_type,
+                    'input' => $this->service_point_id,
+                ]);
+            })
             ->when(! empty($this->label_description), function ($collection) {
                 return $collection->push([
                     'key' => 'REFERENCE',
