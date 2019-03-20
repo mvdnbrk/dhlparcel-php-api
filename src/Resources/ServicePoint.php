@@ -53,7 +53,7 @@ class ServicePoint extends Address
 
 
     /**
-     * Sets address details..
+     * Sets address details.
      *
      * @param  object|array  $value
      * @return void
