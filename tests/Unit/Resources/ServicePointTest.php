@@ -73,4 +73,46 @@ class ServicePointTest extends TestCase
         $servicepoint->distance = 11500;
         $this->assertEquals('12 km', $servicepoint->distanceForHumans());
     }
+
+    /** @test */
+    public function to_array()
+    {
+        $servicepoint = new ServicePoint([
+            'id' => 'testcode1234',
+            'name' => 'Test name',
+            'latitude' => 1.11,
+            'longitude' => 2.22,
+            'distance' => 100,
+        ]);
+
+        $array = $servicepoint->toArray();
+
+        $this->assertIsArray($array);
+        $this->assertEquals('testcode1234', $array['id']);
+        $this->assertEquals('Test name', $array['name']);
+        $this->assertEquals(1.11, $array['latitude']);
+        $this->assertEquals(2.22, $array['longitude']);
+        $this->assertEquals('100 meter', $array['distance']);
+    }
+
+    /** @test */
+    public function to_array_removes_empty_attributes()
+    {
+        $servicepoint = new ServicePoint([
+            'id' => null,
+            'name' => 'Test name',
+            'latitude' => null,
+            'longitude' => null,
+            'distance' => null,
+        ]);
+
+        $array = $servicepoint->toArray();
+
+        $this->assertIsArray($array);
+        $this->assertArrayNotHasKey('id', $array);
+        $this->assertEquals('Test name', $array['name']);
+        $this->assertArrayNotHasKey('latitude', $array);
+        $this->assertArrayNotHasKey('longitude', $array);
+        $this->assertArrayNotHasKey('distance', $array);
+    }
 }
