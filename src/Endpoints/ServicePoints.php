@@ -2,7 +2,7 @@
 
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
-use Illuminate\Support\Str;
+use Mvdnbrk\DhlParcel\Support\Str;
 use Tightenco\Collect\Support\Collection;
 use Mvdnbrk\DhlParcel\Resources\ServicePoint as ServicePointResource;
 
