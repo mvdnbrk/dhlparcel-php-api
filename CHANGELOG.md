@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file
 
 ## [Unreleased]
 
+## [v0.3.1] - 2019-03-20
+
+### Changed
+- The `toArray` method on a `ServicePoint` object has changed. [`#7`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/7)
+
 ## [v0.3.0] - 2019-03-19
 
 ### Added
@@ -30,7 +35,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.1...HEAD
+[v0.3.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.0...v0.3.1
 [v0.3.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.2...v0.2.0
 [v0.1.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.1.1...v0.1.2
