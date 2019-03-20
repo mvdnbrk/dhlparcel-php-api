@@ -80,6 +80,10 @@ class ServicePointTest extends TestCase
         $servicepoint = new ServicePoint([
             'id' => 'testcode1234',
             'name' => 'Test name',
+            'street' => 'Poststraat',
+            'postal_code' => '1234AA',
+            'number' => '123',
+            'city' => 'Amsterdam',
             'latitude' => 1.11,
             'longitude' => 2.22,
             'distance' => 100,
@@ -90,6 +94,10 @@ class ServicePointTest extends TestCase
         $this->assertIsArray($array);
         $this->assertEquals('testcode1234', $array['id']);
         $this->assertEquals('Test name', $array['name']);
+        $this->assertEquals('Poststraat', $array['street']);
+        $this->assertEquals('123', $array['number']);
+        $this->assertEquals('1234AA', $array['postal_code']);
+        $this->assertEquals('Amsterdam', $array['city']);
         $this->assertEquals(1.11, $array['latitude']);
         $this->assertEquals(2.22, $array['longitude']);
         $this->assertEquals('100 meter', $array['distance']);

@@ -84,7 +84,7 @@ class ServicePoint extends Address
      */
     public function toArray()
     {
-        return collect(parent::toArray())
+        return collect($this->attributesToArray())
             ->merge([
                 'distance' => $this->distanceForHumans()
             ])
