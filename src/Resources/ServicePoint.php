@@ -76,4 +76,21 @@ class ServicePoint extends Address
             $this->longitude = $collection->get('longitude');
         });
     }
+
+    /**
+     * Get the instance as an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return collect(parent::toArray())
+            ->merge([
+                'distance' => $this->distanceForHumans()
+            ])
+            ->reject(function ($value) {
+                return empty($value);
+            })
+            ->all();
+    }
 }
