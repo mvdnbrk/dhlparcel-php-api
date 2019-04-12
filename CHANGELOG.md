@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file
 
 ## [Unreleased]
 
+## [v0.3.4] - 2019-04-12
+
+### Added
+- Added `setAccountId` method. [`#8`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/8)
+
 ## [v0.3.3] - 2019-03-20
 
 - Fixed ServicePoint toArray(). [`a46bd0a`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/a46bd0a18cbd5bca6c80b2332eb068b7b5f4777a)

@@ -36,6 +36,8 @@ class Authentication extends BaseEndpoint
     {
         if (! $this->accessToken || $this->accessToken->isExpired()) {
             $this->accessToken = $this->retrieveAccessToken();
+
+            $this->accessToken->setAccountId($this->apiClient->getAccountId());
         }
 
         return $this->accessToken;

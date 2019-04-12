@@ -73,4 +73,17 @@ class AccessToken
     {
         return collect($this->accounts)->first();
     }
+
+    /**
+     * Sets the account id.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setAccountId($value)
+    {
+        if (collect($this->accounts)->contains($value)) {
+            $this->accounts = [$value];
+        }
+    }
 }

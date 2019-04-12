@@ -29,6 +29,12 @@ $dhlparcel->setUserId('your-user-id');
 $dhlparcel->setApiKey('your-api-key');
 ```
 
+You may optionally set an account id:
+
+```
+$dhlparcel->setAccountId('123456');
+```
+
 ### Create a parcel
 
 ```php
