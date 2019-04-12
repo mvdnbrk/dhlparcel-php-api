@@ -28,6 +28,11 @@ class Client
     /**
      * @var string
      */
+    protected $accountId;
+
+    /**
+     * @var string
+     */
     protected $apiKey;
 
     /**
@@ -128,6 +133,29 @@ class Client
         }
 
         return $response;
+    }
+
+    /**
+     * Get the account id.
+     *
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return $this->accountId;
+    }
+
+    /**
+     * Sets the account id.
+     *
+     * @param  string  $value
+     * @return \Mvdnbrk\DhlParcel\Client
+     */
+    public function setAccountId($value)
+    {
+        $this->accountId = trim($value);
+
+        return $this;
     }
 
     /**

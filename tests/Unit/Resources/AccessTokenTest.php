@@ -44,4 +44,20 @@ class AccessTokenTest extends TestCase
 
         $this->assertEquals('123456', $accessToken->getAccountId());
     }
+
+    /** @test */
+    public function it_can_set_the_account_id()
+    {
+        $accessToken = new AccessToken(
+            (new Builder)->setExpiration(0)->set('accounts', ['1111', '2222'])->set('roles', [])->getToken()->__toString()
+        );
+
+        $accessToken->setAccountId('does-not-exist');
+
+        $this->assertEquals('1111', $accessToken->getAccountId());
+
+        $accessToken->setAccountId('2222');
+
+        $this->assertEquals('2222', $accessToken->getAccountId());
+    }
 }
