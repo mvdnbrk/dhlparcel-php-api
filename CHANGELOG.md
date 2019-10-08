@@ -4,6 +4,12 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.4.0] - 2019-10-08
+
+### Changed
+- Drop PHP 7.1 support.
+- Updated dependencies.
+
 ## [v0.3.4] - 2019-04-12
 
 ### Added
@@ -49,7 +55,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.4...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.4...v0.4.0
 [v0.3.4]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.3...v0.3.4
 [v0.3.3]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.2...v0.3.3
 [v0.3.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.1...v0.3.2
