@@ -2,8 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\ShipmentOptions;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class ShipmentOptionsTest extends TestCase
 {
@@ -69,11 +69,11 @@ class ShipmentOptionsTest extends TestCase
 
         $this->assertEquals([
             [
-                'key' => 'DOOR'
+                'key' => 'DOOR',
             ],
             [
                 'key' => 'REFERENCE',
-                'input' => 'Test'
+                'input' => 'Test',
             ],
         ], $array);
     }
@@ -91,7 +91,7 @@ class ShipmentOptionsTest extends TestCase
 
         $this->assertEquals([
             [
-                'key' => 'DOOR'
+                'key' => 'DOOR',
             ],
             [
                 'key' => 'HANDT',
@@ -112,7 +112,7 @@ class ShipmentOptionsTest extends TestCase
 
         $this->assertEquals([
             [
-                'key' => 'DOOR'
+                'key' => 'DOOR',
             ],
             [
                 'key' => 'NBB',

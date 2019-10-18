@@ -2,8 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class ServicePointsTest extends TestCase
 {

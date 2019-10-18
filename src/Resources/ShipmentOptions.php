@@ -3,7 +3,6 @@
 namespace Mvdnbrk\DhlParcel\Resources;
 
 use Mvdnbrk\DhlParcel\Support\Str;
-use Mvdnbrk\DhlParcel\Resources\BaseResource;
 
 class ShipmentOptions extends BaseResource
 {
@@ -131,10 +130,10 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
-      * Convert the options to an array.
-      *
-      * @return array
-      */
+     * Convert the options to an array.
+     *
+     * @return array
+     */
     public function toArray()
     {
         return collect()

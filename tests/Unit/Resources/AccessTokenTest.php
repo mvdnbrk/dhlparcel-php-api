@@ -3,8 +3,8 @@
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Lcobucci\JWT\Builder;
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\AccessToken;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class AccessTokenTest extends TestCase
 {

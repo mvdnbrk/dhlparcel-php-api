@@ -2,8 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 /** @group integration */
 class LabelsTest extends TestCase

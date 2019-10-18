@@ -2,8 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\ServicePoint;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class ServicePointTest extends TestCase
 {
@@ -28,7 +28,7 @@ class ServicePointTest extends TestCase
             'address' => [
                 'postalCode' => '1234AA',
                 'countryCode' => 'NL',
-            ]
+            ],
         ]);
 
         $this->assertEquals('1234AA', $servicepoint->postal_code);
@@ -42,7 +42,7 @@ class ServicePointTest extends TestCase
             'geoLocation' => [
                 'latitude' => 1.234,
                 'longitude' => 5.678,
-            ]
+            ],
         ]);
 
         $this->assertEquals(1.234, $servicepoint->latitude);

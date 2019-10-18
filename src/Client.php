@@ -2,15 +2,15 @@
 
 namespace Mvdnbrk\DhlParcel;
 
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\RequestOptions;
 use Composer\CaBundle\CaBundle;
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
+use Mvdnbrk\DhlParcel\Endpoints\Authentication;
 use Mvdnbrk\DhlParcel\Endpoints\Labels;
+use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
 use Mvdnbrk\DhlParcel\Endpoints\Shipments;
 use Mvdnbrk\DhlParcel\Endpoints\TrackTrace;
-use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
-use Mvdnbrk\DhlParcel\Endpoints\Authentication;
 use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
 class Client
@@ -78,11 +78,12 @@ class Client
     public function __construct()
     {
         $this->httpClient = new HttpClient([
-            RequestOptions::VERIFY => CaBundle::getBundledCaBundlePath()
+            RequestOptions::VERIFY => CaBundle::getBundledCaBundlePath(),
         ]);
 
         $this->initializeEndpoints();
     }
+
     /**
      * Initialize the API endpoints used by this client.
      *
@@ -98,7 +99,7 @@ class Client
     }
 
     /**
-     * Performs a HTTP call to the API endpoint
+     * Performs a HTTP call to the API endpoint.
      *
      * @param  string  $httpMethod          The method to make the API call. GET/POST etc,
      * @param  string  $apiMethod           The API method to call at the endpoint.
@@ -109,7 +110,7 @@ class Client
      */
     public function performHttpCall($httpMethod, $apiMethod, $httpBody = null, $requestHeaders = [])
     {
-        $url = $this->apiEndpoint . '/' . $apiMethod;
+        $url = $this->apiEndpoint.'/'.$apiMethod;
 
         $headers = collect([
                 'Accept' => 'application/json',

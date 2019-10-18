@@ -172,10 +172,10 @@ class Parcel extends BaseResource
     }
 
     /**
-      * Convert the parcel resource to an array.
-      *
-      * @return array
-      */
+     * Convert the parcel resource to an array.
+     *
+     * @return array
+     */
     public function toArray()
     {
         return collect([
@@ -186,7 +186,7 @@ class Parcel extends BaseResource
                     [
                         'parcelType' => 'SMALL',
                         'quantity' => 1,
-                    ]
+                    ],
                 ],
             ])
             ->when(! is_null($this->reference_identifier), function ($collection) {

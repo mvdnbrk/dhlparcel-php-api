@@ -2,8 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\TrackTrace;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class TrackTraceTest extends TestCase
 {

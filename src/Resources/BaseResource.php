@@ -3,8 +3,8 @@
 namespace Mvdnbrk\DhlParcel\Resources;
 
 use JsonSerializable;
-use Mvdnbrk\DhlParcel\Contracts\Jsonable;
 use Mvdnbrk\DhlParcel\Contracts\Arrayable;
+use Mvdnbrk\DhlParcel\Contracts\Jsonable;
 use Mvdnbrk\DhlParcel\Exceptions\JsonEncodingException;
 
 abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
@@ -47,11 +47,11 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-      * Convert the resource instance to an array.
-      * Removes all attributes with null values.
-      *
-      * @return array
-      */
+     * Convert the resource instance to an array.
+     * Removes all attributes with null values.
+     *
+     * @return array
+     */
     public function toArray()
     {
         return collect($this->attributesToArray())

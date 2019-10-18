@@ -2,8 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\Address;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class AddressTest extends TestCase
 {
@@ -46,7 +46,7 @@ class AddressTest extends TestCase
     public function addition_may_be_used_as_an_alias_to_number_suffix()
     {
         $address = new Address([
-            'addition' => 'A'
+            'addition' => 'A',
         ]);
 
         $this->assertEquals('A', $address->number_suffix);
@@ -56,7 +56,7 @@ class AddressTest extends TestCase
     public function country_code_may_be_used_as_an_alias_to_cc()
     {
         $address = new Address([
-            'country_code' => 'NL'
+            'country_code' => 'NL',
         ]);
 
         $this->assertEquals('NL', $address->cc);
@@ -66,7 +66,7 @@ class AddressTest extends TestCase
     public function zipcode_may_be_used_as_an_alias_to_postal_code()
     {
         $address = new Address([
-            'zipcode' => '9999ZZ'
+            'zipcode' => '9999ZZ',
         ]);
 
         $this->assertEquals('9999ZZ', $address->postal_code);
@@ -76,7 +76,7 @@ class AddressTest extends TestCase
     public function lower_case_country_code_is_converted_to_uppercase()
     {
         $address = new Address($this->validParams([
-            'cc' => 'nl'
+            'cc' => 'nl',
         ]));
 
         $this->assertEquals('NL', $address->cc);
@@ -86,7 +86,7 @@ class AddressTest extends TestCase
     public function lower_case_postal_code_is_converted_to_uppercase()
     {
         $address = new Address($this->validParams([
-            'postal_code' => '1234aa'
+            'postal_code' => '1234aa',
         ]));
 
         $this->assertEquals('1234AA', $address->postal_code);
@@ -96,7 +96,7 @@ class AddressTest extends TestCase
     public function number_should_be_casted_to_a_string()
     {
         $address = new Address($this->validParams([
-            'number' => 999
+            'number' => 999,
         ]));
 
         $array = $address->toArray();

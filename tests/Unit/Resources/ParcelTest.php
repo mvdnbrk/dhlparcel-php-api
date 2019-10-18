@@ -2,9 +2,9 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\Recipient;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class ParcelTest extends TestCase
 {
@@ -109,7 +109,6 @@ class ParcelTest extends TestCase
         $this->assertSame($parcel, $parcel->signature());
     }
 
-
     /** @test */
     public function it_can_set_a_parcel_to_be_only_delivered_to_the_recipient()
     {
@@ -154,7 +153,7 @@ class ParcelTest extends TestCase
         $parcel = new Parcel([
             'options' => [
                 'service_point_id' => '1234-NL-112233',
-            ]
+            ],
         ]);
 
         $this->assertEquals([

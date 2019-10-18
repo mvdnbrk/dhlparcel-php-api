@@ -41,16 +41,15 @@ class ServicePoint extends Address
         }
 
         if ($this->distance >= 10000) {
-            return round($this->distance / 1000, 0) . ' km';
+            return round($this->distance / 1000, 0).' km';
         }
 
         if ($this->distance >= 1000) {
-            return round($this->distance / 1000, 1) . ' km';
+            return round($this->distance / 1000, 1).' km';
         }
 
         return "{$this->distance} meter";
     }
-
 
     /**
      * Sets address details.
@@ -86,7 +85,7 @@ class ServicePoint extends Address
     {
         return collect($this->attributesToArray())
             ->merge([
-                'distance' => $this->distanceForHumans()
+                'distance' => $this->distanceForHumans(),
             ])
             ->reject(function ($value) {
                 return empty($value);

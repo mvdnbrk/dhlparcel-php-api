@@ -5,7 +5,6 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\ValidationData;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
-use Mvdnbrk\DhlParcel\Endpoints\Authentication;
 
 class AuthenticationTest extends TestCase
 {
