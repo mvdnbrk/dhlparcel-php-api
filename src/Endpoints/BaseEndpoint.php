@@ -32,7 +32,6 @@ abstract class BaseEndpoint
         $this->boot();
     }
 
-
     /**
      * Boot the endpoint instance.
      *
@@ -69,7 +68,7 @@ abstract class BaseEndpoint
     }
 
     /**
-     * Performs a HTTP call to the API endpoint
+     * Performs a HTTP call to the API endpoint.
      *
      * @param  string  $httpMethod          The method to make the API call. GET/POST etc,
      * @param  string  $apiMethod           The API method to call at the endpoint.

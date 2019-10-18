@@ -2,9 +2,9 @@
 
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
-use Ramsey\Uuid\Uuid;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\Shipment as ShipmentResource;
+use Ramsey\Uuid\Uuid;
 
 class Shipments extends BaseEndpoint
 {

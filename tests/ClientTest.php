@@ -1,10 +1,11 @@
 <?php
+
 namespace Mvdnbrk\DhlParcel\Tests;
 
 use Mvdnbrk\DhlParcel\Client;
+use Mvdnbrk\DhlParcel\Endpoints\Authentication;
 use Mvdnbrk\DhlParcel\Endpoints\Labels;
 use Mvdnbrk\DhlParcel\Endpoints\Shipments;
-use Mvdnbrk\DhlParcel\Endpoints\Authentication;
 use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
 class ClientTest extends TestCase

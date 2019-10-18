@@ -46,8 +46,6 @@ trait HasAttributes
         if (property_exists($this, $key)) {
             return $this->{$key};
         }
-
-        return;
     }
 
     /**

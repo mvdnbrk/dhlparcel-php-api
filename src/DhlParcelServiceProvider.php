@@ -30,7 +30,7 @@ class DhlParcelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/dhlparcel.php', 'dhlparcel');
+        $this->mergeConfigFrom(__DIR__.'/../config/dhlparcel.php', 'dhlparcel');
 
         $this->app->singleton(Client::class, function () {
             return (new Client)->setUserId(
@@ -52,7 +52,7 @@ class DhlParcelServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/dhlparcel.php' => config_path('dhlparcel.php')
+                __DIR__.'/../config/dhlparcel.php' => config_path('dhlparcel.php'),
             ], 'config');
         }
     }

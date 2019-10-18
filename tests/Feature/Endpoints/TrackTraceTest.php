@@ -2,12 +2,13 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class TrackTraceTest extends TestCase
 {
     /** @test */
+
     /** @group integration */
     public function getting_track_and_trace_information()
     {

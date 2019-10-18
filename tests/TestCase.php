@@ -3,9 +3,9 @@
 namespace Mvdnbrk\DhlParcel\Tests;
 
 use Dotenv\Dotenv;
-use Mvdnbrk\DhlParcel\Client;
 use Dotenv\Exception\InvalidFileException;
 use Dotenv\Exception\InvalidPathException;
+use Mvdnbrk\DhlParcel\Client;
 use Mvdnbrk\DhlParcel\DhlParcelServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 

@@ -2,8 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
-use Mvdnbrk\DhlParcel\Tests\TestCase;
 use Mvdnbrk\DhlParcel\Resources\Shipment;
+use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class ShipmentTest extends TestCase
 {
@@ -13,7 +13,7 @@ class ShipmentTest extends TestCase
         $shipment = new Shipment([
             'id' => '123456',
             'barcode' => 'JVGL11112222333344445555',
-            'label_id' => '12345678-aaaa-bbbb-cccc-123456789123'
+            'label_id' => '12345678-aaaa-bbbb-cccc-123456789123',
         ]);
 
         $this->assertEquals('123456', $shipment->id);
