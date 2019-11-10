@@ -15,12 +15,16 @@ class Piece extends BaseResource
     public $parcel_type;
 
     /**
+     * Number of parcels of this parcel type.
+     *
      * @var int
      */
     public $quantity;
 
     /**
-     * @var float
+     * Actual weight of the parcel in kilograms.
+     *
+     * @var int
      */
     public $weight;
 
@@ -56,10 +60,14 @@ class Piece extends BaseResource
      */
     public function toArray()
     {
-        return array_filter([
-            'parcelType' => $this->parcel_type,
-            'quantity' => $this->quantity,
-            'weight' => $this->weight,
-        ]);
+        return collect([
+                'parcelType' => $this->parcel_type,
+                'quantity' => $this->quantity,
+                'weight' => $this->weight,
+            ])
+            ->reject(function ($value) {
+                return $value === null;
+            })
+            ->all();
     }
 }
