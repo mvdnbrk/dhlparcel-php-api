@@ -30,27 +30,6 @@ class Recipient extends Address
     public $phone;
 
     /**
-     * Convert the resource instance to an array.
-     * Removes all attributes with null values.
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        return collect([
-                'name' => $this->nameToArray(),
-                'address' => $this->addressToArray(),
-            ])
-            ->when(! empty($this->email), function ($collection) {
-                return $collection->put('email', $this->email);
-            })
-            ->when(! empty($this->phone), function ($collection) {
-                return $collection->put('phoneNumber', $this->phone);
-            })
-            ->all();
-    }
-
-    /**
      * Convert the "address" part of the recipient to an array.
      *
      * @return array
@@ -85,6 +64,26 @@ class Recipient extends Address
             ])
             ->reject(function ($value) {
                 return $value === null;
+            })
+            ->all();
+    }
+
+    /**
+     * Convert the Recipient resource to an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return collect([
+                'name' => $this->nameToArray(),
+                'address' => $this->addressToArray(),
+            ])
+            ->when(! empty($this->email), function ($collection) {
+                return $collection->put('email', $this->email);
+            })
+            ->when(! empty($this->phone), function ($collection) {
+                return $collection->put('phoneNumber', $this->phone);
             })
             ->all();
     }
