@@ -56,7 +56,7 @@ class Pieces extends BaseResource
      */
     public function hasPieces()
     {
-        return $this->pieces !== null && count($this->pieces) > 0;
+        return collect($this->pieces)->isNotEmpty();
     }
 
     /**
