@@ -5,7 +5,7 @@ namespace Mvdnbrk\DhlParcel\Resources;
 class Pieces extends BaseResource
 {
     /**
-     * @var Piece[]
+     * @var \Mvdnbrk\DhlParcel\Resources\Piece[]
      */
     public $pieces;
 
@@ -22,7 +22,9 @@ class Pieces extends BaseResource
     }
 
     /**
-     * @param array $pieces
+     * Sets the pieces.
+     *
+     * @param  array  $pieces
      */
     public function setPiecesAttribute($pieces)
     {
@@ -32,7 +34,9 @@ class Pieces extends BaseResource
     }
 
     /**
-     * @param Piece $piece
+     * Add a pieces.
+     *
+     * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
      */
     public function addPiece($value)
     {
@@ -46,6 +50,8 @@ class Pieces extends BaseResource
     }
 
     /**
+     * Determine if it has pieces.
+     *
      * @return bool
      */
     public function hasPieces()
@@ -54,6 +60,8 @@ class Pieces extends BaseResource
     }
 
     /**
+     * Convert the Pieces resource to an array.
+     *
      * @return array
      */
     public function toArray()

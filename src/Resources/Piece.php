@@ -27,7 +27,7 @@ class Piece extends BaseResource
     /**
      * Create a new Piece resource.
      *
-     * @param array $attributes
+     * @param  array  $attributes
      */
     public function __construct(array $attributes = [])
     {
@@ -50,6 +50,8 @@ class Piece extends BaseResource
     }
 
     /**
+     * Convert the Piece resource to an array.
+     *
      * @return array
      */
     public function toArray()
