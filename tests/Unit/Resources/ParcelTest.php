@@ -3,6 +3,8 @@
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Resources\Piece;
+use Mvdnbrk\DhlParcel\Resources\Pieces;
 use Mvdnbrk\DhlParcel\Resources\Recipient;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
@@ -25,6 +27,14 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
+    public function it_has_pieces()
+    {
+        $parcel = new Parcel;
+
+        $this->assertInstanceOf(Pieces::class, $parcel->pieces);
+    }
+
+    /** @test */
     public function create_a_new_parcel()
     {
         $parcel = new Parcel([
@@ -41,6 +51,13 @@ class ParcelTest extends TestCase
                 'only_recipient' => true,
                 'signature' => true,
             ],
+            'pieces' => [
+                [
+                    'parcel_type' => Piece::PARCEL_TYPE_SMALL,
+                    'quantity' => 1,
+                    'weight' => 1,
+                ],
+            ]
         ]);
 
         $this->assertEquals('test-123', $parcel->reference_identifier);
@@ -49,6 +66,10 @@ class ParcelTest extends TestCase
         $this->assertEquals('Doe', $parcel->recipient->last_name);
         $this->assertEquals('Test Company B.V.', $parcel->sender->company);
         $this->assertEquals('Test 123', $parcel->options->label_description);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->pieces[0]->parcel_type);
+        $this->assertEquals(1, $parcel->pieces->pieces[0]->quantity);
+        $this->assertEquals(1, $parcel->pieces->pieces[0]->weight);
+        $this->assertSame(true, $parcel->pieces->hasPieces());
         $this->assertSame(true, $parcel->options->only_recipient);
         $this->assertSame(true, $parcel->options->signature);
     }
@@ -179,6 +200,39 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_the_pieces_by_passing_a_pieces_object()
+    {
+        $pieces = new Pieces([
+            'pieces' => [
+                [
+                    'parcel_type' => Piece::PARCEL_TYPE_SMALL,
+                    'quantity' => 1,
+                    'weight' => 1,
+                ]
+            ],
+        ]);
+
+        $parcel = new Parcel([
+            'pieces' => $pieces,
+        ]);
+
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->pieces[0]->parcel_type);
+        $this->assertEquals(1, $parcel->pieces->pieces[0]->quantity);
+        $this->assertEquals(1, $parcel->pieces->pieces[0]->weight);
+    }
+
+    /** @test */
+    public function it_can_set_the_pieces_to_a_default_value_when_pieces_is_empty()
+    {
+        $parcel = new Parcel;
+
+        $array = $parcel->toArray();
+
+        $this->assertArrayHasKey('receiver', $array);
+        $this->assertEquals(1, count($array['pieces']));
+    }
+
+    /** @test */
     public function to_array()
     {
         $parcel = new Parcel;
@@ -189,5 +243,6 @@ class ParcelTest extends TestCase
 
         $this->assertArrayHasKey('receiver', $array);
         $this->assertArrayHasKey('shipper', $array);
+        $this->assertArrayHasKey('pieces', $array);
     }
 }
