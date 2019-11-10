@@ -20,8 +20,8 @@
     "require": {
         "php": "^7.2",
         "composer/ca-bundle": "^1.2",
-        "guzzlehttp/guzzle": "^6.3",
-        "lcobucci/jwt": "^3.2",
+        "guzzlehttp/guzzle": "^6.4",
+        "lcobucci/jwt": "^3.3",
         "ramsey/uuid": "^3.8",
         "tightenco/collect": "^6.0"
     },
