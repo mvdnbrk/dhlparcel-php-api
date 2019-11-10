@@ -60,10 +60,14 @@ class Piece extends BaseResource
      */
     public function toArray()
     {
-        return array_filter([
-            'parcelType' => $this->parcel_type,
-            'quantity' => $this->quantity,
-            'weight' => $this->weight,
-        ]);
+        return collect([
+                'parcelType' => $this->parcel_type,
+                'quantity' => $this->quantity,
+                'weight' => $this->weight,
+            ])
+            ->reject(function ($value) {
+                return $value === null;
+            })
+            ->all();
     }
 }
