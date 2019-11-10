@@ -194,10 +194,10 @@ class Parcel extends BaseResource
     }
 
     /**
-      * Convert the parcel resource to an array.
-      *
-      * @return array
-      */
+     * Convert the parcel resource to an array.
+     *
+     * @return array
+     */
     public function toArray()
     {
         if ($this->pieces->hasPieces() === false) {
