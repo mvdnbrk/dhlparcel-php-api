@@ -130,7 +130,7 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
-     * Convert the options to an array.
+     * Convert the ShipmenOptions resource to an array.
      *
      * @return array
      */

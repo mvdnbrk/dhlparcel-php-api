@@ -77,7 +77,7 @@ class ServicePoint extends Address
     }
 
     /**
-     * Get the instance as an array.
+     * Convert the ServicePoint resource to an array.
      *
      * @return array
      */

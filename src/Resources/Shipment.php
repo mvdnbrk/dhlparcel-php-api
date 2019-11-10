@@ -20,7 +20,7 @@ class Shipment extends Parcel
     public $label_id;
 
     /**
-     * Convert the parcel resource to an array.
+     * Convert the Shipment resource to an array.
      *
      * @return array
      */

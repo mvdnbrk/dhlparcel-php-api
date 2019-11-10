@@ -100,8 +100,7 @@ class Address extends BaseResource
     }
 
     /**
-     * Convert the resource instance to an array.
-     * Removes all attributes with null values.
+     * Convert the Address resource to an array.
      *
      * @return array
      */
