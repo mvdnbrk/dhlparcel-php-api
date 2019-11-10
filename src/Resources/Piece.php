@@ -15,12 +15,16 @@ class Piece extends BaseResource
     public $parcel_type;
 
     /**
+     * Number of parcels of this parcel type.
+     *
      * @var int
      */
     public $quantity;
 
     /**
-     * @var float
+     * Actual weight of the parcel in kilograms.
+     *
+     * @var int
      */
     public $weight;
 
