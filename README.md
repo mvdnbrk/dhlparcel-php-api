@@ -42,7 +42,7 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
     'reference' => 'your own reference for the parcel',
     'recipient' => [
         'first_name' => 'John',
-        'last_name' => 'Doe'
+        'last_name' => 'Doe',
         'street' => 'Poststraat',
         'number' => '1',
         'number_suffix' => 'A',
@@ -51,7 +51,7 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
         'cc' => 'NL',
     ],
     'sender' => [
-        'company_name' => 'Your Company',
+        'company' => 'Your Company',
         'street' => 'Pakketstraat',
         'number' => '99',
         'postal_code' => '9999AA',
