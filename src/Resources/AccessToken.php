@@ -75,7 +75,7 @@ class AccessToken
     }
 
     /**
-     * Sets the account id.
+     * Set the account id.
      *
      * @param  string  $value
      * @return void

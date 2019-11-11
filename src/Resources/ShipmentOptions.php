@@ -58,7 +58,7 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
-     * Sets default options for a shipment.
+     * Set default options for a shipment.
      *
      * @return $this
      */
@@ -105,7 +105,7 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
-     * Sets the options for a mailbox package.
+     * Set the options for a mailbox package.
      *
      * @return void
      */

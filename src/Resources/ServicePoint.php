@@ -52,7 +52,7 @@ class ServicePoint extends Address
     }
 
     /**
-     * Sets address details.
+     * Set the address details.
      *
      * @param  object|array  $value
      * @return void
@@ -63,7 +63,7 @@ class ServicePoint extends Address
     }
 
     /**
-     * Sets latitude and longitude based on a geolocation object.
+     * Set latitude and longitude based on a geolocation object.
      *
      * @param  object|array  $value
      * @return void
