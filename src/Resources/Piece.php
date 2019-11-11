@@ -65,9 +65,7 @@ class Piece extends BaseResource
                 'quantity' => $this->quantity,
                 'weight' => $this->weight,
             ])
-            ->reject(function ($value) {
-                return $value === null;
-            })
+            ->filter()
             ->all();
     }
 }
