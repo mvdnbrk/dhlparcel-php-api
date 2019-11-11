@@ -51,7 +51,7 @@ class PiecesTest extends TestCase
     }
 
     /** @test */
-    public function it_can_add_a_new_piece_array()
+    public function it_can_add_a_new_piece_with_an_array()
     {
         $pieces = new Pieces;
 
