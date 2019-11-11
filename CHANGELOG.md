@@ -4,6 +4,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.5.0] - 2019-11-11
+
 ### Added
 - Added ability to set `pieces` for a parcel. [`#10`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/10)
 
@@ -66,7 +68,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.5.0...HEAD
+[v0.5.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.4.1...v0.5.0
 [v0.4.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.4.0...v0.4.1
 [v0.4.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.4...v0.4.0
 [v0.3.4]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.3.3...v0.3.4
