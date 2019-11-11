@@ -64,7 +64,7 @@ class ParcelTest extends TestCase
         $this->assertEquals('test-123', $parcel->reference);
         $this->assertEquals('John', $parcel->recipient->first_name);
         $this->assertEquals('Doe', $parcel->recipient->last_name);
-        $this->assertEquals('Test Company B.V.', $parcel->sender->company);
+        $this->assertEquals('Test Company B.V.', $parcel->sender->company_name);
         $this->assertEquals('Test 123', $parcel->options->label_description);
         $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->pieces[0]->parcel_type);
         $this->assertEquals(1, $parcel->pieces->pieces[0]->quantity);
@@ -86,7 +86,7 @@ class ParcelTest extends TestCase
             'recipient' => $recipient,
         ]);
 
-        $this->assertEquals('Test Company B.V.', $parcel->recipient->company);
+        $this->assertEquals('Test Company B.V.', $parcel->recipient->company_name);
         $this->assertEquals('John', $parcel->recipient->first_name);
         $this->assertEquals('Doe', $parcel->recipient->last_name);
     }

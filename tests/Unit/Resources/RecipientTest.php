@@ -10,7 +10,7 @@ class RecipientTest extends TestCase
     private function validParams($overrides = [])
     {
         return array_merge([
-            'company' => 'Test Company B.V.',
+            'company_name' => 'Test Company B.V.',
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'john@example.com',
@@ -22,14 +22,14 @@ class RecipientTest extends TestCase
     public function creating_a_valid_recipient_resource()
     {
         $recipient = new Recipient([
-            'company' => 'Test Company B.V.',
+            'company_name' => 'Test Company B.V.',
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'john@example.com',
             'phone' => '0101111111',
         ]);
 
-        $this->assertEquals('Test Company B.V.', $recipient->company);
+        $this->assertEquals('Test Company B.V.', $recipient->company_name);
         $this->assertEquals('John', $recipient->first_name);
         $this->assertEquals('Doe', $recipient->last_name);
         $this->assertEquals('john@example.com', $recipient->email);
@@ -40,7 +40,7 @@ class RecipientTest extends TestCase
     public function to_array()
     {
         $attributes = [
-            'company' => 'Test Company B.V.',
+            'company_name' => 'Test Company B.V.',
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'john@example.com',
@@ -83,12 +83,22 @@ class RecipientTest extends TestCase
 
         $recipient->email = null;
         $recipient->phone = null;
-        $recipient->company = null;
+        $recipient->company_name = null;
         $array = $recipient->toArray();
         $this->assertArrayNotHasKey('email', $array);
         $this->assertArrayNotHasKey('phone', $array);
         $this->assertArrayNotHasKey('phoneNumber', $array);
         $this->assertArrayNotHasKey('companyName', $array['name']);
         $this->assertFalse($array['address']['isBusiness']);
+    }
+
+    /** @test */
+    public function company_may_be_used_as_an_alias_to_company_name()
+    {
+        $recipient = new Recipient([
+            'company' => 'Test Company B.V.',
+        ]);
+
+        $this->assertEquals('Test Company B.V.', $recipient->company_name);
     }
 }
