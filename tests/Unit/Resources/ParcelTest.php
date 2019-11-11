@@ -69,7 +69,6 @@ class ParcelTest extends TestCase
         $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->pieces[0]->parcel_type);
         $this->assertEquals(1, $parcel->pieces->pieces[0]->quantity);
         $this->assertEquals(1, $parcel->pieces->pieces[0]->weight);
-        $this->assertSame(true, $parcel->pieces->hasPieces());
         $this->assertSame(true, $parcel->options->only_recipient);
         $this->assertSame(true, $parcel->options->signature);
     }

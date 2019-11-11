@@ -44,6 +44,7 @@ class PieceTest extends TestCase
 
         $this->assertIsArray($array);
         $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $array['parcelType']);
+        $this->assertArrayNotHasKey('parcel_type', $array);
         $this->assertEquals(1, $array['quantity']);
         $this->assertEquals(1, $array['weight']);
     }

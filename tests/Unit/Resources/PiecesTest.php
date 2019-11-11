@@ -67,26 +67,6 @@ class PiecesTest extends TestCase
     }
 
     /** @test */
-    public function it_can_determine_it_has_pieces()
-    {
-        $pieces = new Pieces([
-            'pieces' => [
-                new Piece,
-            ],
-        ]);
-
-        $this->assertSame(true, $pieces->hasPieces());
-    }
-
-    /** @test */
-    public function it_can_determine_it_has_no_pieces()
-    {
-        $pieces = new Pieces;
-
-        $this->assertSame(false, $pieces->hasPieces());
-    }
-
-    /** @test */
     public function to_array()
     {
         $pieces = new Pieces([

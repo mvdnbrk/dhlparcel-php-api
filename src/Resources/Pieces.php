@@ -50,16 +50,6 @@ class Pieces extends BaseResource
     }
 
     /**
-     * Determine if it has pieces.
-     *
-     * @return bool
-     */
-    public function hasPieces()
-    {
-        return collect($this->pieces)->isNotEmpty();
-    }
-
-    /**
      * Convert the Pieces resource to an array.
      *
      * @return array
