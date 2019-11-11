@@ -57,7 +57,7 @@ class ParcelTest extends TestCase
                     'quantity' => 1,
                     'weight' => 1,
                 ],
-            ]
+            ],
         ]);
 
         $this->assertEquals('test-123', $parcel->reference_identifier);
@@ -207,7 +207,7 @@ class ParcelTest extends TestCase
                     'parcel_type' => Piece::PARCEL_TYPE_SMALL,
                     'quantity' => 1,
                     'weight' => 1,
-                ]
+                ],
             ],
         ]);
 

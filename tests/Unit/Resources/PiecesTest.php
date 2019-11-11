@@ -17,7 +17,7 @@ class PiecesTest extends TestCase
                     'parcel_type' => Piece::PARCEL_TYPE_SMALL,
                     'quantity' => 1,
                     'weight' => 1,
-                ]
+                ],
             ],
         ]);
 
