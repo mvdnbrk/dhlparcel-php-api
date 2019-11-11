@@ -39,7 +39,7 @@ $dhlparcel->setAccountId('123456');
 
 ```php
 $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
-    'reference' => 'your own reference for the parcel',
+    'reference' => 'your own reference for the parcel (optional)',
     'recipient' => [
         'first_name' => 'John',
         'last_name' => 'Doe',
@@ -58,6 +58,7 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
         'city' => 'Amsterdam',
         'cc' => 'NL',
     ],
+    // Optional. This will be set as the default.
     'pieces' => [
         [
             'parcel_type' => Piece::PARCEL_TYPE_SMALL,
