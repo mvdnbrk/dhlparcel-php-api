@@ -35,7 +35,7 @@ class Shipments extends BaseEndpoint
         return new ShipmentResource([
             'id' => $response->shipmentId,
             'pieces' => collect($response->pieces)
-                ->map(static function(stdClass $item) {
+                ->map(static function (stdClass $item) {
                     return new ShipmentPiece([
                         'label_id' => $item->labelId,
                         'tracker_code' => $item->trackerCode,
@@ -57,7 +57,7 @@ class Shipments extends BaseEndpoint
      */
     protected function getHttpBody(Parcel $parcel)
     {
-        /** @noinspection PhpComposerExtensionStubsInspection */
+        /* @noinspection PhpComposerExtensionStubsInspection */
         return json_encode(
             collect([
                 'shipmentId' => Uuid::uuid4()->toString(),

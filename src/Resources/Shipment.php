@@ -67,7 +67,7 @@ class Shipment extends BaseResource
                 ->map(static function (ShipmentPiece $item): array {
                     return $item->toArray();
                 })
-                ->all()
+                ->all(),
         ])->all();
     }
 }
