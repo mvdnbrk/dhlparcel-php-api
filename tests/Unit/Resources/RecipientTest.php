@@ -29,7 +29,7 @@ class RecipientTest extends TestCase
             'phone' => '0101111111',
         ]);
 
-        $this->assertEquals('Test Company B.V.', $recipient->company);
+        $this->assertEquals('Test Company B.V.', $recipient->company_name);
         $this->assertEquals('John', $recipient->first_name);
         $this->assertEquals('Doe', $recipient->last_name);
         $this->assertEquals('john@example.com', $recipient->email);

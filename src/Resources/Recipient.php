@@ -7,7 +7,7 @@ class Recipient extends Address
     /**
      * @var string
      */
-    public $company;
+    public $company_name;
 
     /**
      * @var string
@@ -30,6 +30,17 @@ class Recipient extends Address
     public $phone;
 
     /**
+     * Set the company. Alias for company_name.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setCompanyAttribute($value)
+    {
+        $this->company_name = $value;
+    }
+
+    /**
      * Convert the "address" part of the recipient to an array.
      *
      * @return array
@@ -38,13 +49,13 @@ class Recipient extends Address
     {
         return collect(parent::toArray())
             ->diffKeys([
-                'company' => '',
+                'company_name' => '',
                 'first_name' => '',
                 'last_name' => '',
                 'email' => '',
                 'phone' => '',
             ])
-            ->when(! empty($this->company), function ($collection) {
+            ->when(! empty($this->company_name), function ($collection) {
                 return $collection->put('isBusiness', true);
             })
             ->all();
@@ -60,7 +71,7 @@ class Recipient extends Address
         return collect([
                 'firstName' => $this->first_name,
                 'lastName' => $this->last_name,
-                'companyName' => $this->company,
+                'companyName' => $this->company_name,
             ])
             ->filter()
             ->all();
