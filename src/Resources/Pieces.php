@@ -66,8 +66,13 @@ class Pieces extends BaseResource
      */
     public function toArray()
     {
-        return collect($this->pieces)->map(function ($piece) {
-            return $piece->toArray();
-        })->all();
+        return collect($this->pieces)
+            ->whenEmpty(function ($collection) {
+                return $collection->push(new Piece);
+            })
+            ->map(function ($piece) {
+                return $piece->toArray();
+            })
+            ->all();
     }
 }

@@ -200,11 +200,6 @@ class Parcel extends BaseResource
      */
     public function toArray()
     {
-        if ($this->pieces->hasPieces() === false) {
-            // add default piece for backwards compatibility
-            $this->pieces->addPiece(new Piece);
-        }
-
         return collect([
                 'receiver' => $this->recipient->toArray(),
                 'shipper' => $this->sender->toArray(),
