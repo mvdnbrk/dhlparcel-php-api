@@ -66,9 +66,9 @@ class ParcelTest extends TestCase
         $this->assertEquals('Doe', $parcel->recipient->last_name);
         $this->assertEquals('Test Company B.V.', $parcel->sender->company_name);
         $this->assertEquals('Test 123', $parcel->options->label_description);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->pieces[0]->parcel_type);
-        $this->assertEquals(1, $parcel->pieces->pieces[0]->quantity);
-        $this->assertEquals(1, $parcel->pieces->pieces[0]->weight);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->items[0]->parcel_type);
+        $this->assertEquals(1, $parcel->pieces->items[0]->quantity);
+        $this->assertEquals(1, $parcel->pieces->items[0]->weight);
         $this->assertSame(true, $parcel->options->only_recipient);
         $this->assertSame(true, $parcel->options->signature);
     }
@@ -215,10 +215,10 @@ class ParcelTest extends TestCase
             'pieces' => $pieces,
         ]);
 
-        $this->assertInstanceOf(Piece::class, $parcel->pieces->pieces[0]);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->pieces[0]->parcel_type);
-        $this->assertEquals(1, $parcel->pieces->pieces[0]->quantity);
-        $this->assertEquals(1, $parcel->pieces->pieces[0]->weight);
+        $this->assertInstanceOf(Piece::class, $parcel->pieces->items[0]);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->items[0]->parcel_type);
+        $this->assertEquals(1, $parcel->pieces->items[0]->quantity);
+        $this->assertEquals(1, $parcel->pieces->items[0]->weight);
     }
 
     /** @test */
