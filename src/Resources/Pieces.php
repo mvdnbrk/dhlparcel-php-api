@@ -7,7 +7,7 @@ class Pieces extends BaseResource
     /**
      * @var \Mvdnbrk\DhlParcel\Resources\Piece[]
      */
-    public $pieces;
+    protected $pieces;
 
     /**
      * Create a new Pieces resource.
