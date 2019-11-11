@@ -72,9 +72,13 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
 ``` php
 $shipment = $dhlparcel->shipments->create($parcel);
 
-$shipment->id;
-$shipment->label_id;
-$shipment->barcode;
+foreach ($shipment->pieces as $piece) {
+    $piece->tracker_code;
+    $piece->label_id;
+    $piece->weight;
+    $piece->parcel_type;
+    $piece->quantity;
+}
 ```
 
 You have created your first shipment!
