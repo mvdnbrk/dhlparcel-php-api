@@ -29,6 +29,7 @@ class Str
         if (isset(static::$camelCache[$value])) {
             return static::$camelCache[$value];
         }
+
         return static::$camelCache[$value] = lcfirst(static::studly($value));
     }
 
