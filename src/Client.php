@@ -4,6 +4,7 @@ namespace Mvdnbrk\DhlParcel;
 
 use Composer\CaBundle\CaBundle;
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Mvdnbrk\DhlParcel\Endpoints\Authentication;

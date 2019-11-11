@@ -57,8 +57,7 @@ class Parcel extends BaseResource
     }
 
     /**
-     * Sets a label description for the parcel.
-     * Sets label_description option to the specified value.
+     * Set a label description for the parcel.
      *
      * @param  string  $value
      * @return $this
@@ -71,7 +70,7 @@ class Parcel extends BaseResource
     }
 
     /**
-     * Set the parcel to a mailbox package.
+     * Set the parcel type to mailbox delivery.
      *
      * @return $this
      */
@@ -84,7 +83,6 @@ class Parcel extends BaseResource
 
     /**
      * Deliver the parcel to the recipient only.
-     * Sets only_recipent option to true.
      *
      * @return $this
      */
@@ -97,7 +95,6 @@ class Parcel extends BaseResource
 
     /**
      * Require a signature from the recipient.
-     * Sets signature option to true.
      *
      * @return $this
      */
@@ -150,9 +147,9 @@ class Parcel extends BaseResource
     }
 
     /**
-     * Set the sneder for this parcel.
+     * Set the sender for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources|array  $value
+     * @param  \Mvdnbrk\DhlParcel\Resources\Recipient|array  $value
      * @return void
      */
     public function setSenderAttribute($value)
@@ -183,7 +180,7 @@ class Parcel extends BaseResource
     }
 
     /**
-     * Sets a reference for this parcel. Alias for reference_identifier.
+     * Set a reference for this parcel. Alias for reference_identifier.
      *
      * @param  string  $value
      * @return void
@@ -194,7 +191,7 @@ class Parcel extends BaseResource
     }
 
     /**
-     * Convert the parcel resource to an array.
+     * Convert the Parcel resource to an array.
      *
      * @return array
      */

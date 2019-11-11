@@ -31,7 +31,7 @@ class AccessToken
      * Create a new AccessToken instance.
      *
      * @param  string  $token
-     * @return  void
+     * @return void
      */
     public function __construct($token)
     {
@@ -75,7 +75,7 @@ class AccessToken
     }
 
     /**
-     * Sets the account id.
+     * Set the account id.
      *
      * @param  string  $value
      * @return void

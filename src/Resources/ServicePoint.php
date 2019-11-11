@@ -52,7 +52,7 @@ class ServicePoint extends Address
     }
 
     /**
-     * Sets address details.
+     * Set the address details.
      *
      * @param  object|array  $value
      * @return void
@@ -63,7 +63,7 @@ class ServicePoint extends Address
     }
 
     /**
-     * Sets latitude and longitude based on a geolocation object.
+     * Set latitude and longitude based on a geolocation object.
      *
      * @param  object|array  $value
      * @return void
@@ -77,7 +77,7 @@ class ServicePoint extends Address
     }
 
     /**
-     * Get the instance as an array.
+     * Convert the ServicePoint resource to an array.
      *
      * @return array
      */
@@ -87,9 +87,7 @@ class ServicePoint extends Address
             ->merge([
                 'distance' => $this->distanceForHumans(),
             ])
-            ->reject(function ($value) {
-                return empty($value);
-            })
+            ->filter()
             ->all();
     }
 }

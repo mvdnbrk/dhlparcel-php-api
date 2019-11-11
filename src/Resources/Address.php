@@ -45,7 +45,7 @@ class Address extends BaseResource
     public $cc;
 
     /**
-     * Sets the number suffix. Alias for number_suffix.
+     * Set the number suffix. Alias for number_suffix.
      *
      * @param  string  $value
      * @return void
@@ -56,7 +56,7 @@ class Address extends BaseResource
     }
 
     /**
-     * Set country code.
+     * Set the country code.
      *
      * @param  string  $value
      * @return void
@@ -67,7 +67,7 @@ class Address extends BaseResource
     }
 
     /**
-     * Sets the country code. Alias for cc.
+     * Set the country code. Alias for cc.
      *
      * @param  string  $value
      * @return void
@@ -89,7 +89,7 @@ class Address extends BaseResource
     }
 
     /**
-     * Sets the zipcode. Alias for postal_code.
+     * Set the zipcode. Alias for postal_code.
      *
      * @param  string  $value
      * @return void
@@ -100,8 +100,7 @@ class Address extends BaseResource
     }
 
     /**
-     * Convert the resource instance to an array.
-     * Removes all attributes with null values.
+     * Convert the Address resource to an array.
      *
      * @return array
      */

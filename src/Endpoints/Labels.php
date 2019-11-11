@@ -16,7 +16,7 @@ class Labels extends BaseEndpoint
     /**
      * Get a shipment label by shipment id.
      *
-     * @param  \Mvdnbrk\MyParcel\Resources\Shipment|string  $value
+     * @param  \Mvdnbrk\DhlParcel\Resources\Shipment|string  $value
      * @return string
      */
     public function get($value)
