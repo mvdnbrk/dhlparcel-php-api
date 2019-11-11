@@ -18,7 +18,7 @@ You can install the package via composer:
 composer require mvdnbrk/dhlparcel-php-api
 ```
 
-## Getting started
+## Usage
 
 Initialize the DHL Parcel client and set your credentials.
 
@@ -177,13 +177,13 @@ DHLPARCEL_ID=YOUR-USER-ID
 DHLPARCEL_SECRET=YOUR-SECRET-KEY
 ```
 
-### Testing
+## Testing
 
 ``` bash
 composer test
 ```
 
-### Changelog
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
@@ -191,7 +191,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Security
+## Security
 
 If you discover any security related issues, please email mvdnbrk@gmail.com instead of using the issue tracker.
 
