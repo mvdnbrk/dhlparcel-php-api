@@ -7,8 +7,11 @@ use Mvdnbrk\DhlParcel\Support\Str;
 class ShipmentOptions extends BaseResource
 {
     /**
-     * The delivery type.
-     * e.g. to door, mailbox, parcelshop etc.
+     * The delivery type key.
+     *
+     * e.g. DOOR for delivery to recipient,
+     * BP for mailbox delivery,
+     * PS for parcel shop delivery etc.
      *
      * @var string
      */
