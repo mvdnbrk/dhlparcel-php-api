@@ -11,6 +11,9 @@ class Piece extends BaseResource
     const PARCEL_TYPE_PALLET = 'PALLET';
 
     /**
+     * The parcel type.
+     * e.g. SMALL, MEDIUM, LARGE etc.
+     *
      * @var string
      */
     public $parcel_type;
