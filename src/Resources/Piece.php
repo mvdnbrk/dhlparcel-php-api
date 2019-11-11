@@ -8,6 +8,7 @@ class Piece extends BaseResource
     const PARCEL_TYPE_MEDIUM = 'MEDIUM';
     const PARCEL_TYPE_LARGE = 'LARGE';
     const PARCEL_TYPE_BULKY = 'BULKY';
+    const PARCEL_TYPE_PALLET = 'PALLET';
 
     /**
      * @var string
