@@ -27,6 +27,11 @@ class Parcel extends BaseResource
     public $sender;
 
     /**
+     * @var \Mvdnbrk\DhlParcel\Resources\Pieces
+     */
+    public $pieces;
+
+    /**
      * Create a new shipment instance.
      *
      * @param  array  $attributes
@@ -36,6 +41,7 @@ class Parcel extends BaseResource
         $this->options = new ShipmentOptions;
         $this->recipient = new Recipient;
         $this->sender = new Recipient;
+        $this->pieces = new Pieces;
 
         parent::__construct($attributes);
     }
@@ -158,6 +164,22 @@ class Parcel extends BaseResource
     }
 
     /**
+     * Set the pieces for this parcel.
+     *
+     * @param  \Mvdnbrk\DhlParcel\Resources|Pieces|array $value
+     */
+    public function setPiecesAttribute($value)
+    {
+        if ($value instanceof Pieces) {
+            $this->pieces = $value;
+
+            return;
+        }
+
+        $this->pieces->setPiecesAttribute($value);
+    }
+
+    /**
      * Set a reference for this parcel. Alias for reference_identifier.
      *
      * @param  string  $value
@@ -179,12 +201,7 @@ class Parcel extends BaseResource
                 'receiver' => $this->recipient->toArray(),
                 'shipper' => $this->sender->toArray(),
                 'options' => $this->options->toArray(),
-                'pieces' => [
-                    [
-                        'parcelType' => 'SMALL',
-                        'quantity' => 1,
-                    ],
-                ],
+                'pieces' => $this->pieces->toArray(),
             ])
             ->when(! is_null($this->reference_identifier), function ($collection) {
                 return $collection->put('orderReference', (string) $this->reference_identifier);

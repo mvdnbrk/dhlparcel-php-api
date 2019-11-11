@@ -57,7 +57,13 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
         'postal_code' => '9999AA',
         'city' => 'Amsterdam',
         'cc' => 'NL',
-    ]
+    ],
+    'pieces' => [
+        [
+            'parcel_type' => Piece::PARCEL_TYPE_SMALL,
+            'quantity' => 1,
+        ],
+    ],
 ]);
 ```
 
