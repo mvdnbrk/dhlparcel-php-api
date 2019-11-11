@@ -34,7 +34,7 @@ class StrTest extends TestCase
     /** @test */
     public function upper()
     {
-        $this->assertEquals('FOO BAR', Str::upper('foo bar'));
-        $this->assertEquals('FOO BAR', Str::upper('foO bAr'));
+        $this->assertSame('FOO BAR BAZ', Str::upper('foo bar baz'));
+        $this->assertSame('FOO BAR BAZ', Str::upper('foO bAr BaZ'));
     }
 }
