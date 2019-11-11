@@ -5,21 +5,11 @@ namespace Mvdnbrk\DhlParcel\Resources;
 class Pieces extends BaseResource
 {
     /**
+     * The piece items in this collection.
+     *
      * @var \Mvdnbrk\DhlParcel\Resources\Piece[]
      */
-    protected $pieces;
-
-    /**
-     * Create a new Pieces resource.
-     *
-     * @param array $attributes
-     */
-    public function __construct($attributes = [])
-    {
-        $this->pieces = [];
-
-        parent::__construct($attributes);
-    }
+    protected $items = [];
 
     /**
      * Set the pieces.
@@ -29,24 +19,24 @@ class Pieces extends BaseResource
     public function setPiecesAttribute($pieces)
     {
         foreach ($pieces as $piece) {
-            $this->addPiece($piece);
+            $this->add($piece);
         }
     }
 
     /**
-     * Add a piece.
+     * Add a piece item to this collection.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
      */
-    public function addPiece($value)
+    public function add($value)
     {
         if ($value instanceof Piece) {
-            $this->pieces[] = $value;
+            $this->items[] = $value;
 
             return;
         }
 
-        $this->pieces[] = new Piece($value);
+        $this->items[] = new Piece($value);
     }
 
     /**
@@ -56,7 +46,7 @@ class Pieces extends BaseResource
      */
     public function toArray()
     {
-        return collect($this->pieces)
+        return collect($this->items)
             ->whenEmpty(function ($collection) {
                 return $collection->push(new Piece);
             })

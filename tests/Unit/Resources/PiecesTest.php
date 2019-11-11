@@ -21,9 +21,9 @@ class PiecesTest extends TestCase
             ],
         ]);
 
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->pieces[0]->parcel_type);
-        $this->assertEquals(1, $pieces->pieces[0]->quantity);
-        $this->assertEquals(1, $pieces->pieces[0]->weight);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->items[0]->parcel_type);
+        $this->assertEquals(1, $pieces->items[0]->quantity);
+        $this->assertEquals(1, $pieces->items[0]->weight);
     }
 
     /** @test */
@@ -35,8 +35,8 @@ class PiecesTest extends TestCase
             ],
         ]);
 
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->pieces[0]->parcel_type);
-        $this->assertEquals(1, $pieces->pieces[0]->quantity);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->items[0]->parcel_type);
+        $this->assertEquals(1, $pieces->items[0]->quantity);
     }
 
     /** @test */
@@ -44,10 +44,10 @@ class PiecesTest extends TestCase
     {
         $pieces = new Pieces;
 
-        $pieces->addPiece(new Piece);
+        $pieces->add(new Piece);
 
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->pieces[0]->parcel_type);
-        $this->assertEquals(1, $pieces->pieces[0]->quantity);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->items[0]->parcel_type);
+        $this->assertEquals(1, $pieces->items[0]->quantity);
     }
 
     /** @test */
@@ -55,15 +55,15 @@ class PiecesTest extends TestCase
     {
         $pieces = new Pieces;
 
-        $pieces->addPiece([
+        $pieces->add([
             'parcel_type' => Piece::PARCEL_TYPE_SMALL,
             'quantity' => 1,
             'weight' => 1,
         ]);
 
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->pieces[0]->parcel_type);
-        $this->assertEquals(1, $pieces->pieces[0]->quantity);
-        $this->assertEquals(1, $pieces->pieces[0]->weight);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->items[0]->parcel_type);
+        $this->assertEquals(1, $pieces->items[0]->quantity);
+        $this->assertEquals(1, $pieces->items[0]->weight);
     }
 
     /** @test */
