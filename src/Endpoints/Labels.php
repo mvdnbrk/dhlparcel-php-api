@@ -2,7 +2,6 @@
 
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
-
 class Labels extends BaseEndpoint
 {
     /**
