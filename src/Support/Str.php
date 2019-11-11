@@ -5,11 +5,32 @@ namespace Mvdnbrk\DhlParcel\Support;
 class Str
 {
     /**
+     * The cache of camel-cased words.
+     *
+     * @var array
+     */
+    protected static $camelCache = [];
+
+    /**
      * The cache of studly-cased words.
      *
      * @var array
      */
     protected static $studlyCache = [];
+
+    /**
+     * Convert a value to camel case.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public static function camel($value)
+    {
+        if (isset(static::$camelCache[$value])) {
+            return static::$camelCache[$value];
+        }
+        return static::$camelCache[$value] = lcfirst(static::studly($value));
+    }
 
     /**
      * Limit the number of characters in a string.
