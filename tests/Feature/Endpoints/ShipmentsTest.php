@@ -3,6 +3,8 @@
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Resources\Shipment;
+use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class ShipmentsTest extends TestCase
@@ -39,10 +41,11 @@ class ShipmentsTest extends TestCase
         $parcel->onlyRecipient();
         $parcel->signature();
 
+        /** @var Shipment $shipment */
         $shipment = $this->client->shipments->create($parcel);
 
         $this->assertNotNull($shipment->id);
-        $this->assertNotNull($shipment->barcode);
-        $this->assertNotNull($shipment->label_id);
+        $this->assertIsArray($shipment->pieces);
+        $this->assertInstanceOf(ShipmentPiece::class, $shipment->pieces[0]);
     }
 }

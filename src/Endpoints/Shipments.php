@@ -4,7 +4,9 @@ namespace Mvdnbrk\DhlParcel\Endpoints;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\Shipment as ShipmentResource;
+use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Ramsey\Uuid\Uuid;
+use stdClass;
 
 class Shipments extends BaseEndpoint
 {
@@ -18,7 +20,9 @@ class Shipments extends BaseEndpoint
     /**
      * Create a new shipment for a parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Parcel  $parcel
+     * @param  \Mvdnbrk\DhlParcel\Resources\Parcel $parcel
+     * @return ShipmentResource
+     * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
     public function create(Parcel $parcel)
     {
@@ -28,21 +32,32 @@ class Shipments extends BaseEndpoint
             $this->getHttpBody($parcel)
         );
 
-        return new ShipmentResource(array_merge([
+        return new ShipmentResource([
             'id' => $response->shipmentId,
-            'barcode' => $response->pieces[0]->trackerCode,
-            'label_id' => $response->pieces[0]->labelId,
-        ], $parcel->attributesToArray()));
+            'pieces' => collect($response->pieces)
+                ->map(static function(stdClass $item) {
+                    return new ShipmentPiece([
+                        'label_id' => $item->labelId,
+                        'tracker_code' => $item->trackerCode,
+                        'parcel_type' => $item->parcelType,
+                        'quantity' => $item->pieceNumber,
+                        'weight' => $item->weight,
+                    ]);
+                })
+                ->all(),
+        ]);
     }
 
     /**
      * Get the http body for the API request.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Parcel  $parcel
+     * @param  \Mvdnbrk\DhlParcel\Resources\Parcel $parcel
      * @return string
+     * @throws \Exception
      */
     protected function getHttpBody(Parcel $parcel)
     {
+        /** @noinspection PhpComposerExtensionStubsInspection */
         return json_encode(
             collect([
                 'shipmentId' => Uuid::uuid4()->toString(),

@@ -2,7 +2,7 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-class Shipment extends Parcel
+class Shipment extends BaseResource
 {
     /**
      * @var int
@@ -10,14 +10,49 @@ class Shipment extends Parcel
     public $id;
 
     /**
-     * @var string
+     * @var \Mvdnbrk\DhlParcel\Resources\ShipmentPiece[]
      */
-    public $barcode;
+    public $pieces;
 
     /**
-     * @var string
+     * Create a new Shipment resource.
+     *
+     * @param array $attributes
      */
-    public $label_id;
+    public function __construct($attributes = [])
+    {
+        $this->pieces = [];
+
+        parent::__construct($attributes);
+    }
+
+    /**
+     * Set the items.
+     *
+     * @param  array  $pieces
+     */
+    public function setPiecesAttribute($pieces)
+    {
+        foreach ($pieces as $piece) {
+            $this->addPiece($piece);
+        }
+    }
+
+    /**
+     * Add a item.
+     *
+     * @param  \Mvdnbrk\DhlParcel\Resources\ShipmentPiece|array  $value
+     */
+    public function addPiece($value)
+    {
+        if ($value instanceof ShipmentPiece) {
+            $this->pieces[] = $value;
+
+            return;
+        }
+
+        $this->pieces[] = new ShipmentPiece($value);
+    }
 
     /**
      * Convert the Shipment resource to an array.
@@ -26,10 +61,13 @@ class Shipment extends Parcel
      */
     public function toArray()
     {
-        return collect(parent::toArray())->merge([
+        return collect([
             'id' => $this->id,
-            'barcode' => $this->barcode,
-            'label_id' => $this->label_id,
+            'pieces' => collect($this->pieces)
+                ->map(static function (ShipmentPiece $item): array {
+                    return $item->toArray();
+                })
+                ->all()
         ])->all();
     }
 }
