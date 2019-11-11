@@ -62,9 +62,7 @@ class Recipient extends Address
                 'lastName' => $this->last_name,
                 'companyName' => $this->company,
             ])
-            ->reject(function ($value) {
-                return $value === null;
-            })
+            ->filter()
             ->all();
     }
 

@@ -87,9 +87,7 @@ class ServicePoint extends Address
             ->merge([
                 'distance' => $this->distanceForHumans(),
             ])
-            ->reject(function ($value) {
-                return empty($value);
-            })
+            ->filter()
             ->all();
     }
 }
