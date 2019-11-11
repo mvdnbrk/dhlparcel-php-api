@@ -88,12 +88,8 @@ You have created your first shipment!
 A label can be retrieved by using the `label_id`.
 This will return a PDF label as a string.
 
-```
-$dhlparcel->labels->get($shipment->label_id);
-```
-Or you may pass the `Shipment` instance directly to this method:
-```
-$dhlparcel->labels->get($shipment);
+``` php
+$dhlparcel->labels->get($shipment->pieces[0]->label_id);
 ```
 
 ### Setting delivery options for a parcel

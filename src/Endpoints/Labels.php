@@ -2,7 +2,6 @@
 
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
-use Mvdnbrk\DhlParcel\Resources\Shipment;
 
 class Labels extends BaseEndpoint
 {
@@ -16,18 +15,15 @@ class Labels extends BaseEndpoint
     /**
      * Get a shipment label by shipment id.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Shipment|string  $value
+     * @param string $labelId
      * @return string
+     * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
-    public function get($value)
+    public function get(string $labelId)
     {
-        if ($value instanceof Shipment) {
-            $value = $value->label_id;
-        }
-
         $response = $this->performApiCall(
             'GET',
-            'labels/'.$value,
+            'labels/'.$labelId,
             null,
             ['Accept' => 'application/pdf']
         );
