@@ -4,6 +4,9 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- Added ability to set `pieces` for a parcel. [`#10`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/10)
+
 ## [v0.4.1] - 2019-11-11
 
 ### Changed
