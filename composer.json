@@ -27,7 +27,6 @@
     },
     "require-dev": {
         "nunomaduro/collision": "^3.0",
-        "orchestra/testbench": "^4.1",
         "phpunit/phpunit": "^8.0",
         "symfony/var-dumper": "^4.3",
         "vlucas/phpdotenv": "^3.3"
@@ -48,11 +47,6 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
-        },
-        "laravel": {
-            "providers": [
-                "Mvdnbrk\\DhlParcel\\DhlParcelServiceProvider"
-            ]
         }
     },
     "config": {
