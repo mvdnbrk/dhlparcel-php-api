@@ -29,7 +29,7 @@ $dhlparcel->setUserId('your-user-id');
 $dhlparcel->setApiKey('your-api-key');
 ```
 
-You may optionally set an account id:
+If you have multipe accounts, you may optionally set an account id:
 
 ```
 $dhlparcel->setAccountId('123456');
