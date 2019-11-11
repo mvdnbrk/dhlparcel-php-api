@@ -65,7 +65,7 @@ class AccessToken
     }
 
     /**
-     * Retrieve the account id from the token.
+     * Retrieve the account id.
      *
      * @return string
      */
