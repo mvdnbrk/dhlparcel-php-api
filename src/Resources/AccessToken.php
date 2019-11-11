@@ -31,7 +31,7 @@ class AccessToken
      * Create a new AccessToken instance.
      *
      * @param  string  $token
-     * @return  void
+     * @return void
      */
     public function __construct($token)
     {
