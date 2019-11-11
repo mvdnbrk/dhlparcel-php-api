@@ -16,6 +16,32 @@ class StrTest extends TestCase
     }
 
     /** @test */
+    public function lower()
+    {
+        $this->assertSame('foo bar baz', Str::lower('FOO BAR BAZ'));
+        $this->assertSame('foo bar baz', Str::lower('fOo Bar bAz'));
+    }
+
+    /** @test */
+    public function snake()
+    {
+        $this->assertSame('lorem_p_h_p_ipsum', Str::snake('LoremPHPIpsum'));
+        $this->assertSame('lorem_php_ipsum', Str::snake('LoremPhpIpsum'));
+        $this->assertSame('lorem php ipsum', Str::snake('LoremPhpIpsum', ' '));
+        $this->assertSame('lorem_php_ipsum', Str::snake('Lorem Php Ipsum'));
+        $this->assertSame('lorem_php_ipsum', Str::snake('Lorem    Php      Ipsum   '));
+        $this->assertSame('lorem__php__ipsum', Str::snake('LoremPhpIpsum', '__'));
+        $this->assertSame('lorem_php_ipsum_', Str::snake('LoremPhpIpsum_', '_'));
+        $this->assertSame('lorem_php_ipsum', Str::snake('lorem php Ipsum'));
+        $this->assertSame('lorem_php_ipsum_dolet', Str::snake('lorem php IpsumDolet'));
+
+        $this->assertSame('foo-bar', Str::snake('foo-bar'));
+        $this->assertSame('foo-_bar', Str::snake('Foo-Bar'));
+        $this->assertSame('foo__bar', Str::snake('Foo_Bar'));
+        $this->assertSame('żółtałódka', Str::snake('ŻółtaŁódka'));
+    }
+
+    /** @test */
     public function studly()
     {
         $this->assertSame('LoremPHPIpsum', Str::studly('lorem_p_h_p_ipsum'));
