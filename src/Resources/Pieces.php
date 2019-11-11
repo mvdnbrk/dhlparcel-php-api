@@ -22,7 +22,7 @@ class Pieces extends BaseResource
     }
 
     /**
-     * Sets the pieces.
+     * Set the pieces.
      *
      * @param  array  $pieces
      */
@@ -34,7 +34,7 @@ class Pieces extends BaseResource
     }
 
     /**
-     * Add a pieces.
+     * Add a piece.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
      */
