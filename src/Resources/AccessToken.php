@@ -61,7 +61,7 @@ class AccessToken
      */
     public function isExpired()
     {
-        return $this->expiresAt < (new DateTimeImmutable)->setTimestamp(time());
+        return $this->expiresAt < new DateTimeImmutable;
     }
 
     /**
