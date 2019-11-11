@@ -61,7 +61,7 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
     // Optional. This will be set as the default.
     'pieces' => [
         [
-            'parcel_type' => Piece::PARCEL_TYPE_SMALL,
+            'parcel_type' => \Mvdnbrk\DhlParcel\Resources\Piece::PARCEL_TYPE_SMALL,
             'quantity' => 1,
         ],
     ],
