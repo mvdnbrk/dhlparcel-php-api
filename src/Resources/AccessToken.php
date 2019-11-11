@@ -49,7 +49,7 @@ class AccessToken
     {
         $token = (new Parser)->parse($this->token);
 
-        $this->expiresAt = (new DateTimeImmutable)->setTimestamp($token->getClaim('exp'));
+        $this->expiresAt = (new DateTimeImmutable)->setTimestamp($token->getClaim('exp')) ?: new DateTimeImmutable;
         $this->accounts = $token->getClaim('accounts');
         $this->roles = $token->getClaim('roles');
     }
