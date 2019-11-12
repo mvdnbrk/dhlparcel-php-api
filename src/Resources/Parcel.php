@@ -108,7 +108,7 @@ class Parcel extends BaseResource
     /**
      * Set the shipment options for this parcel.
      *
-     * @param  array|object  $value
+     * @param  \Mvdnbrk\DhlParcel\Resources\ShipmentOptions|array  $value
      * @return  void
      */
     public function setOptionsAttribute($value)
