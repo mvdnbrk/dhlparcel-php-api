@@ -108,7 +108,7 @@ class Parcel extends BaseResource
     /**
      * Set the shipment options for this parcel.
      *
-     * @param  array  $value
+     * @param  array|object  $value
      * @return  void
      */
     public function setOptionsAttribute($value)
