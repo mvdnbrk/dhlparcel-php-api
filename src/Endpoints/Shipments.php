@@ -37,13 +37,9 @@ class Shipments extends BaseEndpoint implements ShouldAuthenticate
      */
     protected function getHttpBody(Parcel $parcel)
     {
-        return json_encode(
-            collect([
-                'shipmentId' => Uuid::uuid4()->toString(),
-                'accountId' => $this->apiClient->authentication->getAccessToken()->getAccountId(),
-            ])
-            ->merge($parcel->toArray())
-            ->all()
-        );
+        return json_encode(array_merge([
+            'shipmentId' => Uuid::uuid4()->toString(),
+            'accountId' => $this->apiClient->authentication->getAccessToken()->getAccountId(),
+        ], $parcel->toArray()));
     }
 }
