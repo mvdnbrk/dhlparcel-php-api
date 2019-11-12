@@ -3,8 +3,8 @@
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Resources\Piece;
 use Mvdnbrk\DhlParcel\Resources\Shipment as ShipmentResource;
-use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Ramsey\Uuid\Uuid;
 use stdClass;
 
@@ -20,7 +20,7 @@ class Shipments extends BaseEndpoint
     /**
      * Create a new shipment for a parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Parcel $parcel
+     * @param  \Mvdnbrk\DhlParcel\Resources\Parcel  $parcel
      * @return ShipmentResource
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
@@ -32,11 +32,11 @@ class Shipments extends BaseEndpoint
             $this->getHttpBody($parcel)
         );
 
-        return new ShipmentResource([
+        return new ShipmentResource(array_merge($parcel->attributesToArray(), [
             'id' => $response->shipmentId,
             'pieces' => collect($response->pieces)
                 ->map(static function (stdClass $item) {
-                    return new ShipmentPiece([
+                    return new Piece([
                         'label_id' => $item->labelId,
                         'tracker_code' => $item->trackerCode,
                         'parcel_type' => $item->parcelType,
@@ -45,7 +45,7 @@ class Shipments extends BaseEndpoint
                     ]);
                 })
                 ->all(),
-        ]);
+        ]));
     }
 
     /**
@@ -53,11 +53,9 @@ class Shipments extends BaseEndpoint
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Parcel $parcel
      * @return string
-     * @throws \Exception
      */
     protected function getHttpBody(Parcel $parcel)
     {
-        /* @noinspection PhpComposerExtensionStubsInspection */
         return json_encode(
             collect([
                 'shipmentId' => Uuid::uuid4()->toString(),

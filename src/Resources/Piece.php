@@ -33,6 +33,20 @@ class Piece extends BaseResource
     public $weight;
 
     /**
+     * Label id from api response
+     *
+     * @var string
+     */
+    public $label_id;
+
+    /**
+     * Tracker code from api response
+     *
+     * @var string
+     */
+    public $tracker_code;
+
+    /**
      * Create a new Piece resource.
      *
      * @param  array  $attributes
@@ -68,6 +82,8 @@ class Piece extends BaseResource
                 'parcelType' => $this->parcel_type,
                 'quantity' => $this->quantity,
                 'weight' => $this->weight,
+                'trackerCode' => $this->tracker_code,
+                'labelId' => $this->label_id,
             ])
             ->filter()
             ->all();

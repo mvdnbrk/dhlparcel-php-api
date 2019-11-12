@@ -4,7 +4,6 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\Piece;
 use Mvdnbrk\DhlParcel\Resources\Shipment;
-use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class ShipmentTest extends TestCase
@@ -26,11 +25,11 @@ class ShipmentTest extends TestCase
         ]);
 
         $this->assertEquals('1234', $shipment->id);
-        $this->assertEquals(Piece::PARCEL_TYPE_MEDIUM, $shipment->pieces[0]->parcel_type);
-        $this->assertEquals(1, $shipment->pieces[0]->quantity);
-        $this->assertEquals(1, $shipment->pieces[0]->weight);
-        $this->assertEquals('123456', $shipment->pieces[0]->label_id);
-        $this->assertEquals('SAMPLE', $shipment->pieces[0]->tracker_code);
+        $this->assertEquals(Piece::PARCEL_TYPE_MEDIUM, $shipment->pieces->pieces[0]->parcel_type);
+        $this->assertEquals(1, $shipment->pieces->pieces[0]->quantity);
+        $this->assertEquals(1, $shipment->pieces->pieces[0]->weight);
+        $this->assertEquals('123456', $shipment->pieces->pieces[0]->label_id);
+        $this->assertEquals('SAMPLE', $shipment->pieces->pieces[0]->tracker_code);
     }
 
     /** @test */
@@ -39,13 +38,13 @@ class ShipmentTest extends TestCase
         $shipment = new Shipment([
             'id' => '1234',
             'pieces' => [
-                new ShipmentPiece(),
+                new Piece(),
             ],
         ]);
 
         $this->assertEquals('1234', $shipment->id);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $shipment->pieces[0]->parcel_type);
-        $this->assertEquals(1, $shipment->pieces[0]->quantity);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $shipment->pieces->pieces[0]->parcel_type);
+        $this->assertEquals(1, $shipment->pieces->pieces[0]->quantity);
     }
 
     /** @test */
@@ -55,11 +54,11 @@ class ShipmentTest extends TestCase
             'id' => '1234',
         ]);
 
-        $shipment->addPiece(new ShipmentPiece);
+        $shipment->pieces->addPiece(new Piece);
 
         $this->assertEquals('1234', $shipment->id);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $shipment->pieces[0]->parcel_type);
-        $this->assertEquals(1, $shipment->pieces[0]->quantity);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $shipment->pieces->pieces[0]->parcel_type);
+        $this->assertEquals(1, $shipment->pieces->pieces[0]->quantity);
     }
 
     /** @test */
@@ -69,16 +68,16 @@ class ShipmentTest extends TestCase
             'id' => '1234',
         ]);
 
-        $shipment->addPiece([
+        $shipment->pieces->addPiece([
             'parcel_type' => Piece::PARCEL_TYPE_SMALL,
             'quantity' => 1,
             'weight' => 1,
         ]);
 
         $this->assertEquals('1234', $shipment->id);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $shipment->pieces[0]->parcel_type);
-        $this->assertEquals(1, $shipment->pieces[0]->quantity);
-        $this->assertEquals(1, $shipment->pieces[0]->weight);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $shipment->pieces->pieces[0]->parcel_type);
+        $this->assertEquals(1, $shipment->pieces->pieces[0]->quantity);
+        $this->assertEquals(1, $shipment->pieces->pieces[0]->weight);
     }
 
     /** @test */

@@ -3,6 +3,7 @@
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Resources\Piece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 /** @group integration */
@@ -15,6 +16,9 @@ class LabelsTest extends TestCase
         $parcel = new Parcel([
             'recipient' => $this->validRecipient(),
             'sender' => $this->validRecipient(),
+            'pieces' => [
+                new Piece(),
+            ],
         ]);
 
         $this->shipment = $this->client->shipments->create($parcel);
@@ -36,7 +40,7 @@ class LabelsTest extends TestCase
     /** @test */
     public function get_a_label_by_id()
     {
-        $pdf = $this->client->labels->get($this->shipment->label_id);
+        $pdf = $this->client->labels->getByLabelId($this->shipment->pieces->pieces[0]->label_id);
 
         $this->assertIsString('string', $pdf);
     }

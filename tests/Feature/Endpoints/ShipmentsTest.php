@@ -3,8 +3,8 @@
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Resources\Piece;
 use Mvdnbrk\DhlParcel\Resources\Shipment;
-use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class ShipmentsTest extends TestCase
@@ -46,6 +46,6 @@ class ShipmentsTest extends TestCase
 
         $this->assertNotNull($shipment->id);
         $this->assertIsArray($shipment->pieces);
-        $this->assertInstanceOf(ShipmentPiece::class, $shipment->pieces[0]);
+        $this->assertInstanceOf(Piece::class, $shipment->pieces[0]);
     }
 }

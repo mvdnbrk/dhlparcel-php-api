@@ -85,11 +85,23 @@ You have created your first shipment!
 
 ### Retrieving a label
 
-A label can be retrieved by using the `label_id`.
-This will return a PDF label as a string.
+A label can be retrieved by using the shipment object.
+This will return the first PDF label as a string or null when there are no pieces
 
 ``` php
-$dhlparcel->labels->get($shipment->pieces[0]->label_id);
+$dhlparcel->labels->get($shipment);
+```
+
+Or you may pass the piece object
+
+```php
+$dhlparcel->labels->getByPiece($shipment->pieces->pieces[0]);
+```
+
+Or the label id
+
+```php
+$dhlparcel->labels->getByLabelId($shipment->pieces->pieces[0]->label_id);
 ```
 
 ### Setting delivery options for a parcel
