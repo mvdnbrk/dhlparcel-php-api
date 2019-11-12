@@ -56,7 +56,7 @@ class ClientTest extends TestCase
         $this->expectExceptionMessage('You have not set a user id. Please use setUserId() to set the user id.');
 
         $this->client->setApiKey('test-key');
-        $this->client->setUserId(null);
+        $this->client->setUserId('');
 
         $this->client->credentials();
     }
