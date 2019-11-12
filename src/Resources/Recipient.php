@@ -35,7 +35,7 @@ class Recipient extends Address
      * @param  string  $value
      * @return void
      */
-    public function setCompanyAttribute($value)
+    public function setCompanyAttribute(string $value)
     {
         $this->company_name = $value;
     }

@@ -109,7 +109,7 @@ class Client
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
-    public function performHttpCall($httpMethod, $apiMethod, $httpBody = null, $requestHeaders = [])
+    public function performHttpCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = [])
     {
         $url = $this->apiEndpoint.'/'.$apiMethod;
 
@@ -153,7 +153,7 @@ class Client
      * @param  string  $value
      * @return \Mvdnbrk\DhlParcel\Client
      */
-    public function setAccountId($value)
+    public function setAccountId(string $value)
     {
         $this->accountId = trim($value);
 
@@ -166,7 +166,7 @@ class Client
      * @param  string  $value
      * @return \Mvdnbrk\DhlParcel\Client
      */
-    public function setApiKey($value)
+    public function setApiKey(string $value)
     {
         $this->apiKey = trim($value);
 
@@ -179,7 +179,7 @@ class Client
      * @param  string  $value
      * @return \Mvdnbrk\DhlParcel\Client
      */
-    public function setUserId($value)
+    public function setUserId(string $value)
     {
         $this->userId = trim($value);
 

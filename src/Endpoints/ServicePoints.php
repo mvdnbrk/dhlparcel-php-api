@@ -46,7 +46,7 @@ class ServicePoints extends BaseEndpoint
      * @param  array  $filters
      * @return array
      */
-    protected function getFilters($filters)
+    protected function getFilters(array $filters)
     {
         return array_merge([
             'zipCode' => $this->postal_code,
@@ -61,7 +61,7 @@ class ServicePoints extends BaseEndpoint
      * @param  string  $value
      * @return $this
      */
-    public function setHousenumber($value)
+    public function setHousenumber(string $value)
     {
         $this->housenumber = $value;
 
@@ -74,7 +74,7 @@ class ServicePoints extends BaseEndpoint
      * @param  string  $value
      * @return $this
      */
-    public function setPostalCode($value)
+    public function setPostalCode(string $value)
     {
         $this->postal_code = preg_replace('/\s+/', '', Str::upper($value));
 

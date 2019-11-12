@@ -67,7 +67,7 @@ abstract class BaseEndpoint
      *
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
-    protected function performApiCall($httpMethod, $apiMethod, $httpBody = null, array $requestHeaders = [])
+    protected function performApiCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = [])
     {
         $response = $this->apiClient->performHttpCall(
             $httpMethod,

@@ -88,7 +88,7 @@ class ShipmentOptions extends BaseResource
      * @param  string  $value
      * @return void
      */
-    public function setLabelDescriptionAttribute($value)
+    public function setLabelDescriptionAttribute(string $value)
     {
         $this->label_description = Str::limit(trim($value), 15, '');
     }

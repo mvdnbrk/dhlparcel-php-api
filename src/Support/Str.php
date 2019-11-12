@@ -19,7 +19,7 @@ class Str
      * @param  string  $end
      * @return string
      */
-    public static function limit($value, $limit = 100, $end = '...')
+    public static function limit(string $value, int $limit = 100, string $end = '...')
     {
         if (mb_strwidth($value, 'UTF-8') <= $limit) {
             return $value;
@@ -34,7 +34,7 @@ class Str
      * @param  string  $value
      * @return string
      */
-    public static function studly($value)
+    public static function studly(string $value)
     {
         $key = $value;
 
@@ -53,7 +53,7 @@ class Str
      * @param  string  $value
      * @return string
      */
-    public static function upper($value)
+    public static function upper(string $value)
     {
         return mb_strtoupper($value, 'UTF-8');
     }

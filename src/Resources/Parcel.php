@@ -62,7 +62,7 @@ class Parcel extends BaseResource
      * @param  string  $value
      * @return $this
      */
-    public function labelDescription($value)
+    public function labelDescription(string $value)
     {
         $this->options->setDescriptionAttribute($value);
 
@@ -139,7 +139,7 @@ class Parcel extends BaseResource
      * @param  string  $value
      * @return  $this
      */
-    public function servicePoint($value)
+    public function servicePoint(string $value)
     {
         $this->options->setServicePointIdAttribute($value);
 
@@ -185,7 +185,7 @@ class Parcel extends BaseResource
      * @param  string  $value
      * @return void
      */
-    public function setReferenceAttribute($value)
+    public function setReferenceAttribute(string $value)
     {
         $this->reference_identifier = $value;
     }

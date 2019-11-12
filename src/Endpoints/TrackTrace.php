@@ -12,7 +12,7 @@ class TrackTrace extends BaseEndpoint
      * @param  string  $value
      * @return \Mvdnbrk\DhlParcel\Resources\TrackTrace
      */
-    public function get($value)
+    public function get(string $value)
     {
         $response = $this->performApiCall(
             'GET',

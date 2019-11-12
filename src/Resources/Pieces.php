@@ -16,7 +16,7 @@ class Pieces extends BaseResource
      *
      * @param  array  $pieces
      */
-    public function setPiecesAttribute($pieces)
+    public function setPiecesAttribute(array $pieces)
     {
         foreach ($pieces as $piece) {
             $this->add($piece);

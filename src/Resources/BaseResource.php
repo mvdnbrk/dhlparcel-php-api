@@ -69,7 +69,7 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
      *
      * @throws \Mvdnbrk\MyParcel\Exceptions\JsonEncodingException
      */
-    public function toJson($options = 0)
+    public function toJson(int $options = 0)
     {
         $json = json_encode($this->jsonSerialize(), $options);
 
@@ -86,7 +86,7 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
      * @param  string  $key
      * @return mixed
      */
-    public function __get($key)
+    public function __get(string $key)
     {
         return $this->getAttribute($key);
     }
@@ -98,7 +98,7 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
      * @param  mixed  $value
      * @return void
      */
-    public function __set($key, $value)
+    public function __set(string $key, $value)
     {
         $this->setAttribute($key, $value);
     }
