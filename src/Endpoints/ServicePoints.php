@@ -56,7 +56,7 @@ class ServicePoints extends BaseEndpoint
     }
 
     /**
-     * Sets the house number.
+     * Set the house number.
      *
      * @param  string  $value
      * @return $this
