@@ -47,13 +47,13 @@ abstract class BaseEndpoint
      */
     protected function getRequestHeaders(array $headers)
     {
-        return collect($headers)
-            ->when($this instanceof ShouldAuthenticate, function ($collection) {
-                return $collection->merge([
-                    'Authorization' => 'Bearer '.$this->apiClient->authentication->getAccessToken()->token,
-                ]);
-            })
-            ->all();
+        if ($this instanceof ShouldAuthenticate) {
+            $headers = array_merge($headers, [
+                'Authorization' => 'Bearer '.$this->apiClient->authentication->getAccessToken()->token,
+            ]);
+        }
+
+        return $headers;
     }
 
     /**
