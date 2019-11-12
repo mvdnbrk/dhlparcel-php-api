@@ -54,7 +54,7 @@ class ServicePoint extends Address
     /**
      * Set the address details.
      *
-     * @param  object|array  $value
+     * @param  \Mvdnbrk\DhlParcel\Resources\Address|array  $value
      * @return void
      */
     public function setAddressAttribute($value)
