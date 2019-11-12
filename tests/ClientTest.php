@@ -43,7 +43,7 @@ class ClientTest extends TestCase
         $this->expectException(DhlParcelException::class);
         $this->expectExceptionMessage('You have not set an API key. Please use setApiKey() to set the API key.');
 
-        $this->client->setApiKey(null);
+        $this->client->setApiKey('');
         $this->client->setUserId('1234');
 
         $this->client->credentials();
