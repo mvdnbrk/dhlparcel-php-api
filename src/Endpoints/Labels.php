@@ -2,17 +2,11 @@
 
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
+use Mvdnbrk\DhlParcel\Contracts\ShouldAuthenticate;
 use Mvdnbrk\DhlParcel\Resources\Shipment;
 
-class Labels extends BaseEndpoint
+class Labels extends BaseEndpoint implements ShouldAuthenticate
 {
-    /**
-     * Indicates if this endpoint needs authentication.
-     *
-     * @var bool
-     */
-    protected $mustAuthenticate = true;
-
     /**
      * Get a shipment label by shipment id.
      *
