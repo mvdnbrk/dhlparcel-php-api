@@ -45,13 +45,13 @@ abstract class BaseEndpoint
         return '?'.http_build_query($filters);
     }
 
-    protected function requestHeaders($headers)
     /**
      * Get request headers.
      *
      * @param  array  $headers
      * @return array
      */
+    protected function getRequestHeaders(array $headers)
     {
         return collect($headers)
             ->when($this->mustAuthenticate, function ($collection) {
@@ -79,7 +79,7 @@ abstract class BaseEndpoint
             $httpMethod,
             $apiMethod,
             $httpBody,
-            $this->requestHeaders($requestHeaders)
+            $this->getRequestHeaders($requestHeaders)
         );
 
         if (collect($response->getHeader('Content-Type'))->first() == 'application/octet-stream') {
