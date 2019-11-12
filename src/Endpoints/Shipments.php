@@ -2,19 +2,13 @@
 
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
+use Mvdnbrk\DhlParcel\Contracts\ShouldAuthenticate;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\Shipment as ShipmentResource;
 use Ramsey\Uuid\Uuid;
 
-class Shipments extends BaseEndpoint
+class Shipments extends BaseEndpoint implements ShouldAuthenticate
 {
-    /**
-     * Indicates if this endpoint needs authentication.
-     *
-     * @var bool
-     */
-    protected $mustAuthenticate = true;
-
     /**
      * Create a new shipment for a parcel.
      *

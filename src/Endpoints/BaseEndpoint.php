@@ -3,6 +3,7 @@
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
 use Mvdnbrk\DhlParcel\Client;
+use Mvdnbrk\DhlParcel\Contracts\ShouldAuthenticate;
 use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
 abstract class BaseEndpoint
@@ -11,13 +12,6 @@ abstract class BaseEndpoint
      * @var \Mvdnbrk\DhlParcel\Client
      */
     protected $apiClient;
-
-    /**
-     * Indicates if this endpoint needs authentication.
-     *
-     * @var bool
-     */
-    protected $mustAuthenticate = false;
 
     /**
      * Create an endpoint instance.
@@ -54,7 +48,7 @@ abstract class BaseEndpoint
     protected function getRequestHeaders(array $headers)
     {
         return collect($headers)
-            ->when($this->mustAuthenticate, function ($collection) {
+            ->when($this instanceof ShouldAuthenticate, function ($collection) {
                 return $collection->merge([
                     'Authorization' => 'Bearer '.$this->apiClient->authentication->getAccessToken()->token,
                 ]);
