@@ -46,6 +46,12 @@ abstract class BaseEndpoint
     }
 
     protected function requestHeaders($headers)
+    /**
+     * Get request headers.
+     *
+     * @param  array  $headers
+     * @return array
+     */
     {
         return collect($headers)
             ->when($this->mustAuthenticate, function ($collection) {
