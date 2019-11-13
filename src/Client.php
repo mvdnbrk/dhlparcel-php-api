@@ -191,6 +191,7 @@ class Client
      * Retrieve the credentials.
      *
      * @return array
+     *
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
     public function credentials()
