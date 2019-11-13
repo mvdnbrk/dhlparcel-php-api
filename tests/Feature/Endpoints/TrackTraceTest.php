@@ -5,11 +5,10 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
+/** @group integration */
 class TrackTraceTest extends TestCase
 {
     /** @test */
-
-    /** @group integration */
     public function getting_track_and_trace_information()
     {
         $parcel = new Parcel([

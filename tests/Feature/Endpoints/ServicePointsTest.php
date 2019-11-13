@@ -5,6 +5,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
+/** @group integration */
 class ServicePointsTest extends TestCase
 {
     /** @test */
