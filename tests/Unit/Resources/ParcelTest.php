@@ -98,6 +98,18 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_the_pieces_by_passing_a_pieces_object()
+    {
+        $pieces = new Pieces;
+
+        $parcel = new Parcel([
+            'pieces' => $pieces,
+        ]);
+
+        $this->assertSame($pieces, $parcel->pieces);
+    }
+
+    /** @test */
     public function it_can_set_a_label_description()
     {
         $parcel = new Parcel();
@@ -202,29 +214,6 @@ class ParcelTest extends TestCase
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->servicePoint('8004-NL-272403'));
-    }
-
-    /** @test */
-    public function it_can_set_the_pieces_by_passing_a_pieces_object()
-    {
-        $pieces = new Pieces([
-            'pieces' => [
-                [
-                    'parcel_type' => Piece::PARCEL_TYPE_SMALL,
-                    'quantity' => 1,
-                    'weight' => 1,
-                ],
-            ],
-        ]);
-
-        $parcel = new Parcel([
-            'pieces' => $pieces,
-        ]);
-
-        $this->assertInstanceOf(Piece::class, $parcel->pieces->items[0]);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->items[0]->parcel_type);
-        $this->assertEquals(1, $parcel->pieces->items[0]->quantity);
-        $this->assertEquals(1, $parcel->pieces->items[0]->weight);
     }
 
     /** @test */
