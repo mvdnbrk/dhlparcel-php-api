@@ -4,12 +4,14 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
-### Fixed
-- Make sure `quantity` and `weight` are integer values. [`#27`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/27)
-
 ### TODO
 - Added `snake` string helper. [`#22`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/22)
 - Added `camel` string helper. [`#21`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/21) 
+
+## [v0.6.1] - 2019-11-13
+
+### Fixed
+- Make sure `quantity` and `weight` are integer values. [`#27`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/27)
 
 ## [v0.6.0] - 2019-11-13
 
@@ -84,7 +86,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.1...HEAD
+[v0.6.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.0...v0.6.1
 [v0.6.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.4.1...v0.5.0
 [v0.4.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.4.0...v0.4.1
