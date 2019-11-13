@@ -4,6 +4,9 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- Added `ShipmentPiece` resource. [`#10`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/29)
+
 ### TODO
 - Added `snake` string helper. [`#22`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/22)
 - Added `camel` string helper. [`#21`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/21) 
