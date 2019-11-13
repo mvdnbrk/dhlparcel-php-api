@@ -5,7 +5,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
-class ShipmentPieceTest extends TestCase
+class ShipnmentPieceTest extends TestCase
 {
     /** @test */
     public function creating_a_new_shipment_piece_resource()
