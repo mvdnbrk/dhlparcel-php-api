@@ -22,30 +22,6 @@ class ServicePointTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_postal_code()
-    {
-        $servicePoints = new ServicePoints($this->client);
-
-        $servicePoints->setPostalCode('1234AA');
-        $this->assertEquals('1234AA', $servicePoints->postal_code);
-
-        $servicePoints->setPostalCode('1234xy');
-        $this->assertEquals('1234XY', $servicePoints->postal_code);
-
-        $servicePoints->setPostalCode('1234 AA');
-        $this->assertEquals('1234AA', $servicePoints->postal_code);
-    }
-
-    /** @test */
-    public function it_can_set_the_housenumber()
-    {
-        $servicePoints = new ServicePoints($this->client);
-
-        $servicePoints->setHouseNumber('111');
-        $this->assertEquals('111', $servicePoints->housenumber);
-    }
-
-    /** @test */
     public function address_may_used_to_fill_address_details()
     {
         $servicepoint = new ServicePoint([
