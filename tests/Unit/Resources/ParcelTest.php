@@ -222,14 +222,19 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_pieces_to_a_default_value_when_pieces_is_empty()
+    public function it_sets_the_pieces_to_a_default_value_when_pieces_is_empty()
     {
-        $parcel = new Parcel;
+        $parcel = new Parcel([
+            'pieces' => [],
+        ]);
 
         $array = $parcel->toArray();
 
-        $this->assertArrayHasKey('receiver', $array);
-        $this->assertEquals(1, count($array['pieces']));
+        $this->assertArrayHasKey('pieces', $array);
+        $this->assertCount(1, $array['pieces']);
+        $this->assertEquals('SMALL', $array['pieces'][0]['parcelType']);
+        $this->assertSame(1, $array['pieces'][0]['quantity']);
+        $this->assertArrayNotHasKey('weight', $array['pieces'][0]);
     }
 
     /** @test */
