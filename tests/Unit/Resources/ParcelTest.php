@@ -86,6 +86,18 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_the_sender_by_passing_a_recipient_object()
+    {
+        $sender = new Recipient;
+
+        $parcel = new Parcel([
+            'sender' => $sender,
+        ]);
+
+        $this->assertSame($sender, $parcel->sender);
+    }
+
+    /** @test */
     public function it_can_set_a_label_description()
     {
         $parcel = new Parcel();
