@@ -30,7 +30,7 @@ class ShipmentPiece extends BaseResource
     public $tracker_code;
 
     /**
-     * Set the quantity.
+     * Set the piece number.
      *
      * @param  int  $value
      * @return void
