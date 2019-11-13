@@ -2,7 +2,7 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-class Shipment extends Parcel
+class Shipment extends BaseResource
 {
     /**
      * @var int
