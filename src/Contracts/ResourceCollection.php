@@ -15,21 +15,21 @@ interface ResourceCollection extends Countable, Resource
     public function addItem(Resource $resource): void;
 
     /**
-     * Get the Resource items
+     * Get the Resource items.
      *
      * @return \Mvdnbrk\DhlParcel\Contracts\Resource[]
      */
     public function getItems(): array;
 
     /**
-     * Return first Resource item from collection
+     * Return first Resource item from collection.
      *
      * @return null|\Mvdnbrk\DhlParcel\Contracts\Resource
      */
     public function first(): ?Resource;
 
     /**
-     * Return last Resource item from collection
+     * Return last Resource item from collection.
      *
      * @return null|\Mvdnbrk\DhlParcel\Contracts\Resource
      */
