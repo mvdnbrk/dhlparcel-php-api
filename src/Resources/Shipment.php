@@ -18,18 +18,4 @@ class Shipment extends BaseResource
      * @var string
      */
     public $label_id;
-
-    /**
-     * Convert the Shipment resource to an array.
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        return collect(parent::toArray())->merge([
-            'id' => $this->id,
-            'barcode' => $this->barcode,
-            'label_id' => $this->label_id,
-        ])->all();
-    }
 }
