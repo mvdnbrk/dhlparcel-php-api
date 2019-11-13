@@ -35,6 +35,7 @@ class Parcel extends BaseResource
      * Create a new shipment instance.
      *
      * @param  array  $attributes
+     * @return void
      */
     public function __construct(array $attributes = [])
     {

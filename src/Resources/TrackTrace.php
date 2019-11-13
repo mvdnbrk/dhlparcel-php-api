@@ -18,6 +18,7 @@ class TrackTrace extends BaseResource
      * Create a new Track Trace Collection instance.
      *
      * @param  array  $attributes
+     * @return void
      */
     public function __construct(array $attributes = [])
     {

@@ -15,6 +15,7 @@ class Pieces extends BaseResource
      * Create a new Pieces resource.
      *
      * @param  array  $attributes
+     * @return void
      */
     public function __construct(array $attributes = [])
     {
