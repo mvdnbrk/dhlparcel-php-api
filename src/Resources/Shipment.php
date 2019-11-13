@@ -5,7 +5,7 @@ namespace Mvdnbrk\DhlParcel\Resources;
 class Shipment extends BaseResource
 {
     /**
-     * @var int
+     * @var string
      */
     public $id;
 
