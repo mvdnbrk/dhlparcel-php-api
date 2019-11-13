@@ -12,13 +12,13 @@ class PieceTest extends TestCase
     {
         $piece = new Piece([
             'parcel_type' => Piece::PARCEL_TYPE_MEDIUM,
-            'quantity' => 1,
-            'weight' => 1,
+            'quantity' => 2,
+            'weight' => 3,
         ]);
 
         $this->assertEquals(Piece::PARCEL_TYPE_MEDIUM, $piece->parcel_type);
-        $this->assertEquals(1, $piece->quantity);
-        $this->assertEquals(1, $piece->weight);
+        $this->assertEquals(2, $piece->quantity);
+        $this->assertEquals(3, $piece->weight);
     }
 
     /** @test */
