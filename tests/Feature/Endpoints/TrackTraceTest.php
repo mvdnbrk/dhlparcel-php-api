@@ -11,6 +11,8 @@ class TrackTraceTest extends TestCase
     /** @test */
     public function getting_track_and_trace_information()
     {
+        $this->markTestSkipped('This test does not work in the sanbox.');
+
         $parcel = new Parcel([
             'recipient' => [
                 'first_name' => 'John',
