@@ -43,7 +43,7 @@ class PieceTest extends TestCase
         $array = $piece->toArray();
 
         $this->assertIsArray($array);
-        $this->assertEquals(Piece::PARCEL_TYPE_LARGE, $array['parcelType']);
+        $this->assertEquals('LARGE', $array['parcelType']);
         $this->assertArrayNotHasKey('parcel_type', $array);
         $this->assertEquals(10, $array['quantity']);
         $this->assertEquals(20, $array['weight']);
