@@ -8,6 +8,16 @@ use Mvdnbrk\DhlParcel\Tests\TestCase;
 class PieceTest extends TestCase
 {
     /** @test */
+    public function creating_a_new_default_piece_resource()
+    {
+        $piece = new Piece;
+
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $piece->parcel_type);
+        $this->assertEquals(1, $piece->quantity);
+        $this->assertNull($piece->weight);
+    }
+
+    /** @test */
     public function creating_a_new_piece_resource()
     {
         $piece = new Piece([
@@ -19,16 +29,6 @@ class PieceTest extends TestCase
         $this->assertEquals(Piece::PARCEL_TYPE_MEDIUM, $piece->parcel_type);
         $this->assertEquals(2, $piece->quantity);
         $this->assertEquals(3, $piece->weight);
-    }
-
-    /** @test */
-    public function creating_a_new_default_piece_resource()
-    {
-        $piece = new Piece;
-
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $piece->parcel_type);
-        $this->assertEquals(1, $piece->quantity);
-        $this->assertNull($piece->weight);
     }
 
     /** @test */
