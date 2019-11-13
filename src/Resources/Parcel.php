@@ -166,7 +166,7 @@ class Parcel extends BaseResource
     /**
      * Set the pieces for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources|Pieces|array $value
+     * @param  \Mvdnbrk\DhlParcel\Resources|Pieces|array  $value
      * @return void
      */
     public function setPiecesAttribute($value)
