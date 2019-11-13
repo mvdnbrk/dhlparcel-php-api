@@ -211,29 +211,6 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_pieces_by_passing_a_pieces_object()
-    {
-        $pieces = new Pieces([
-            'pieces' => [
-                [
-                    'parcel_type' => Piece::PARCEL_TYPE_SMALL,
-                    'quantity' => 1,
-                    'weight' => 1,
-                ],
-            ],
-        ]);
-
-        $parcel = new Parcel([
-            'pieces' => $pieces,
-        ]);
-
-        $this->assertInstanceOf(Piece::class, $parcel->pieces->items[0]);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->items[0]->parcel_type);
-        $this->assertEquals(1, $parcel->pieces->items[0]->quantity);
-        $this->assertEquals(1, $parcel->pieces->items[0]->weight);
-    }
-
-    /** @test */
     public function it_sets_the_pieces_to_a_default_value_when_pieces_is_empty()
     {
         $parcel = new Parcel([
