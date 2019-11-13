@@ -13,7 +13,7 @@ class PieceTest extends TestCase
         $piece = new Piece;
 
         $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $piece->parcel_type);
-        $this->assertEquals(1, $piece->quantity);
+        $this->assertSame(1, $piece->quantity);
         $this->assertNull($piece->weight);
     }
 
@@ -27,8 +27,30 @@ class PieceTest extends TestCase
         ]);
 
         $this->assertEquals(Piece::PARCEL_TYPE_MEDIUM, $piece->parcel_type);
-        $this->assertEquals(2, $piece->quantity);
-        $this->assertEquals(3, $piece->weight);
+        $this->assertSame(2, $piece->quantity);
+        $this->assertSame(3, $piece->weight);
+    }
+
+    /** @test */
+    public function quantity_should_be_casted_to_an_integer()
+    {
+        $piece = new Piece([
+            'quantity' => '1',
+        ]);
+
+        $this->assertSame(1, $piece->quantity);
+        $this->assertSame(1, $piece->toArray()['quantity']);
+    }
+
+    /** @test */
+    public function weight_should_be_casted_to_an_integer()
+    {
+        $piece = new Piece([
+            'weight' => '1',
+        ]);
+
+        $this->assertSame(1, $piece->weight);
+        $this->assertSame(1, $piece->toArray()['weight']);
     }
 
     /** @test */
@@ -45,7 +67,7 @@ class PieceTest extends TestCase
         $this->assertIsArray($array);
         $this->assertEquals('LARGE', $array['parcelType']);
         $this->assertArrayNotHasKey('parcel_type', $array);
-        $this->assertEquals(10, $array['quantity']);
-        $this->assertEquals(20, $array['weight']);
+        $this->assertSame(10, $array['quantity']);
+        $this->assertSame(20, $array['weight']);
     }
 }

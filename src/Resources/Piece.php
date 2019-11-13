@@ -58,6 +58,28 @@ class Piece extends BaseResource
     }
 
     /**
+     * Set the quantity.
+     *
+     * @param  int  $value
+     * @return void
+     */
+    public function setQuantityAttribute(int $value)
+    {
+        $this->quantity = $value;
+    }
+
+    /**
+     * Set the weight.
+     *
+     * @param  int  $value
+     * @return void
+     */
+    public function setWeightAttribute(int $value)
+    {
+        $this->weight = $value;
+    }
+
+    /**
      * Convert the Piece resource to an array.
      *
      * @return array
