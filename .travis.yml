@@ -14,10 +14,8 @@ before_script:
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
-  - if [ $TRAVIS_PULL_REQUEST ];
-    then vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover --exclude-group integration;
-    else vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover;
-    fi
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover --exclude-group integration; fi'
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
