@@ -15,7 +15,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Changed
 - Changed `addPiece` method to `add` in the `Pieces` class. [`#19`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/19)
-- Changed `comapany` to an alias for `company_name` in the `Recipient` class. [`#13`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/13)
+- Changed `company` to an alias for `company_name` in the `Recipient` class. [`#13`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/13)
 
 ## [v0.5.0] - 2019-11-11
 
