@@ -102,11 +102,12 @@ class Client
     /**
      * Performs a HTTP call to the API endpoint.
      *
-     * @param  string  $httpMethod          The method to make the API call. GET/POST etc,
-     * @param  string  $apiMethod           The API method to call at the endpoint.
-     * @param  string|null  $httpBody       The body to be send with te request.
-     * @param  array  $requestHeaders       Request headers to be send with the request.
+     * @param  string  $httpMethod
+     * @param  string  $apiMethod
+     * @param  string|null  $httpBody
+     * @param  array  $requestHeaders
      * @return \Psr\Http\Message\ResponseInterface
+     *
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
     public function performHttpCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = [])
