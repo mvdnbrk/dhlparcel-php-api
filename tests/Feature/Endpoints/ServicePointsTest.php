@@ -2,8 +2,9 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
-use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
+use Mvdnbrk\DhlParcel\Resources\ServicePoint;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use Tightenco\Collect\Support\Collection;
 
 /** @group integration */
 class ServicePointsTest extends TestCase
@@ -13,7 +14,7 @@ class ServicePointsTest extends TestCase
     {
         $servicepoints = $this->client->servicePoints->setPostalcode('1012AA')->setHousenumber('1')->get();
 
-        $this->assertInstanceOf(\Tightenco\Collect\Support\Collection::class, $servicepoints);
-        $this->assertInstanceOf(\Mvdnbrk\DhlParcel\Resources\ServicePoint::class, $servicepoints->first());
+        $this->assertInstanceOf(Collection::class, $servicepoints);
+        $this->assertInstanceOf(ServicePoint::class, $servicepoints->first());
     }
 }
