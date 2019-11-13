@@ -137,7 +137,7 @@ class ShipmentOptions extends BaseResource
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return collect()
             ->when($this->delivery_type !== 'PS', function ($collection) {

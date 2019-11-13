@@ -82,7 +82,7 @@ class Recipient extends Address
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return collect([
                 'name' => $this->nameToArray(),

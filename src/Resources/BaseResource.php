@@ -2,14 +2,12 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-use JsonSerializable;
-use Mvdnbrk\DhlParcel\Contracts\Arrayable;
-use Mvdnbrk\DhlParcel\Contracts\Jsonable;
-use Mvdnbrk\DhlParcel\Exceptions\JsonEncodingException;
+use Mvdnbrk\DhlParcel\Contracts\Resource;
+use Mvdnbrk\DhlParcel\Resources\Concerns\Jsonable;
 
-abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
+abstract class BaseResource implements Resource
 {
-    use Concerns\HasAttributes;
+    use Concerns\HasAttributes, Jsonable;
 
     /**
      * Create a new resource instance.
@@ -37,47 +35,18 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Convert the recource into something JSON serializable.
-     *
-     * @return array
-     */
-    public function jsonSerialize()
-    {
-        return $this->toArray();
-    }
-
-    /**
      * Convert the resource instance to an array.
      * Removes all attributes with null values.
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return collect($this->attributesToArray())
             ->reject(function ($value) {
                 return $value === null;
             })
             ->all();
-    }
-
-    /**
-     * Convert the resource instance to JSON.
-     *
-     * @param  int  $options
-     * @return string
-     *
-     * @throws \Mvdnbrk\MyParcel\Exceptions\JsonEncodingException
-     */
-    public function toJson(int $options = 0)
-    {
-        $json = json_encode($this->jsonSerialize(), $options);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            throw JsonEncodingException::forResource($this, json_last_error_msg());
-        }
-
-        return $json;
     }
 
     /**

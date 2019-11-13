@@ -119,7 +119,7 @@ class Parcel extends BaseResource
     /**
      * Set the recipient for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources|array  $value
+     * @param  \Mvdnbrk\DhlParcel\Resources\Recipient|array  $value
      * @return void
      */
     public function setRecipientAttribute($value)
@@ -166,7 +166,7 @@ class Parcel extends BaseResource
     /**
      * Set the pieces for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources|Pieces|array  $value
+     * @param  \Mvdnbrk\DhlParcel\Resources\Pieces|array  $value
      * @return void
      */
     public function setPiecesAttribute($value)
@@ -196,7 +196,7 @@ class Parcel extends BaseResource
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return collect([
                 'receiver' => $this->recipient->toArray(),

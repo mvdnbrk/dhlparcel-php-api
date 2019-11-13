@@ -104,7 +104,7 @@ class Address extends BaseResource
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return collect(parent::toArray())
             ->transform(function ($value, $key) {

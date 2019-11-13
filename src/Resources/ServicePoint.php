@@ -81,7 +81,7 @@ class ServicePoint extends Address
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return collect($this->attributesToArray())
             ->merge([

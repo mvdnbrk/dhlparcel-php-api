@@ -84,7 +84,7 @@ class Piece extends BaseResource
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return collect([
                 'parcelType' => $this->parcel_type,
