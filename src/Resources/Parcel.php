@@ -177,7 +177,7 @@ class Parcel extends BaseResource
             return;
         }
 
-        $this->pieces->setPiecesAttribute($value);
+        $this->pieces = new Pieces($value);
     }
 
     /**

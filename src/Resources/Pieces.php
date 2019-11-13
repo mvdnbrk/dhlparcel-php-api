@@ -12,13 +12,13 @@ class Pieces extends BaseResource
     protected $items = [];
 
     /**
-     * Set the pieces.
+     * Create a new Pieces resource.
      *
-     * @param  array  $pieces
+     * @param  array  $attributes
      */
-    public function setPiecesAttribute(array $pieces)
+    public function __construct(array $attributes = [])
     {
-        foreach ($pieces as $piece) {
+        foreach ($attributes as $piece) {
             $this->add($piece);
         }
     }
