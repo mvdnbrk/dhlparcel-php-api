@@ -6,6 +6,7 @@ use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\ValidationData;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
+/** @group integration */
 class AuthenticationTest extends TestCase
 {
     /** @test */

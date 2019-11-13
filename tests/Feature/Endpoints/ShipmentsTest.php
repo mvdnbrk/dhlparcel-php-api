@@ -5,6 +5,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
+/** @group integration */
 class ShipmentsTest extends TestCase
 {
     /** @test */
