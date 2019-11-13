@@ -27,6 +27,7 @@ class Pieces extends BaseResource
      * Add a piece item to this collection.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
+     * @return void
      */
     public function add($value)
     {
