@@ -58,7 +58,7 @@ class Piece extends BaseResource
     }
 
     /**
-     * Set the quantity
+     * Set the quantity.
      *
      * @param  int  $value
      * @return void
@@ -69,7 +69,7 @@ class Piece extends BaseResource
     }
 
     /**
-     * Set the weight
+     * Set the weight.
      *
      * @param  int  $value
      * @return void
