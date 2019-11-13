@@ -32,7 +32,7 @@ class PieceTest extends TestCase
     }
 
     /** @test */
-    public function quantity_should_be_casted_to_an_integer()
+    public function quantity_should_be_converted_to_an_integer()
     {
         $piece = new Piece([
             'quantity' => '1',
@@ -43,7 +43,7 @@ class PieceTest extends TestCase
     }
 
     /** @test */
-    public function weight_should_be_casted_to_an_integer()
+    public function weight_should_be_converted_to_an_integer()
     {
         $piece = new Piece([
             'weight' => '1',
