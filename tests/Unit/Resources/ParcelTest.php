@@ -76,19 +76,13 @@ class ParcelTest extends TestCase
     /** @test */
     public function it_can_set_the_recipient_by_passing_a_recipient_object()
     {
-        $recipient = new Recipient([
-            'company' => 'Test Company B.V.',
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-        ]);
+        $recipient = new Recipient;
 
         $parcel = new Parcel([
             'recipient' => $recipient,
         ]);
 
-        $this->assertEquals('Test Company B.V.', $parcel->recipient->company_name);
-        $this->assertEquals('John', $parcel->recipient->first_name);
-        $this->assertEquals('Doe', $parcel->recipient->last_name);
+        $this->assertSame($recipient, $parcel->recipient);
     }
 
     /** @test */
