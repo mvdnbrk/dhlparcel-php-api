@@ -7,9 +7,9 @@ use Countable;
 interface ResourceCollection extends Countable, Resource
 {
     /**
-     * Add Resource item to collection
+     * Add Resource item to collection.
      *
-     * @param  Resource  $resource
+     * @param  \Mvdnbrk\DhlParcel\Contracts\Resource  $resource
      * @return void
      */
     public function addItem(Resource $resource): void;
@@ -17,21 +17,21 @@ interface ResourceCollection extends Countable, Resource
     /**
      * Get the Resource items
      *
-     * @return Resource[]
+     * @return \Mvdnbrk\DhlParcel\Contracts\Resource[]
      */
     public function getItems(): array;
 
     /**
      * Return first Resource item from collection
      *
-     * @return null|Resource
+     * @return null|\Mvdnbrk\DhlParcel\Contracts\Resource
      */
     public function first(): ?Resource;
 
     /**
      * Return last Resource item from collection
      *
-     * @return null|Resource
+     * @return null|\Mvdnbrk\DhlParcel\Contracts\Resource
      */
     public function last():? Resource;
 }

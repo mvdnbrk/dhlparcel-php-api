@@ -8,11 +8,11 @@ use Mvdnbrk\DhlParcel\Contracts\Resource;
 class ResourceNotAccepted extends InvalidArgumentException
 {
     /**
-     * @param  Resource  $dto
+     * @param  \Mvdnbrk\DhlParcel\Contracts\Resource  $resource
      * @return ResourceNotAccepted
      */
-    public static function fromResource(Resource $dto): ResourceNotAccepted
+    public static function fromResource(Resource $resource): self
     {
-        return new self('Resoruce of type ' . get_class($dto) . ' not accepted.');
+        return new self('Resoruce of type '.get_class($resource).' not accepted.');
     }
 }

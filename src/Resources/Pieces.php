@@ -17,11 +17,13 @@ class Pieces extends BaseResourceCollection
     {
         if ($value instanceof Piece) {
             $this->items[] = $value;
+
             return;
         }
 
         if (is_array($value)) {
             $this->items[] = new Piece($value);
+
             return;
         }
 

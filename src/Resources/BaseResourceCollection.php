@@ -28,7 +28,7 @@ abstract class BaseResourceCollection implements ResourceCollection
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     abstract public function addItem($item): void;
 
@@ -48,7 +48,7 @@ abstract class BaseResourceCollection implements ResourceCollection
         return count($this->items);
     }
     /**
-     * @return Resource|null
+     * @return \Mvdnbrk\DhlParcel\Contracts\Resource|null
      */
     public function first():? Resource
     {
@@ -56,7 +56,7 @@ abstract class BaseResourceCollection implements ResourceCollection
     }
 
     /**
-     * @return mixed|null
+     * @return \Mvdnbrk\DhlParcel\Contracts\Resource|null
      */
     public function last():? Resource
     {
@@ -75,16 +75,5 @@ abstract class BaseResourceCollection implements ResourceCollection
                 return $item->toArray();
             })
             ->all();
-    }
-
-    /**
-     * Convert the object to its JSON representation.
-     *
-     * @param  int  $options
-     * @return string
-     */
-    public function toJson(int $options = 0): string
-    {
-
     }
 }
