@@ -2,7 +2,9 @@
 
 namespace Mvdnbrk\DhlParcel\Exceptions;
 
-class DhlParcelException extends \Exception
+use Exception;
+
+class DhlParcelException extends Exception
 {
     /**
      * @param string  $message
