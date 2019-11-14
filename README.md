@@ -175,6 +175,10 @@ $servicepoints->each(function ($item) {
 });
 ```
 
+## Usage with Laravel
+
+You may incorporate this package in your Laravel application by using [this package](https://github.com/mvdnbrk/laravel-dhlparcel).
+
 ## Testing
 
 ``` bash
