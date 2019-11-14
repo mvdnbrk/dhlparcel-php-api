@@ -8,6 +8,7 @@ use Tightenco\Collect\Support\Collection;
 abstract class BaseCollectionResource extends Collection implements Resource
 {
     /* @noinspection PhpMissingParentConstructorInspection */
+
     /**
      * BaseCollectionResource constructor.
      *
