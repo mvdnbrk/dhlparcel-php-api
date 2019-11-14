@@ -175,15 +175,6 @@ $servicepoints->each(function ($item) {
 });
 ```
 
-## Usage with Laravel
-
-Add your credentials to the `.env` file:
-
-```
-DHLPARCEL_ID=YOUR-USER-ID
-DHLPARCEL_SECRET=YOUR-SECRET-KEY
-```
-
 ## Testing
 
 ``` bash

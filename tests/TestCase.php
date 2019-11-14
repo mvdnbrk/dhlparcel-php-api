@@ -6,10 +6,9 @@ use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidFileException;
 use Dotenv\Exception\InvalidPathException;
 use Mvdnbrk\DhlParcel\Client;
-use Mvdnbrk\DhlParcel\DhlParcelServiceProvider;
-use Orchestra\Testbench\TestCase as Orchestra;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
-abstract class TestCase extends Orchestra
+abstract class TestCase extends BaseTestCase
 {
     protected function setUp(): void
     {
@@ -28,35 +27,5 @@ abstract class TestCase extends Orchestra
         );
 
         parent::setUp();
-    }
-
-    /**
-     * Define environment setup.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     *
-     * @return void
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('dhlparcel.id', getenv('DHLPARCEL_ID'));
-        $app['config']->set('dhlparcel.secret', getenv('DHLPARCEL_SECRET'));
-    }
-
-    /**
-     * Get package providers.  At a minimum this is the package being tested, but also
-     * would include packages upon which our package depends, e.g. Cartalyst/Sentry
-     * In a normal app environment these would be added to the 'providers' array in
-     * the config/app.php file.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     *
-     * @return array
-     */
-    protected function getPackageProviders($app)
-    {
-        return [
-            DhlParcelServiceProvider::class,
-        ];
     }
 }
