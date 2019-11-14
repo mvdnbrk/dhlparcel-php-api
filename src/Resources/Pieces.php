@@ -2,10 +2,10 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Exceptions\ResourceNotAccepted;
+use Tightenco\Collect\Support\Collection;
 
-class Pieces extends BaseResourceCollection
+class Pieces extends BaseCollectionResource
 {
     /**
      * Add a piece item to this collection.
@@ -13,7 +13,7 @@ class Pieces extends BaseResourceCollection
      * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
      * @return void
      */
-    public function addItem($value): void
+    public function add($value): void
     {
         if ($value instanceof Piece) {
             $this->items[] = $value;

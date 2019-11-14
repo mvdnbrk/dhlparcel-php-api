@@ -3,11 +3,10 @@
 namespace Mvdnbrk\DhlParcel\Resources;
 
 use Mvdnbrk\DhlParcel\Contracts\Resource;
-use Mvdnbrk\DhlParcel\Resources\Concerns\Jsonable;
 
 abstract class BaseResource implements Resource
 {
-    use Concerns\HasAttributes, Jsonable;
+    use Concerns\HasAttributes, Concerns\Jsonable;
 
     /**
      * Create a new resource instance.
