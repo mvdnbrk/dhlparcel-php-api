@@ -8,6 +8,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 - Added `snake` string helper. [`#22`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/22)
 - Added `camel` string helper. [`#21`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/21) 
 
+## [v0.7.0] - 2019-11-14
+
+### Removed
+- Removed support for Laravel. Please use this [package](https://github.com/mvdnbrk/laravel-dhlparcel) instead. [`#16`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/16) 
+
 ## [v0.6.2] - 2019-11-14
 
 ### Added
@@ -91,7 +96,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.2...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.7.0...HEAD
+[v0.7.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.2...v0.7.0
 [v0.6.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.1...v0.6.2
 [v0.6.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.0...v0.6.1
 [v0.6.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.5.0...v0.6.0
