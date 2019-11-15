@@ -8,7 +8,6 @@
     ],
     "homepage": "https://github.com/mvdnbrk/dhlparcel-php-api",
     "license": "MIT",
-    "type": "library",
     "authors": [
         {
             "name": "Mark van den Broek",
@@ -32,6 +31,14 @@
         "symfony/var-dumper": "^4.3",
         "vlucas/phpdotenv": "^3.3"
     },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Mvdnbrk\\DhlParcel\\": "src/"
@@ -44,13 +51,5 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
-    },
-    "config": {
-        "sort-packages": true
     }
 }
