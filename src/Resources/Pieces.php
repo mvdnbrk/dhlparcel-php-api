@@ -2,35 +2,18 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-class Pieces extends BaseResource
+use Illuminate\Support\Collection;
+use Mvdnbrk\DhlParcel\Exceptions\ResourceNotAccepted;
+
+class Pieces extends BaseResourceCollection
 {
-    /**
-     * The piece items in this collection.
-     *
-     * @var \Mvdnbrk\DhlParcel\Resources\Piece[]
-     */
-    protected $items = [];
-
-    /**
-     * Create a new Pieces resource.
-     *
-     * @param  array  $attributes
-     * @return void
-     */
-    public function __construct(array $attributes = [])
-    {
-        foreach ($attributes as $piece) {
-            $this->add($piece);
-        }
-    }
-
     /**
      * Add a piece item to this collection.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
      * @return void
      */
-    public function add($value)
+    public function add($value): void
     {
         if ($value instanceof Piece) {
             $this->items[] = $value;
@@ -38,7 +21,13 @@ class Pieces extends BaseResource
             return;
         }
 
-        $this->items[] = new Piece($value);
+        if (is_array($value)) {
+            $this->items[] = new Piece($value);
+
+            return;
+        }
+
+        throw ResourceNotAccepted::forResource($value);
     }
 
     /**
@@ -46,13 +35,13 @@ class Pieces extends BaseResource
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return collect($this->items)
-            ->whenEmpty(function ($collection) {
+            ->whenEmpty(function (Collection $collection) {
                 return $collection->push(new Piece);
             })
-            ->map(function ($piece) {
+            ->map(function (Piece $piece) {
                 return $piece->toArray();
             })
             ->all();

@@ -15,8 +15,8 @@ class PiecesTest extends TestCase
 
         $pieces->add(new Piece);
 
-        $this->assertCount(1, $pieces->items);
-        $this->assertInstanceOf(Piece::class, $pieces->items[0]);
+        $this->assertCount(1, $pieces);
+        $this->assertInstanceOf(Piece::class, $pieces->first());
     }
 
     /** @test */
@@ -30,10 +30,10 @@ class PiecesTest extends TestCase
             'weight' => 1,
         ]);
 
-        $this->assertCount(1, $pieces->items);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->items[0]->parcel_type);
-        $this->assertSame(1, $pieces->items[0]->quantity);
-        $this->assertSame(1, $pieces->items[0]->weight);
+        $this->assertCount(1, $pieces);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->first()->parcel_type);
+        $this->assertSame(1, $pieces->first()->quantity);
+        $this->assertSame(1, $pieces->first()->weight);
     }
 
     /** @test */
@@ -52,15 +52,15 @@ class PiecesTest extends TestCase
             ],
         ]);
 
-        $this->assertCount(2, $pieces->items);
-        $this->assertInstanceOf(Piece::class, $pieces->items[0]);
-        $this->assertInstanceOf(Piece::class, $pieces->items[1]);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->items[0]->parcel_type);
-        $this->assertSame(1, $pieces->items[0]->quantity);
-        $this->assertSame(1, $pieces->items[0]->weight);
-        $this->assertEquals(Piece::PARCEL_TYPE_MEDIUM, $pieces->items[1]->parcel_type);
-        $this->assertSame(2, $pieces->items[1]->quantity);
-        $this->assertSame(2, $pieces->items[1]->weight);
+        $this->assertCount(2, $pieces);
+        $this->assertInstanceOf(Piece::class, $pieces->first());
+        $this->assertInstanceOf(Piece::class, $pieces->last());
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $pieces->first()->parcel_type);
+        $this->assertSame(1, $pieces->first()->quantity);
+        $this->assertSame(1, $pieces->first()->weight);
+        $this->assertEquals(Piece::PARCEL_TYPE_MEDIUM, $pieces->last()->parcel_type);
+        $this->assertSame(2, $pieces->last()->quantity);
+        $this->assertSame(2, $pieces->last()->weight);
     }
 
     /** @test */
@@ -70,8 +70,8 @@ class PiecesTest extends TestCase
             new Piece,
         ]);
 
-        $this->assertCount(1, $pieces->items);
-        $this->assertInstanceOf(Piece::class, $pieces->items[0]);
+        $this->assertCount(1, $pieces);
+        $this->assertInstanceOf(Piece::class, $pieces->first());
     }
 
     /** @test */
