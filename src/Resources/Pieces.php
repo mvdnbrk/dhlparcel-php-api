@@ -2,8 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Exceptions\ResourceNotAccepted;
+use Tightenco\Collect\Support\Collection;
 
 class Pieces extends BaseResourceCollection
 {
