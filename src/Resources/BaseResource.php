@@ -68,7 +68,7 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
      * @param  int  $options
      * @return string
      *
-     * @throws \Mvdnbrk\MyParcel\Exceptions\JsonEncodingException
+     * @throws \Mvdnbrk\DhlParcel\Exceptions\JsonEncodingException
      */
     public function toJson(int $options = 0)
     {
