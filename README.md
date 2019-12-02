@@ -51,7 +51,7 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
         'cc' => 'NL',
     ],
     'sender' => [
-        'company_name' => 'Your Company Name',
+        'company' => 'Your Company Name',
         'street' => 'Pakketstraat',
         'number' => '99',
         'postal_code' => '9999AA',
