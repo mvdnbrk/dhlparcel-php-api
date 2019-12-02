@@ -12,7 +12,7 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
     use Concerns\HasAttributes;
 
     /**
-     * Create a new resource instance.
+     * Create a new base resource instance.
      *
      * @param  array|object  $attributes
      * @return void
