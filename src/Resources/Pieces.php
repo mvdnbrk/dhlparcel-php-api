@@ -2,11 +2,25 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
+use Mvdnbrk\DhlParcel\Contracts\Arrayable;
 use Mvdnbrk\DhlParcel\Exceptions\ResourceNotAccepted;
 use Tightenco\Collect\Support\Collection;
 
-class Pieces extends BaseResourceCollection
+class Pieces extends Collection implements Arrayable
 {
+    /**
+     * BaseResourceCollection constructor.
+     *
+     * @noinspection PhpMissingParentConstructorInspection
+     * @param  array  $items
+     */
+    public function __construct($items = [])
+    {
+        foreach ($items as $item) {
+            $this->add($item);
+        }
+    }
+
     /**
      * Add a piece item to this collection.
      *
