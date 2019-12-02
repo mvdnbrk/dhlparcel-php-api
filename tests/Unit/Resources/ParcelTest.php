@@ -4,7 +4,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\Piece;
-use Mvdnbrk\DhlParcel\Resources\Pieces;
+use Mvdnbrk\DhlParcel\Resources\PiecesCollection;
 use Mvdnbrk\DhlParcel\Resources\Recipient;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
@@ -27,11 +27,11 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
-    public function it_has_pieces()
+    public function it_has_a_pieces_collection()
     {
         $parcel = new Parcel;
 
-        $this->assertInstanceOf(Pieces::class, $parcel->pieces);
+        $this->assertInstanceOf(PiecesCollection::class, $parcel->pieces);
     }
 
     /** @test */
@@ -66,9 +66,9 @@ class ParcelTest extends TestCase
         $this->assertEquals('Doe', $parcel->recipient->last_name);
         $this->assertEquals('Test Company B.V.', $parcel->sender->company_name);
         $this->assertEquals('Test 123', $parcel->options->label_description);
-        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->items[0]->parcel_type);
-        $this->assertEquals(1, $parcel->pieces->items[0]->quantity);
-        $this->assertEquals(1, $parcel->pieces->items[0]->weight);
+        $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->first()->parcel_type);
+        $this->assertEquals(1, $parcel->pieces->first()->quantity);
+        $this->assertEquals(1, $parcel->pieces->first()->weight);
         $this->assertSame(true, $parcel->options->only_recipient);
         $this->assertSame(true, $parcel->options->signature);
     }
@@ -100,7 +100,7 @@ class ParcelTest extends TestCase
     /** @test */
     public function it_can_set_the_pieces_by_passing_a_pieces_object()
     {
-        $pieces = new Pieces;
+        $pieces = new PiecesCollection;
 
         $parcel = new Parcel([
             'pieces' => $pieces,

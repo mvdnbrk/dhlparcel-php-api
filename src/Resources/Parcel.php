@@ -27,7 +27,7 @@ class Parcel extends BaseResource
     public $sender;
 
     /**
-     * @var \Mvdnbrk\DhlParcel\Resources\Pieces
+     * @var \Mvdnbrk\DhlParcel\Resources\PiecesCollection
      */
     public $pieces;
 
@@ -42,7 +42,7 @@ class Parcel extends BaseResource
         $this->options = new ShipmentOptions;
         $this->recipient = new Recipient;
         $this->sender = new Recipient;
-        $this->pieces = new Pieces;
+        $this->pieces = new PiecesCollection;
 
         parent::__construct($attributes);
     }
@@ -167,18 +167,18 @@ class Parcel extends BaseResource
     /**
      * Set the pieces for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Pieces|array  $value
+     * @param  \Mvdnbrk\DhlParcel\Resources\PiecesCollection|array  $value
      * @return void
      */
     public function setPiecesAttribute($value)
     {
-        if ($value instanceof Pieces) {
+        if ($value instanceof PiecesCollection) {
             $this->pieces = $value;
 
             return;
         }
 
-        $this->pieces = new Pieces($value);
+        $this->pieces = new PiecesCollection($value);
     }
 
     /**

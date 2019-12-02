@@ -2,25 +2,19 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-class Pieces extends BaseResource
+use Tightenco\Collect\Support\Collection;
+
+class PiecesCollection extends Collection
 {
     /**
-     * The piece items in this collection.
+     * Create a new Pieces Collection instance.
      *
-     * @var \Mvdnbrk\DhlParcel\Resources\Piece[]
+     * @param  array  $items
      */
-    protected $items = [];
-
-    /**
-     * Create a new Pieces resource.
-     *
-     * @param  array  $attributes
-     * @return void
-     */
-    public function __construct(array $attributes = [])
+    public function __construct(array $items = [])
     {
-        foreach ($attributes as $piece) {
-            $this->add($piece);
+        foreach ($items as $item) {
+            $this->add($item);
         }
     }
 
@@ -28,17 +22,19 @@ class Pieces extends BaseResource
      * Add a piece item to this collection.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
-     * @return void
+     * @return $this
      */
     public function add($value)
     {
         if ($value instanceof Piece) {
-            $this->items[] = $value;
-
-            return;
+            return parent::add($value);
         }
 
-        $this->items[] = new Piece($value);
+        if (is_array($value)) {
+            return parent::add(new Piece($value));
+        }
+
+        return $this;
     }
 
     /**
@@ -49,10 +45,10 @@ class Pieces extends BaseResource
     public function toArray()
     {
         return collect($this->items)
-            ->whenEmpty(function ($collection) {
+            ->whenEmpty(function (Collection $collection) {
                 return $collection->push(new Piece);
             })
-            ->map(function ($piece) {
+            ->map(function (Piece $piece) {
                 return $piece->toArray();
             })
             ->all();
