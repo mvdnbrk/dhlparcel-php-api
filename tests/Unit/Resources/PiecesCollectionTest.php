@@ -6,7 +6,7 @@ use Mvdnbrk\DhlParcel\Resources\Piece;
 use Mvdnbrk\DhlParcel\Resources\PiecesCollection;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
-class PiecesTest extends TestCase
+class PiecesCollectionTest extends TestCase
 {
     /** @test */
     public function it_can_add_a_new_piece_with_a_piece_object()
