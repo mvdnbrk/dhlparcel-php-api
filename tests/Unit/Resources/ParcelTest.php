@@ -27,7 +27,7 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
-    public function it_has_pieces()
+    public function it_has_a_pieces_collection()
     {
         $parcel = new Parcel;
 
