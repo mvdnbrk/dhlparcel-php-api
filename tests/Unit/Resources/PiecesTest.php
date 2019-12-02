@@ -37,6 +37,16 @@ class PiecesTest extends TestCase
     }
 
     /** @test */
+    public function it_does_not_add_invalid_values_to_the_collection()
+    {
+        $pieces = new PiecesCollection;
+
+        $pieces->add('invalid');
+
+        $this->assertCount(0, $pieces);
+    }
+
+    /** @test */
     public function creating_a_new_pieces_resource_with_array()
     {
         $pieces = new PiecesCollection([
