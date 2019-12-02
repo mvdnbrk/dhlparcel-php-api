@@ -4,7 +4,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\Piece;
-use Mvdnbrk\DhlParcel\Resources\Pieces;
+use Mvdnbrk\DhlParcel\Resources\PiecesCollection;
 use Mvdnbrk\DhlParcel\Resources\Recipient;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
@@ -31,7 +31,7 @@ class ParcelTest extends TestCase
     {
         $parcel = new Parcel;
 
-        $this->assertInstanceOf(Pieces::class, $parcel->pieces);
+        $this->assertInstanceOf(PiecesCollection::class, $parcel->pieces);
     }
 
     /** @test */
@@ -100,7 +100,7 @@ class ParcelTest extends TestCase
     /** @test */
     public function it_can_set_the_pieces_by_passing_a_pieces_object()
     {
-        $pieces = new Pieces;
+        $pieces = new PiecesCollection;
 
         $parcel = new Parcel([
             'pieces' => $pieces,
