@@ -22,21 +22,19 @@ class PiecesCollection extends Collection
      * Add a piece item to this collection.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
-     * @return void
+     * @return $this
      */
     public function add($value)
     {
         if ($value instanceof Piece) {
-            $this->items[] = $value;
-
-            return;
+            return parent::add($value);
         }
 
         if (is_array($value)) {
-            $this->items[] = new Piece($value);
-
-            return;
+            return parent::add(new Piece($value));
         }
+
+        return $this;
     }
 
     /**
