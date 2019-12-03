@@ -79,7 +79,7 @@ $shipment->barcode;
 
 $shipment->pieces->each(function ($item) {
     $item->label_id;
-    $item->tracker_code;
+    $item->barcode;
 })
 ```
 
