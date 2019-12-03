@@ -84,8 +84,6 @@ $shipment->label_id;
 $shipment->barcode;
 ```
 
-You have created your first shipment!
-
 ### Retrieving a label
 
 A label can be retrieved by using the `label_id`.
