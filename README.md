@@ -82,7 +82,6 @@ $shipment->pieces->each(function ($item) {
 // For a shipment with one single piece:
 $shipment->label_id;
 $shipment->barcode;
-
 ```
 
 You have created your first shipment!
