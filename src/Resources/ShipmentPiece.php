@@ -39,4 +39,14 @@ class ShipmentPiece extends BaseResource
     {
         $this->piece_number = $value;
     }
+
+    /**
+     * Get the barcode. Alias for tracker_code.
+     *
+     * @return string
+     */
+    public function getBarcodeAttribute()
+    {
+        return $this->tracker_code;
+    }
 }
