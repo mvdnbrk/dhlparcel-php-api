@@ -28,8 +28,8 @@
     "require-dev": {
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.0",
-        "symfony/var-dumper": "^4.3",
-        "vlucas/phpdotenv": "^3.3"
+        "symfony/var-dumper": "^5.0",
+        "vlucas/phpdotenv": "^4.0"
     },
     "config": {
         "sort-packages": true
