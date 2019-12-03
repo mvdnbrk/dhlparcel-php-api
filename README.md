@@ -76,6 +76,11 @@ $shipment = $dhlparcel->shipments->create($parcel);
 $shipment->id;
 $shipment->label_id;
 $shipment->barcode;
+
+$shipment->pieces->each(function ($item) {
+    $item->label_id;
+    $item->tracker_code;
+})
 ```
 
 You have created your first shipment!
