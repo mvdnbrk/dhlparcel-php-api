@@ -74,6 +74,12 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
 $shipment = $dhlparcel->shipments->create($parcel);
 
 $shipment->id;
+// For shipments with multiple pieces:
+$shipment->pieces->each(function ($item) {
+    $item->label_id;
+    $item->barcode;
+})
+// For a shipment with one single piece:
 $shipment->label_id;
 $shipment->barcode;
 ```
