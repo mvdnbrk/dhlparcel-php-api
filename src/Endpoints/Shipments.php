@@ -22,11 +22,11 @@ class Shipments extends BaseEndpoint implements ShouldAuthenticate
             $this->getHttpBody($parcel)
         );
 
-        return new ShipmentResource(array_merge([
+        return new ShipmentResource([
             'id' => $response->shipmentId,
             'barcode' => $response->pieces[0]->trackerCode,
             'label_id' => $response->pieces[0]->labelId,
-        ], $parcel->attributesToArray()));
+        ]);
     }
 
     /**
