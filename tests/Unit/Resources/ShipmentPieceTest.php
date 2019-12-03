@@ -26,6 +26,16 @@ class ShipmentPieceTest extends TestCase
     }
 
     /** @test */
+    public function barcode_may_be_used_as_an_alias_for_tracker_code()
+    {
+        $piece = new ShipmentPiece([
+            'tracker_code' => 'SAMPLE0000001234',
+        ]);
+
+        $this->assertEquals('SAMPLE0000001234', $piece->barcode);
+    }
+
+    /** @test */
     public function piece_number_should_be_converted_to_an_integer()
     {
         $piece = new ShipmentPiece([
