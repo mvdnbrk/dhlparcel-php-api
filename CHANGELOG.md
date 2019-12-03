@@ -4,6 +4,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.8.0] - 2019-12-03
+
 ### Added
 - Added `pieces` to the `Shipments` resource. [`#37`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/37)
 - Added `barcode` alias for `tracker_code` on the `ShipmentPiece` resource. [`#38`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/38)
@@ -99,7 +101,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.0...HEAD
+[v0.8.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.2...v0.7.0
 [v0.6.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.1...v0.6.2
 [v0.6.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.0...v0.6.1
