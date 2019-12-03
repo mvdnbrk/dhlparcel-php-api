@@ -13,7 +13,7 @@ abstract class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         try {
-            (Dotenv::create('./', '.env'))->load();
+            (Dotenv::createImmutable(__DIR__.'/..'))->load();
         } catch (InvalidPathException $e) {
             //
         } catch (InvalidFileException $e) {
