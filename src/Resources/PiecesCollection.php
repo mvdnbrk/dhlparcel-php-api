@@ -10,6 +10,7 @@ class PiecesCollection extends Collection
      * Create a new Pieces Collection instance.
      *
      * @param  array  $items
+     * @return void
      */
     public function __construct(array $items = [])
     {
