@@ -32,7 +32,7 @@ class Parcel extends BaseResource
     public $pieces;
 
     /**
-     * Create a new shipment instance.
+     * Create a new Parcel resource.
      *
      * @param  array  $attributes
      * @return void

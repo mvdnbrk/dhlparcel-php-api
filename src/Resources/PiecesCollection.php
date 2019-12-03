@@ -39,7 +39,7 @@ class PiecesCollection extends Collection
     }
 
     /**
-     * Convert the Pieces resource to an array.
+     * Convert the Pieces collection to an array.
      *
      * @return array
      */
