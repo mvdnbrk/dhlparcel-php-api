@@ -5,6 +5,7 @@ namespace Mvdnbrk\DhlParcel\Endpoints;
 use Mvdnbrk\DhlParcel\Contracts\ShouldAuthenticate;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\Shipment as ShipmentResource;
+use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Ramsey\Uuid\Uuid;
 
 class Shipments extends BaseEndpoint implements ShouldAuthenticate
@@ -22,11 +23,23 @@ class Shipments extends BaseEndpoint implements ShouldAuthenticate
             $this->getHttpBody($parcel)
         );
 
-        return new ShipmentResource([
+        $shipment = new ShipmentResource([
             'id' => $response->shipmentId,
             'barcode' => $response->pieces[0]->trackerCode,
             'label_id' => $response->pieces[0]->labelId,
         ]);
+
+        collect($response->pieces)->each(function ($item) use ($shipment) {
+            $shipment->pieces->add(new ShipmentPiece([
+                'label_id' => $item->labelId,
+                'label_type' => $item->labelType,
+                'parcel_type' => $item->parcelType,
+                'piece_number' => $item->pieceNumber,
+                'tracker_code' => $item->trackerCode,
+            ]));
+        });
+
+        return $shipment;
     }
 
     /**

@@ -4,9 +4,18 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\Shipment;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use Tightenco\Collect\Support\Collection;
 
 class ShipmentTest extends TestCase
 {
+    /** @test */
+    public function it_has_a_pieces_collection()
+    {
+        $shipment = new Shipment;
+
+        $this->assertInstanceOf(Collection::class, $shipment->pieces);
+    }
+
     /** @test */
     public function creating_a_new_shipment_resource()
     {

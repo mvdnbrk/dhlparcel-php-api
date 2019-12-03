@@ -3,6 +3,7 @@
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 /** @group integration */
@@ -45,5 +46,13 @@ class ShipmentsTest extends TestCase
         $this->assertNotNull($shipment->id);
         $this->assertNotNull($shipment->barcode);
         $this->assertNotNull($shipment->label_id);
+
+        $piece = $shipment->pieces->first();
+        $this->assertInstanceOf(ShipmentPiece::class, $piece);
+        $this->assertNotNull($piece->label_id);
+        $this->assertNotNull($piece->label_type);
+        $this->assertNotNull($piece->parcel_type);
+        $this->assertNotNull($piece->tracker_code);
+        $this->assertSame(1, $piece->piece_number);
     }
 }
