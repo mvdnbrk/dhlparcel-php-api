@@ -92,10 +92,14 @@ This will return a PDF label as a string.
 ```
 $dhlparcel->labels->get($shipment->label_id);
 ```
+
 Or you may pass the `Shipment` instance directly to this method:
+
 ```
 $dhlparcel->labels->get($shipment);
 ```
+
+> Passing a `Shipment` instance will only retrieve the label for a shipment with a single piece, or the first piece if you have created a shipment with multple pieces. If you have created a shipment with multiple pieces you should retrieve the labels one by one for each piece your shipment contains.
 
 ### Setting delivery options for a parcel
 
