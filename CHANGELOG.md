@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.8.2] - 2019-12-12
+
+### Changed
+- Make the country code for service point configurable. [`#40`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/40)
+
 ## [v0.8.1] - 2019-12-12
 
 ### Changed
@@ -106,7 +111,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.1...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.2...HEAD
+[v0.8.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.0...v0.8.1
 [v0.8.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.2...v0.7.0
