@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.8.1] - 2019-12-12
+
+### Changed
+- Allow symfony/var-dumper ^4.0. [`23c2ef2`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/23c2ef2699d5ec366ca9da41373b766fd30e464c)
+
 ## [v0.8.0] - 2019-12-03
 
 ### Added
@@ -101,7 +106,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.1...HEAD
+[v0.8.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.0...v0.8.1
 [v0.8.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.2...v0.7.0
 [v0.6.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.6.1...v0.6.2
