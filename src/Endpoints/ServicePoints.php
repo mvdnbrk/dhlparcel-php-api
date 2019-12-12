@@ -21,8 +21,7 @@ class ServicePoints extends BaseEndpoint
     /**
      * @var string
      */
-    public $country = "NL";
-
+    public $country = 'NL';
 
     /**
      * Get a collection of service points.
@@ -34,7 +33,7 @@ class ServicePoints extends BaseEndpoint
     {
         $response = $this->performApiCall(
             'GET',
-            'parcel-shop-locations/'. $this->country . $this->buildQueryString($this->getFilters($filters))
+            'parcel-shop-locations/'.$this->country.$this->buildQueryString($this->getFilters($filters))
         );
 
         $collection = new Collection();
@@ -86,8 +85,8 @@ class ServicePoints extends BaseEndpoint
 
         return $this;
     }
-    
-     /**
+
+    /**
      * Set the country.
      *
      * @param  string  $value
