@@ -19,6 +19,12 @@ class ServicePoints extends BaseEndpoint
     public $housenumber;
 
     /**
+     * @var string
+     */
+    public $country = "NL";
+
+
+    /**
      * Get a collection of service points.
      *
      * @param  array  $filters
@@ -28,7 +34,7 @@ class ServicePoints extends BaseEndpoint
     {
         $response = $this->performApiCall(
             'GET',
-            'parcel-shop-locations/NL'.$this->buildQueryString($this->getFilters($filters))
+            'parcel-shop-locations/'. $this->country . $this->buildQueryString($this->getFilters($filters))
         );
 
         $collection = new Collection();
@@ -77,6 +83,19 @@ class ServicePoints extends BaseEndpoint
     public function setPostalCode(string $value)
     {
         $this->postal_code = preg_replace('/\s+/', '', Str::upper($value));
+
+        return $this;
+    }
+    
+     /**
+     * Set the country.
+     *
+     * @param  string  $value
+     * @return $this
+     */
+    public function setCountry(string $value)
+    {
+        $this->country = $value;
 
         return $this;
     }
