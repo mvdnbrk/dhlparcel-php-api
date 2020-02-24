@@ -89,7 +89,13 @@ abstract class BaseEndpoint
         }
 
         if ($response->getStatusCode() >= 400) {
-            throw new DhlParcelException('Error executing API call: '.$object->message, $response->getStatusCode());
+            $message = 'Error executing API call: '.$object->message;
+
+            if (($object->details ?? null) !== null) {
+                $message .= ' Details: '.json_encode($object->details);
+            }
+
+            throw new DhlParcelException($message, $response->getStatusCode());
         }
 
         return $object;
