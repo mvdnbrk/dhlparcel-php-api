@@ -128,7 +128,7 @@ class Client
         try {
             $response = $this->httpClient->send($request, ['http_errors' => false]);
         } catch (GuzzleException $e) {
-            throw new DhlParcelException($e->getMessage(), $e->getCode());
+            throw new DhlParcelException($e->getMessage(), $e->getCode(), $e);
         }
 
         if (! $response) {
