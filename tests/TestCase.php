@@ -17,7 +17,7 @@ abstract class TestCase extends BaseTestCase
         } catch (InvalidPathException $e) {
             //
         } catch (InvalidFileException $e) {
-            die('The environment file is invalid: '.$e->getMessage());
+            dd('The environment file is invalid: '.$e->getMessage());
         }
 
         $this->client = (new Client)->setUserId(
