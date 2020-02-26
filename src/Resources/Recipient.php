@@ -69,10 +69,10 @@ class Recipient extends Address
     private function nameToArray()
     {
         return collect([
-                'firstName' => $this->first_name,
-                'lastName' => $this->last_name,
-                'companyName' => $this->company_name,
-            ])
+            'firstName' => $this->first_name,
+            'lastName' => $this->last_name,
+            'companyName' => $this->company_name,
+        ])
             ->filter()
             ->all();
     }
@@ -85,9 +85,9 @@ class Recipient extends Address
     public function toArray()
     {
         return collect([
-                'name' => $this->nameToArray(),
-                'address' => $this->addressToArray(),
-            ])
+            'name' => $this->nameToArray(),
+            'address' => $this->addressToArray(),
+        ])
             ->when(! empty($this->email), function ($collection) {
                 return $collection->put('email', $this->email);
             })

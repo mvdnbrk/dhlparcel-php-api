@@ -88,10 +88,10 @@ class Piece extends BaseResource
     public function toArray()
     {
         return collect([
-                'parcelType' => $this->parcel_type,
-                'quantity' => $this->quantity,
-                'weight' => $this->weight,
-            ])
+            'parcelType' => $this->parcel_type,
+            'quantity' => $this->quantity,
+            'weight' => $this->weight,
+        ])
             ->filter()
             ->all();
     }
