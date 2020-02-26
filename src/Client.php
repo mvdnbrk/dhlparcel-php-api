@@ -4,7 +4,7 @@ namespace Mvdnbrk\DhlParcel;
 
 use Composer\CaBundle\CaBundle;
 use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Mvdnbrk\DhlParcel\Endpoints\Authentication;
@@ -127,8 +127,8 @@ class Client
 
         try {
             $response = $this->httpClient->send($request, ['http_errors' => false]);
-        } catch (GuzzleException $e) {
-            throw new DhlParcelException($e->getMessage(), $e->getCode(), $e);
+        } catch (RequestException $e) {
+            throw DhlParcelException::createFromGuzzleRequestException($e);
         }
 
         if (! $response) {

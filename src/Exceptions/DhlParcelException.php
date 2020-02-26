@@ -3,6 +3,7 @@
 namespace Mvdnbrk\DhlParcel\Exceptions;
 
 use Exception;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Response;
 use Throwable;
 
@@ -27,5 +28,22 @@ class DhlParcelException extends Exception
         parent::__construct($message, $code, $previous);
 
         $this->response = $response;
+    }
+
+    /**
+     *  Create a new DhlParcelException instance from the given Guzzle request exception.
+     *
+     * @param  \GuzzleHttp\Exception\RequestException  $exception
+     * @param  \Throwable|null  $previous
+     * @return static
+     */
+    public static function createFromGuzzleRequestException(RequestException $exception, Throwable $previous = null)
+    {
+        return new static(
+            $exception->getMessage(),
+            $exception->getCode(),
+            $exception->getResponse(),
+            $previous
+        );
     }
 }
