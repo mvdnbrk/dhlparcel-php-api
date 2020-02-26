@@ -4,7 +4,7 @@ namespace Mvdnbrk\DhlParcel\Exceptions;
 
 use Exception;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
 class DhlParcelException extends Exception
@@ -23,7 +23,7 @@ class DhlParcelException extends Exception
      * @param  \Throwable|null  $previous
      * @return void
      */
-    public function __construct(string $message = '', int $code = 0, Response $response = null, Throwable $previous = null)
+    public function __construct(string $message = '', int $code = 0, ResponseInterface $response = null, Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
 
@@ -45,5 +45,44 @@ class DhlParcelException extends Exception
             $exception->getResponse(),
             $previous
         );
+    }
+
+    /**
+     * Create a new DhlParcelException instance from the given response.
+     *
+     * @param  \Psr\Http\Message\ResponseInterface  $response
+     * @param  \Throwable|null  $previous
+     * @return static
+     */
+    public static function createFromResponse(ResponseInterface $response, Throwable $previous = null)
+    {
+        $object = static::parseResponseBody($response);
+
+        return new static(
+            'Error executing API call: '.$object->message,
+            $response->getStatusCode(),
+            $response,
+            $previous
+        );
+    }
+
+    /**
+     * Parse the body of a response.
+     *
+     * @param  \Psr\Http\Message\ResponseInterface  $response
+     * @return mixed
+     * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
+     */
+    protected static function parseResponseBody($response)
+    {
+        $body = (string) $response->getBody();
+
+        $object = @json_decode($body);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new static("Unable to decode DHL Parcel response: '{$body}'.");
+        }
+
+        return $object;
     }
 }
