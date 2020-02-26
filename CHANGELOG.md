@@ -4,6 +4,9 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- Added response to `DhlParcelException`. [`#47`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/47)
+
 ## [v0.8.2] - 2019-12-12
 
 ### Changed
