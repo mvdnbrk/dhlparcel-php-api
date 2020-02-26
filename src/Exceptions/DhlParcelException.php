@@ -67,6 +67,16 @@ class DhlParcelException extends Exception
     }
 
     /**
+     * Determine if a response was received for this exception.
+     *
+     * @return bool
+     */
+    public function hasResponse()
+    {
+        return $this->response !== null;
+    }
+
+    /**
      * Get the response associated with this exception.
      *
      * @return \Psr\Http\Message\ResponseInterface|null
