@@ -4,6 +4,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.0.0] - 2020-02-26
+
 ### Added
 - Added response to `DhlParcelException`. [`#47`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/47)
 
@@ -114,7 +116,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.2...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.0.0...HEAD
+[v1.0.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.2...v1.0.0
 [v0.8.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.0...v0.8.1
 [v0.8.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.7.0...v0.8.0
