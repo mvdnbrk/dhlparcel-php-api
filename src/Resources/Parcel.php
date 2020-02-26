@@ -200,11 +200,11 @@ class Parcel extends BaseResource
     public function toArray()
     {
         return collect([
-                'receiver' => $this->recipient->toArray(),
-                'shipper' => $this->sender->toArray(),
-                'options' => $this->options->toArray(),
-                'pieces' => $this->pieces->toArray(),
-            ])
+            'receiver' => $this->recipient->toArray(),
+            'shipper' => $this->sender->toArray(),
+            'options' => $this->options->toArray(),
+            'pieces' => $this->pieces->toArray(),
+        ])
             ->when(! is_null($this->reference_identifier), function ($collection) {
                 return $collection->put('orderReference', (string) $this->reference_identifier);
             })

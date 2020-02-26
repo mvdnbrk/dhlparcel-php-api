@@ -115,8 +115,8 @@ class Client
         $url = $this->apiEndpoint.'/'.$apiMethod;
 
         $headers = collect([
-                'Accept' => 'application/json',
-            ])
+            'Accept' => 'application/json',
+        ])
             ->merge($requestHeaders)
             ->when($httpBody !== null, function ($headers) {
                 return $headers->put('Content-Type', 'application/json');
