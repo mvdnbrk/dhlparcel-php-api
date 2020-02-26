@@ -15,9 +15,9 @@ abstract class TestCase extends BaseTestCase
         try {
             (Dotenv::createImmutable(__DIR__.'/..'))->load();
         } catch (InvalidPathException $e) {
-            //
+            dd('The path to the environment file is invalid');
         } catch (InvalidFileException $e) {
-            dd('The environment file is invalid: '.$e->getMessage());
+            dd('The environment file is invalid');
         }
 
         $this->client = (new Client)->setUserId(
