@@ -67,6 +67,16 @@ class DhlParcelException extends Exception
     }
 
     /**
+     * Get the response associated with this exception.
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    /**
      * Parse the body of a response.
      *
      * @param  \Psr\Http\Message\ResponseInterface  $response
