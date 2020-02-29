@@ -131,10 +131,6 @@ class Client
             throw DhlParcelException::createFromGuzzleRequestException($e);
         }
 
-        if (! $response) {
-            throw new DhlParcelException('No API response received.');
-        }
-
         return $response;
     }
 
