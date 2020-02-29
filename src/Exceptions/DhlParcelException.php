@@ -93,7 +93,7 @@ class DhlParcelException extends Exception
      * @return object
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
-    protected static function parseResponseBody($response)
+    protected static function parseResponseBody(ResponseInterface $response)
     {
         $body = (string) $response->getBody();
 
