@@ -90,7 +90,7 @@ class DhlParcelException extends Exception
      * Parse the body of a response.
      *
      * @param  \Psr\Http\Message\ResponseInterface  $response
-     * @return mixed
+     * @return object
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
     protected static function parseResponseBody($response)
