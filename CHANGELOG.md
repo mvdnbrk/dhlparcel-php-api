@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.0.1] - 2020-03-24
+
+### Added
+- Added support for `ramsey/uuid` ^4.0 [`41fffd1`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/41fffd1c930e8a4bb40dd3f3f607ff3821d2a87f)
+
 ## [v1.0.0] - 2020-02-26
 
 ### Added
@@ -17,7 +22,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 ## [v0.8.1] - 2019-12-12
 
 ### Changed
-- Allow symfony/var-dumper ^4.0. [`23c2ef2`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/23c2ef2699d5ec366ca9da41373b766fd30e464c)
+- Allow `symfony/var-dumper` ^4.0. [`23c2ef2`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/23c2ef2699d5ec366ca9da41373b766fd30e464c)
 
 ## [v0.8.0] - 2019-12-03
 
@@ -116,7 +121,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.0.1...HEAD
+[v1.0.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.2...v1.0.0
 [v0.8.2]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.0...v0.8.1
