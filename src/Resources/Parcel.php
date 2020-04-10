@@ -148,6 +148,19 @@ class Parcel extends BaseResource
     }
 
     /**
+     * Set the amount if COD cash in EUR
+     *
+     * @param  float  $value
+     * @return  $this
+     */
+    public function setCODCash(float $value)
+    {
+        $this->options->setCODCash($value);
+
+        return $this;
+    }
+
+    /**
      * Set the sender for this parcel.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Recipient|array  $value
