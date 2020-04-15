@@ -114,13 +114,13 @@ $parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
     'options' => [
         'description' => 'Order #123',
         'signature' => true,
-        'only_recipient' => true,   
+        'only_recipient' => true,
         ...
     ],
 ]);
 ```
 
-Or you may use a method like `signature()`, `onlyRecipient()` and `labelDescription()`.  
+Or you may use a method like `signature()`, `onlyRecipient()` and `labelDescription()`.
 You may call any of these after constructing the parcel.
 
 ``` php
