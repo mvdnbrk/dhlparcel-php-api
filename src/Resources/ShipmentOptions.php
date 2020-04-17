@@ -25,6 +25,13 @@ class ShipmentOptions extends BaseResource
     protected $service_point_id;
 
     /**
+     * The amount of COD cash in EUR.
+     *
+     * @var float
+     */
+    public $cod_cash;
+
+    /**
      * The description that will appear on the shipment label.
      *
      * @var string
@@ -134,6 +141,17 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
+     * Set the amount if COD cash in EUR.
+     *
+     * @param  float  $value
+     * @return void
+     */
+    public function setCODCash($value)
+    {
+        $this->cod_cash = $value;
+    }
+
+    /**
      * Convert the ShipmenOptions resource to an array.
      *
      * @return array
@@ -150,6 +168,12 @@ class ShipmentOptions extends BaseResource
                 return $collection->push([
                     'key' => $this->delivery_type,
                     'input' => $this->service_point_id,
+                ]);
+            })
+            ->when(! empty($this->cod_cash), function ($collection) {
+                return $collection->push([
+                    'key' => 'COD_CASH',
+                    'input' => $this->cod_cash,
                 ]);
             })
             ->when(! empty($this->label_description), function ($collection) {

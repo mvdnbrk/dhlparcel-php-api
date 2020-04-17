@@ -114,13 +114,13 @@ $parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
     'options' => [
         'description' => 'Order #123',
         'signature' => true,
-        'only_recipient' => true,   
+        'only_recipient' => true,
         ...
     ],
 ]);
 ```
 
-Or you may use a method like `signature()`, `onlyRecipient()` and `labelDescription()`.  
+Or you may use a method like `signature()`, `onlyRecipient()` and `labelDescription()`.
 You may call any of these after constructing the parcel.
 
 ``` php
@@ -153,6 +153,24 @@ $parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
 ]);
 
 $parcel->servicePoint('8004-NL-272403');
+```
+
+**Set COD cash**
+
+You can set an amount of EUR for COD cash the customer can pay using cash on delivery.
+The amount of cash can be set directly when creating a parcel
+or with the `setCODCash` method:
+
+``` php
+$parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
+    ...
+    'options' => [
+        'cod_cash' => 5,
+        ...
+    ],
+]);
+
+$parcel->setCODCash(5);
 ```
 
 ### Tracking a shipment
