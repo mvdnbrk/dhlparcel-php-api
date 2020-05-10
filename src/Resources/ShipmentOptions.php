@@ -141,7 +141,7 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
-     * Set the amount if COD cash in EUR
+     * Set the amount if COD cash in EUR.
      *
      * @param  float  $value
      * @return void
