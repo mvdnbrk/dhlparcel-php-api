@@ -153,7 +153,7 @@ class ShipmentOptionsTest extends TestCase
             ],
             [
                 'key' => 'COD_CASH',
-                'input' => '9.99'
+                'input' => '9.99',
             ],
         ], $array);
     }
