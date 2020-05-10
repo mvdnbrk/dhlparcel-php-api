@@ -25,6 +25,13 @@ class ShipmentOptions extends BaseResource
     protected $service_point_id;
 
     /**
+     * The amount for "Cash On Delivery" in EUR.
+     *
+     * @var int|float
+     */
+    protected $cash_on_delivery;
+
+    /**
      * The description that will appear on the shipment label.
      *
      * @var string
@@ -134,6 +141,17 @@ class ShipmentOptions extends BaseResource
     }
 
     /**
+     * Set the amount for "Cash On Delivery" in EUR.
+     *
+     * @param  int|float  $value
+     * @return void
+     */
+    public function setCashOnDelivery($value)
+    {
+        $this->cash_on_delivery = $value;
+    }
+
+    /**
      * Convert the ShipmenOptions resource to an array.
      *
      * @return array
@@ -150,6 +168,12 @@ class ShipmentOptions extends BaseResource
                 return $collection->push([
                     'key' => $this->delivery_type,
                     'input' => $this->service_point_id,
+                ]);
+            })
+            ->when(! empty($this->cash_on_delivery), function ($collection) {
+                return $collection->push([
+                    'key' => 'COD_CASH',
+                    'input' => $this->cash_on_delivery,
                 ]);
             })
             ->when(! empty($this->label_description), function ($collection) {

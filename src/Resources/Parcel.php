@@ -148,6 +148,19 @@ class Parcel extends BaseResource
     }
 
     /**
+     * Set the amount for "Cash On Delivery" in EUR.
+     *
+     * @param  int|float  $value
+     * @return  $this
+     */
+    public function cashOnDelivery($value)
+    {
+        $this->options->setCashOnDelivery($value);
+
+        return $this;
+    }
+
+    /**
      * Set the sender for this parcel.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\Recipient|array  $value

@@ -217,6 +217,37 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_an_amount_for_cash_on_delivery()
+    {
+        $parcel = new Parcel([
+            'options' => [
+                'cash_on_delivery' => 9.99,
+            ],
+        ]);
+
+        $this->assertEquals([
+            'key' => 'COD_CASH',
+            'input' => '9.99',
+        ], $parcel->options->toArray()[1]);
+
+        $parcel = new Parcel();
+        $parcel->cashOnDelivery(100);
+
+        $this->assertEquals([
+            'key' => 'COD_CASH',
+            'input' => '100',
+        ], $parcel->options->toArray()[1]);
+    }
+
+    /** @test */
+    public function calling_the_cash_on_delivery_method_returns_the_same_parcel_instance()
+    {
+        $parcel = new Parcel();
+
+        $this->assertSame($parcel, $parcel->cashOnDelivery(100));
+    }
+
+    /** @test */
     public function it_sets_the_pieces_to_a_default_value_when_pieces_is_empty()
     {
         $parcel = new Parcel([

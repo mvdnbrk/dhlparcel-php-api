@@ -135,4 +135,26 @@ class ShipmentOptionsTest extends TestCase
 
         $this->assertEquals(['key' => 'BP'], $array[0]);
     }
+
+    /** @test */
+    public function to_array_with_cash_on_delivery()
+    {
+        $options = new ShipmentOptions([
+            'cash_on_delivery' => 9.99,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'COD_CASH',
+                'input' => '9.99',
+            ],
+        ], $array);
+    }
 }
