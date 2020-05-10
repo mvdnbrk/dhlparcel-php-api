@@ -148,14 +148,14 @@ class Parcel extends BaseResource
     }
 
     /**
-     * Set the amount if COD cash in EUR.
+     * Set the amount for "Cash On Delivery" in EUR.
      *
-     * @param  float  $value
+     * @param  int|float  $value
      * @return  $this
      */
-    public function setCODCash(float $value)
+    public function cashOnDelivery($value)
     {
-        $this->options->setCODCash($value);
+        $this->options->setCashOnDelivery($value);
 
         return $this;
     }
