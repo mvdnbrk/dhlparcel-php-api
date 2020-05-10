@@ -121,7 +121,7 @@ $parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
 ]);
 ```
 
-Or you may use a method like `signature()`, `onlyRecipient()` and `labelDescription()`.
+Or you may use a method like `signature()`, `onlyRecipient()`, `labelDescription()` and `cashOnDelivery()`.
 You may call any of these after constructing the parcel.
 
 ``` php
