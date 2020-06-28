@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.1.1] - 2020-06-28
+
+### Added
+- Added support for `guzzlehttp/guzzle` ^7.0. [`12afc81`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/12afc81b399de1553029866377bbe9331d4e3c78)
+
 ## [v1.1.0] - 2020-05-10
 
 ### Added
@@ -126,7 +131,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.1...HEAD
+[v1.1.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v0.8.2...v1.0.0
