@@ -13,7 +13,7 @@ abstract class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         try {
-            (Dotenv::createImmutable(__DIR__.'/..'))->load();
+            (Dotenv::createUnsafeImmutable(__DIR__.'/..'))->load();
         } catch (InvalidPathException $e) {
             //
         } catch (InvalidFileException $e) {
@@ -21,9 +21,9 @@ abstract class TestCase extends BaseTestCase
         }
 
         $this->client = (new Client)->setUserId(
-            $_ENV['DHLPARCEL_ID']
+            getenv('DHLPARCEL_ID')
         )->setApiKey(
-            $_ENV['DHLPARCEL_SECRET']
+            getenv('DHLPARCEL_SECRET')
         );
 
         parent::setUp();

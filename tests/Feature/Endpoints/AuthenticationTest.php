@@ -18,6 +18,6 @@ class AuthenticationTest extends TestCase
             (new Parser)->parse($accessToken->token)->validate(new ValidationData())
         );
         $this->assertFalse($accessToken->isExpired());
-        $this->assertEquals($_ENV['DHLPARCEL_ACCOUNT_ID'], $accessToken->getAccountId());
+        $this->assertEquals(getenv('DHLPARCEL_ACCOUNT_ID'), $accessToken->getAccountId());
     }
 }
