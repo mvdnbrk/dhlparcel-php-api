@@ -21,9 +21,9 @@ abstract class TestCase extends BaseTestCase
         }
 
         $this->client = (new Client)->setUserId(
-            getenv('DHLPARCEL_ID')
+            $_ENV['DHLPARCEL_ID']
         )->setApiKey(
-            getenv('DHLPARCEL_SECRET')
+            $_ENV['DHLPARCEL_SECRET']
         );
 
         parent::setUp();
