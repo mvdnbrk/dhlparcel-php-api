@@ -46,7 +46,7 @@ class ServicePointsTest extends TestCase
     /** @test */
     public function it_can_retrieve_service_points_with_country()
     {
-        $servicepoints = $this->client->servicePoints->setPostalcode('2000')->setHousenumber('1')->setCountry('BE')->get();
+        $servicepoints = $this->client->servicePoints->setPostalcode('10115')->setHousenumber('1')->setCountry('DE')->get();
 
         $this->assertInstanceOf(Collection::class, $servicepoints);
         $this->assertInstanceOf(ServicePointResource::class, $servicepoints->first());
