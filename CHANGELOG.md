@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.2.0] - 2020-08-07
+
+### Added
+- Added support for an additional address line. [`#49`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/49)
+
 ## [v1.1.1] - 2020-06-28
 
 ### Added
@@ -131,7 +136,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.2.0...HEAD
+[v1.2.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.0.0...v1.0.1
