@@ -53,6 +53,7 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
     'sender' => [
         'company_name' => 'Your Company Name',
         'street' => 'Pakketstraat',
+        'additional_address_line' => 'Industrie 9999',
         'number' => '99',
         'postal_code' => '9999AA',
         'city' => 'Amsterdam',

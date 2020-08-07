@@ -12,6 +12,11 @@ class Address extends BaseResource
     public $street;
 
     /**
+     * @var string
+     */
+    public $additional_address_line;
+
+    /**
      * @var int|string
      */
     public $number;
@@ -119,6 +124,11 @@ class Address extends BaseResource
                 return $collection
                     ->put('addition', $this->number_suffix)
                     ->forget('number_suffix');
+            })
+            ->when(! empty($this->additional_address_line), function ($collection) {
+                return $collection
+                    ->put('additionalAddressLine', $this->additional_address_line)
+                    ->forget('additional_address_line');
             })
             ->put('postalCode', $this->postal_code)
             ->put('countryCode', $this->cc)

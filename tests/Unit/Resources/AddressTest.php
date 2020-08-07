@@ -11,6 +11,7 @@ class AddressTest extends TestCase
     {
         return array_merge([
             'street' => 'Poststraat',
+            'additional_address_line' => 'Industrie 9999',
             'number' => '1',
             'number_suffix' => 'A',
             'postal_code' => '1234AA',
@@ -25,6 +26,7 @@ class AddressTest extends TestCase
     {
         $address = new Address([
             'street' => 'Poststraat',
+            'additional_address_line' => 'Industrie 9999',
             'number' => '1',
             'number_suffix' => 'A',
             'postal_code' => '1234AA',
@@ -34,6 +36,7 @@ class AddressTest extends TestCase
         ]);
 
         $this->assertEquals('Poststraat', $address->street);
+        $this->assertEquals('Industrie 9999', $address->additional_address_line);
         $this->assertEquals('1', $address->number);
         $this->assertEquals('A', $address->number_suffix);
         $this->assertEquals('1234AA', $address->postal_code);
@@ -110,6 +113,7 @@ class AddressTest extends TestCase
     {
         $attributes = [
             'street' => 'Poststraat',
+            'additional_address_line' => 'Industrie 9999',
             'number' => '1',
             'number_suffix' => 'A',
             'postal_code' => '1234AA',
@@ -125,10 +129,12 @@ class AddressTest extends TestCase
         $this->assertIsArray($array);
         $this->assertFalse($array['isBusiness']);
         $this->assertEquals('Poststraat', $array['street']);
+        $this->assertEquals('Industrie 9999', $array['additionalAddressLine']);
         $this->assertEquals('1', $array['number']);
         $this->assertEquals('A', $array['addition']);
         $this->assertEquals('1234AA', $array['postalCode']);
         $this->assertEquals('NL', $array['countryCode']);
+        $this->assertArrayNotHasKey('additional_address_line', $array);
         $this->assertArrayNotHasKey('number_suffix', $array);
         $this->assertArrayNotHasKey('postal_code', $array);
         $this->assertArrayNotHasKey('cc', $array);
@@ -137,5 +143,10 @@ class AddressTest extends TestCase
         $array = $address->toArray();
         $this->assertArrayNotHasKey('addition', $array);
         $this->assertArrayNotHasKey('number_suffix', $array);
+
+        $address->additional_address_line = null;
+        $array = $address->toArray();
+        $this->assertArrayNotHasKey('additionalAddressLine', $array);
+        $this->assertArrayNotHasKey('additional_address_line', $array);
     }
 }
