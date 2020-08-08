@@ -23,7 +23,7 @@
         "guzzlehttp/guzzle": "^6.4 || ^7.0",
         "lcobucci/jwt": "^3.3",
         "ramsey/uuid": "^3.8 || ^4.0",
-        "tightenco/collect": "^5.8 || ^6.0 || ^7.0"
+        "tightenco/collect": "^5.8 || ^6.0 || ^7.0 || ^8.0"
     },
     "require-dev": {
         "nunomaduro/collision": "^4.2",
