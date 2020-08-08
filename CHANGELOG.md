@@ -4,6 +4,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+- Added support for `tightenco/collect` ^8.0 [`3b9eb55`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/3b9eb55a73c2f63afdba6031656578f4b967def6)
+
 ## [v1.2.0] - 2020-08-07
 
 ### Added
