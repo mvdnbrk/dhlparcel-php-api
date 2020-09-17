@@ -4,11 +4,10 @@ on: [push, pull_request]
 
 jobs:
   tests:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
-        os: ubuntu-latest
         php: [7.2, 7.3, 7.4]
         dependency-version: [prefer-lowest, prefer-stable]
 
