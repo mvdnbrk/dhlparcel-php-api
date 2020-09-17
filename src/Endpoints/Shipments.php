@@ -10,12 +10,7 @@ use Ramsey\Uuid\Uuid;
 
 class Shipments extends BaseEndpoint implements ShouldAuthenticate
 {
-    /**
-     * Create a new shipment for a parcel.
-     *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Parcel  $parcel
-     */
-    public function create(Parcel $parcel)
+    public function create(Parcel $parcel): ShipmentResource
     {
         $response = $this->performApiCall(
             'POST',
@@ -42,13 +37,7 @@ class Shipments extends BaseEndpoint implements ShouldAuthenticate
         return $shipment;
     }
 
-    /**
-     * Get the http body for the API request.
-     *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Parcel  $parcel
-     * @return string
-     */
-    protected function getHttpBody(Parcel $parcel)
+    protected function getHttpBody(Parcel $parcel): string
     {
         return json_encode(array_merge([
             'shipmentId' => Uuid::uuid4()->toString(),
