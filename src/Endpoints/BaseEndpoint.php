@@ -8,29 +8,15 @@ use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
 abstract class BaseEndpoint
 {
-    /**
-     * @var \Mvdnbrk\DhlParcel\Client
-     */
+    /** @var \Mvdnbrk\DhlParcel\Client */
     protected $apiClient;
 
-    /**
-     * Create an endpoint instance.
-     *
-     * @param  \Mvdnbrk\DhlParcel\Client  $client
-     * @return  void
-     */
     public function __construct(Client $client)
     {
         $this->apiClient = $client;
     }
 
-    /**
-     * Build a query string.
-     *
-     * @param  array  $filters
-     * @return string
-     */
-    protected function buildQueryString(array $filters)
+    protected function buildQueryString(array $filters): string
     {
         if (empty($filters)) {
             return '';
@@ -39,13 +25,7 @@ abstract class BaseEndpoint
         return '?'.http_build_query($filters);
     }
 
-    /**
-     * Get request headers.
-     *
-     * @param  array  $headers
-     * @return array
-     */
-    protected function getRequestHeaders(array $headers)
+    protected function getRequestHeaders(array $headers): array
     {
         if ($this instanceof ShouldAuthenticate) {
             $headers = array_merge($headers, [
