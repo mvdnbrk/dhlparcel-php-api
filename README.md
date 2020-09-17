@@ -219,9 +219,9 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-php-version]: https://img.shields.io/packagist/php-v/mvdnbrk/dhlparcel-php-api?style=flat-square
 [ico-version]: https://img.shields.io/packagist/v/mvdnbrk/dhlparcel-php-api.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-tests]: https://img.shields.io/github/workflow/status/mvdnbrk/dhlparcel-php-api/tests/master?label=tests&style=flat-square
+[ico-tests]: https://img.shields.io/github/workflow/status/mvdnbrk/dhlparcel-php-api/tests/main?label=tests&style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/mvdnbrk/dhlparcel-php-api.svg?style=flat-square
-[ico-code-style]: https://styleci.io/repos/171006427/shield?branch=master
+[ico-code-style]: https://styleci.io/repos/171006427/shield?branch=main
 
 [link-packagist]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
 [link-tests]: https://github.com/mvdnbrk/dhlparcel-php-api/actions?query=workflow%3Atests
