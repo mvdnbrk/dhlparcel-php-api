@@ -16,7 +16,3 @@ before_script:
 script:
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover --exclude-group integration; fi'
-
-after_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
