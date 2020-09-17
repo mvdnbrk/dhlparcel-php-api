@@ -6,32 +6,18 @@ use Tightenco\Collect\Support\Collection;
 
 class Shipment extends BaseResource
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     public $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $barcode;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $label_id;
 
-    /**
-     * @var \Tightenco\Collect\Support\Collection
-     */
+    /** @var \Tightenco\Collect\Support\Collection */
     public $pieces;
 
-    /**
-     * Create a new Parcel resource.
-     *
-     * @param  array  $attributes
-     * @return void
-     */
     public function __construct(array $attributes = [])
     {
         $this->pieces = new Collection;

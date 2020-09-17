@@ -4,48 +4,27 @@ namespace Mvdnbrk\DhlParcel\Resources;
 
 class ShipmentPiece extends BaseResource
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     public $label_id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $label_type;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $parcel_type;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     public $piece_number;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $tracker_code;
 
-    /**
-     * Set the piece number.
-     *
-     * @param  int  $value
-     * @return void
-     */
-    public function setPieceNumberAttribute(int $value)
+    public function setPieceNumberAttribute(int $value): void
     {
         $this->piece_number = $value;
     }
 
-    /**
-     * Get the barcode. Alias for tracker_code.
-     *
-     * @return string
-     */
-    public function getBarcodeAttribute()
+    public function getBarcodeAttribute(): string
     {
         return $this->tracker_code;
     }

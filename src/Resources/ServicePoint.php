@@ -4,37 +4,22 @@ namespace Mvdnbrk\DhlParcel\Resources;
 
 class ServicePoint extends Address
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     public $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $name;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     public $distance;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     public $latitude;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     public $longitude;
 
-    /**
-     * Get the distance for a service point in a human readable format.
-     *
-     * @return string
-     */
-    public function distanceForHumans()
+    public function distanceForHumans(): string
     {
         if (! $this->distance) {
             return '';
@@ -57,7 +42,7 @@ class ServicePoint extends Address
      * @param  \Mvdnbrk\DhlParcel\Resources\Address|array  $value
      * @return void
      */
-    public function setAddressAttribute($value)
+    public function setAddressAttribute($value): void
     {
         $this->fill($value);
     }
@@ -68,7 +53,7 @@ class ServicePoint extends Address
      * @param  object|array  $value
      * @return void
      */
-    public function setGeoLocationAttribute($value)
+    public function setGeoLocationAttribute($value): void
     {
         collect($value)->tap(function ($collection) {
             $this->latitude = $collection->get('latitude');
@@ -76,12 +61,7 @@ class ServicePoint extends Address
         });
     }
 
-    /**
-     * Convert the ServicePoint resource to an array.
-     *
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return collect($this->attributesToArray())
             ->merge([

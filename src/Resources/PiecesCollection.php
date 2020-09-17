@@ -6,12 +6,6 @@ use Tightenco\Collect\Support\Collection;
 
 class PiecesCollection extends Collection
 {
-    /**
-     * Create a new Pieces Collection instance.
-     *
-     * @param  array  $items
-     * @return void
-     */
     public function __construct(array $items = [])
     {
         foreach ($items as $item) {
@@ -25,7 +19,7 @@ class PiecesCollection extends Collection
      * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
      * @return $this
      */
-    public function add($value)
+    public function add($value): self
     {
         if ($value instanceof Piece) {
             return parent::add($value);
@@ -38,12 +32,7 @@ class PiecesCollection extends Collection
         return $this;
     }
 
-    /**
-     * Convert the Pieces collection to an array.
-     *
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return collect($this->items)
             ->whenEmpty(function (Collection $collection) {

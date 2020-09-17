@@ -6,58 +6,24 @@ use Mvdnbrk\DhlParcel\Support\Str;
 
 class ShipmentOptions extends BaseResource
 {
-    /**
-     * The delivery type key.
-     *
-     * e.g. DOOR for delivery to recipient,
-     * BP for mailbox delivery,
-     * PS for parcel shop delivery etc.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $delivery_type;
 
-    /**
-     * The ID of the service point where a parcel should be delivered.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $service_point_id;
 
-    /**
-     * The amount for "Cash On Delivery" in EUR.
-     *
-     * @var int|float
-     */
+    /** @var int|float */
     protected $cash_on_delivery;
 
-    /**
-     * The description that will appear on the shipment label.
-     *
-     * @var string
-     */
+    /** @var string */
     public $label_description;
 
-    /**
-     * Deliver the package to the recipient only.
-     *
-     * @var bool
-     */
+    /** @var bool */
     public $only_recipient;
 
-    /**
-     * Reciepient must sign for the package.
-     *
-     * @var bool
-     */
+    /** @var bool */
     public $signature;
 
-    /**
-     * Create a new Shipment Options resource.
-     *
-     * @param array $attributes
-     * @return void
-     */
     public function __construct(array $attributes = [])
     {
         $this->setDefaultOptions();
@@ -65,12 +31,7 @@ class ShipmentOptions extends BaseResource
         parent::__construct($attributes);
     }
 
-    /**
-     * Set default options for a shipment.
-     *
-     * @return $this
-     */
-    public function setDefaultOptions()
+    public function setDefaultOptions(): self
     {
         $this->delivery_type = 'DOOR';
         $this->signature = false;
@@ -79,59 +40,29 @@ class ShipmentOptions extends BaseResource
         return $this;
     }
 
-    /**
-     * Get the description for the shipment.
-     * Alias for label_description.
-     *
-     * @return string
-     */
-    public function getDescriptionAttribute()
+    public function getDescriptionAttribute(): string
     {
         return $this->label_description;
     }
 
-    /**
-     * Set the label description.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setLabelDescriptionAttribute(string $value)
+    public function setLabelDescriptionAttribute(string $value): void
     {
         $this->label_description = Str::limit(trim($value), 15, '');
     }
 
-    /**
-     * Alias for label_description.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setDescriptionAttribute($value)
+    public function setDescriptionAttribute(string $value): void
     {
         $this->setLabelDescriptionAttribute($value);
     }
 
-    /**
-     * Set the options for a mailbox package.
-     *
-     * @return void
-     */
-    public function setMailboxPackage()
+    public function setMailboxPackage(): void
     {
         $this->setDefaultOptions();
 
         $this->delivery_type = 'BP';
     }
 
-    /**
-     * Set the service point id where the
-     * parcel should be delievred to.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setServicePointIdAttribute($value)
+    public function setServicePointIdAttribute(string $value): void
     {
         $this->setDefaultOptions();
 
@@ -146,17 +77,12 @@ class ShipmentOptions extends BaseResource
      * @param  int|float  $value
      * @return void
      */
-    public function setCashOnDelivery($value)
+    public function setCashOnDelivery($value): void
     {
         $this->cash_on_delivery = $value;
     }
 
-    /**
-     * Convert the ShipmenOptions resource to an array.
-     *
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return collect()
             ->when($this->delivery_type !== 'PS', function ($collection) {
