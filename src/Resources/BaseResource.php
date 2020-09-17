@@ -51,11 +51,6 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Convert the resource instance to JSON.
-     *
-     * @param  int  $options
-     * @return string
-     *
      * @throws \Mvdnbrk\DhlParcel\Exceptions\JsonEncodingException
      */
     public function toJson(int $options = 0): string

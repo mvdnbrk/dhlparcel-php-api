@@ -27,12 +27,7 @@ class Address extends BaseResource
     /** @var string */
     public $region;
 
-    /**
-     * ISO3166-1 country code.
-     * https://en.wikipedia.org/wiki/ISO_3166-1.
-     *
-     * @var string
-     */
+    /** @var string */
     public $cc;
 
     public function setAdditionAttribute(string $value): void
