@@ -4,8 +4,18 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.3.0] - 2020-09-17
+
+### Changed
+- Use PHP 7 types and return type declarations where possible. [`#55`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/55)
+- The minimum version for `ramsey/uuid` is now `4.0'. [`091304e`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/091304edff77d9f547f497cdba4f2ad4736c70b0#diff-b5d0ee8c97c7abd7e3fa29b9a27d1780)
+
+### Fixed
+- Conflicts with the `collection` package. [`#56`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/56)
+
 ## [v1.2.1] - 2020-08-08
 
+### Added
 - Added support for `tightenco/collect` ^8.0 [`3b9eb55`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/3b9eb55a73c2f63afdba6031656578f4b967def6)
 
 ## [v1.2.0] - 2020-08-07
@@ -140,7 +150,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.3.0...HEAD
+[v1.3.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.2.1...v1.3.0
 [v1.2.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.2.0...v1.2.1
 [v1.2.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.0...v1.1.1
