@@ -15,6 +15,7 @@ jobs:
     name: PHP ${{ matrix.php }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 
     env:
+      DHLPARCEL_ACCOUNT_ID: ${{ secrets.DHLPARCEL_ACCOUNT_ID }}
       DHLPARCEL_ID: ${{ secrets.DHLPARCEL_ID }}
       DHLPARCEL_SECRET: ${{ secrets.DHLPARCEL_SECRET }}
 
