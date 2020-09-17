@@ -34,13 +34,8 @@ class PiecesCollection extends Collection
 
     public function toArray(): array
     {
-        return collect($this->items)
-            ->whenEmpty(function (Collection $collection) {
-                return $collection->push(new Piece);
-            })
-            ->map(function (Piece $piece) {
-                return $piece->toArray();
-            })
-            ->all();
+        return array_map(function ($item) {
+            return $item->toArray();
+        }, empty($this->items) ? [new Piece] : $this->items);
     }
 }
