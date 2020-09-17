@@ -9,9 +9,7 @@ use Throwable;
 
 class DhlParcelException extends Exception
 {
-    /**
-     * @var \GuzzleHttp\Psr7\Response
-     */
+    /** @var \GuzzleHttp\Psr7\Response */
     protected $response;
 
     /**
@@ -21,7 +19,6 @@ class DhlParcelException extends Exception
      * @param  int  $code
      * @param  \GuzzleHttp\Psr7\Response|null  $response
      * @param  \Throwable|null  $previous
-     * @return void
      */
     public function __construct(string $message = '', int $code = 0, ResponseInterface $response = null, Throwable $previous = null)
     {
@@ -65,22 +62,12 @@ class DhlParcelException extends Exception
         );
     }
 
-    /**
-     * Determine if a response was received for this exception.
-     *
-     * @return bool
-     */
-    public function hasResponse()
+    public function hasResponse(): bool
     {
         return $this->response !== null;
     }
 
-    /**
-     * Get the response associated with this exception.
-     *
-     * @return \Psr\Http\Message\ResponseInterface|null
-     */
-    public function getResponse()
+    public function getResponse(): ?ResponseInterface
     {
         return $this->response;
     }

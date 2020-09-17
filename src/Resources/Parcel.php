@@ -4,39 +4,21 @@ namespace Mvdnbrk\DhlParcel\Resources;
 
 class Parcel extends BaseResource
 {
-    /**
-     * Arbitrary reference indentifier to identify this shipment.
-     *
-     * @var string
-     */
+    /** @var string */
     public $reference_identifier;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Resources\ShipmentOptions
-     */
+    /** @var \Mvdnbrk\DhlParcel\Resources\ShipmentOptions */
     public $options;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Resources\Recipient
-     */
+    /** @var \Mvdnbrk\DhlParcel\Resources\Recipient */
     public $recipient;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Resources\Recipient
-     */
+    /** @var \Mvdnbrk\DhlParcel\Resources\Recipient */
     public $sender;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Resources\PiecesCollection
-     */
+    /** @var \Mvdnbrk\DhlParcel\Resources\PiecesCollection */
     public $pieces;
 
-    /**
-     * Create a new Parcel resource.
-     *
-     * @param  array  $attributes
-     * @return void
-     */
     public function __construct(array $attributes = [])
     {
         $this->options = new ShipmentOptions;
@@ -47,59 +29,33 @@ class Parcel extends BaseResource
         parent::__construct($attributes);
     }
 
-    /**
-     * Get a reference for this parcel. Alias for reference_identifier.
-     *
-     * @return string
-     */
-    public function getReferenceAttribute()
+    public function getReferenceAttribute(): string
     {
         return $this->reference_identifier;
     }
 
-    /**
-     * Set a label description for the parcel.
-     *
-     * @param  string  $value
-     * @return $this
-     */
-    public function labelDescription(string $value)
+    public function labelDescription(string $value): self
     {
         $this->options->setDescriptionAttribute($value);
 
         return $this;
     }
 
-    /**
-     * Set the parcel type to mailbox delivery.
-     *
-     * @return $this
-     */
-    public function mailboxpackage()
+    public function mailboxpackage(): self
     {
         $this->options->setMailboxPackage();
 
         return $this;
     }
 
-    /**
-     * Deliver the parcel to the recipient only.
-     *
-     * @return $this
-     */
-    public function onlyRecipient()
+    public function onlyRecipient(): self
     {
         $this->options->only_recipient = true;
 
         return $this;
     }
 
-    /**
-     * Require a signature from the recipient.
-     *
-     * @return $this
-     */
-    public function signature()
+    public function signature(): self
     {
         $this->options->signature = true;
 
@@ -112,7 +68,7 @@ class Parcel extends BaseResource
      * @param  \Mvdnbrk\DhlParcel\Resources\ShipmentOptions|array  $value
      * @return  void
      */
-    public function setOptionsAttribute($value)
+    public function setOptionsAttribute($value): void
     {
         $this->options->fill($value);
     }
@@ -123,7 +79,7 @@ class Parcel extends BaseResource
      * @param  \Mvdnbrk\DhlParcel\Resources\Recipient|array  $value
      * @return void
      */
-    public function setRecipientAttribute($value)
+    public function setRecipientAttribute($value): void
     {
         if ($value instanceof Recipient) {
             $this->recipient = $value;
@@ -134,13 +90,7 @@ class Parcel extends BaseResource
         $this->recipient->fill($value);
     }
 
-    /**
-     * Set the service point id where this parcel should be delivered to.
-     *
-     * @param  string  $value
-     * @return  $this
-     */
-    public function servicePoint(string $value)
+    public function servicePoint(string $value): self
     {
         $this->options->setServicePointIdAttribute($value);
 
@@ -153,7 +103,7 @@ class Parcel extends BaseResource
      * @param  int|float  $value
      * @return  $this
      */
-    public function cashOnDelivery($value)
+    public function cashOnDelivery($value): self
     {
         $this->options->setCashOnDelivery($value);
 
@@ -166,7 +116,7 @@ class Parcel extends BaseResource
      * @param  \Mvdnbrk\DhlParcel\Resources\Recipient|array  $value
      * @return void
      */
-    public function setSenderAttribute($value)
+    public function setSenderAttribute($value): void
     {
         if ($value instanceof Recipient) {
             $this->sender = $value;
@@ -183,7 +133,7 @@ class Parcel extends BaseResource
      * @param  \Mvdnbrk\DhlParcel\Resources\PiecesCollection|array  $value
      * @return void
      */
-    public function setPiecesAttribute($value)
+    public function setPiecesAttribute($value): void
     {
         if ($value instanceof PiecesCollection) {
             $this->pieces = $value;
@@ -194,23 +144,12 @@ class Parcel extends BaseResource
         $this->pieces = new PiecesCollection($value);
     }
 
-    /**
-     * Set a reference for this parcel. Alias for reference_identifier.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setReferenceAttribute(string $value)
+    public function setReferenceAttribute(string $value): void
     {
         $this->reference_identifier = $value;
     }
 
-    /**
-     * Convert the Parcel resource to an array.
-     *
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return collect([
             'receiver' => $this->recipient->toArray(),

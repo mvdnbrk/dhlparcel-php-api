@@ -6,13 +6,7 @@ use Mvdnbrk\DhlParcel\Resources\TrackTrace as TrackTraceResource;
 
 class TrackTrace extends BaseEndpoint
 {
-    /**
-     * Get Track & Trace information.
-     *
-     * @param  string  $value
-     * @return \Mvdnbrk\DhlParcel\Resources\TrackTrace
-     */
-    public function get(string $value)
+    public function get(string $value): TrackTraceResource
     {
         $response = $this->performApiCall(
             'GET',

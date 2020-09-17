@@ -10,34 +10,15 @@ class Piece extends BaseResource
     const PARCEL_TYPE_BULKY = 'BULKY';
     const PARCEL_TYPE_PALLET = 'PALLET';
 
-    /**
-     * The parcel type.
-     * e.g. SMALL, MEDIUM, LARGE etc.
-     *
-     * @var string
-     */
+    /** @var string */
     public $parcel_type;
 
-    /**
-     * Number of parcels of this parcel type.
-     *
-     * @var int
-     */
+    /** @var int */
     public $quantity;
 
-    /**
-     * Actual weight of the parcel in kilograms.
-     *
-     * @var int
-     */
+    /** @var int */
     public $weight;
 
-    /**
-     * Create a new Piece resource.
-     *
-     * @param  array  $attributes
-     * @return void
-     */
     public function __construct(array $attributes = [])
     {
         $this->setDefaultOptions();
@@ -45,12 +26,7 @@ class Piece extends BaseResource
         parent::__construct($attributes);
     }
 
-    /**
-     * Sets default options for a piece.
-     *
-     * @return $this
-     */
-    public function setDefaultOptions()
+    public function setDefaultOptions(): self
     {
         $this->parcel_type = self::PARCEL_TYPE_SMALL;
         $this->quantity = 1;
@@ -58,34 +34,17 @@ class Piece extends BaseResource
         return $this;
     }
 
-    /**
-     * Set the quantity.
-     *
-     * @param  int  $value
-     * @return void
-     */
-    public function setQuantityAttribute(int $value)
+    public function setQuantityAttribute(int $value): void
     {
         $this->quantity = $value;
     }
 
-    /**
-     * Set the weight.
-     *
-     * @param  int  $value
-     * @return void
-     */
-    public function setWeightAttribute(int $value)
+    public function setWeightAttribute(int $value): void
     {
         $this->weight = $value;
     }
 
-    /**
-     * Convert the Piece resource to an array.
-     *
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return collect([
             'parcelType' => $this->parcel_type,

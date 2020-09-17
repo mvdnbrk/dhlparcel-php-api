@@ -4,48 +4,27 @@ namespace Mvdnbrk\DhlParcel\Resources;
 
 class Recipient extends Address
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     public $company_name;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $first_name;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $last_name;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $email;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $phone;
 
-    /**
-     * Set the company. Alias for company_name.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setCompanyAttribute(string $value)
+    public function setCompanyAttribute(string $value): void
     {
         $this->company_name = $value;
     }
 
-    /**
-     * Convert the "address" part of the recipient to an array.
-     *
-     * @return array
-     */
-    private function addressToArray()
+    private function addressToArray(): array
     {
         return collect(parent::toArray())
             ->diffKeys([
@@ -61,12 +40,7 @@ class Recipient extends Address
             ->all();
     }
 
-    /**
-     * Convert the "name" part of the recipient to an array.
-     *
-     * @return array
-     */
-    private function nameToArray()
+    private function nameToArray(): array
     {
         return collect([
             'firstName' => $this->first_name,
@@ -77,12 +51,7 @@ class Recipient extends Address
             ->all();
     }
 
-    /**
-     * Convert the Recipient resource to an array.
-     *
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return collect([
             'name' => $this->nameToArray(),

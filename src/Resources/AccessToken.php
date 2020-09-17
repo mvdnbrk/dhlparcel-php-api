@@ -7,45 +7,26 @@ use Lcobucci\JWT\Parser;
 
 class AccessToken
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     public $accounts;
 
-    /**
-     * @var \DateTimeImmutable
-     */
+    /** @var \DateTimeImmutable */
     public $expiresAt;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     public $roles;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $token;
 
-    /**
-     * Create a new AccessToken instance.
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function __construct($token)
+    public function __construct(string $token)
     {
         $this->token = $token;
 
         $this->parseToken();
     }
 
-    /**
-     * Parse the token claims.
-     *
-     * @return void
-     */
-    private function parseToken()
+    private function parseToken(): void
     {
         $token = (new Parser)->parse($this->token);
 
@@ -54,33 +35,17 @@ class AccessToken
         $this->roles = $token->getClaim('roles');
     }
 
-    /**
-     * Determine if the access token is expired.
-     *
-     * @return bool
-     */
-    public function isExpired()
+    public function isExpired(): bool
     {
         return $this->expiresAt <= new DateTimeImmutable;
     }
 
-    /**
-     * Retrieve the account id.
-     *
-     * @return string
-     */
-    public function getAccountId()
+    public function getAccountId(): string
     {
         return collect($this->accounts)->first();
     }
 
-    /**
-     * Set the account id.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setAccountId($value)
+    public function setAccountId(?string $value): void
     {
         if (collect($this->accounts)->contains($value)) {
             $this->accounts = [$value];

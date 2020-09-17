@@ -16,66 +16,38 @@ use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
 class Client
 {
-    /**
-     * Endpoint of the remote API.
-     */
     const API_ENDPOINT = 'https://api-gw.dhlparcel.nl';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $apiEndpoint = self::API_ENDPOINT;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $accountId;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $apiKey;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $userId;
 
-    /**
-     * @var \GuzzleHttp\Client
-     */
+    /** @var \GuzzleHttp\Client */
     protected $httpClient;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Endpoints\Authentication
-     */
+    /** @var \Mvdnbrk\DhlParcel\Endpoints\Authentication */
     public $authentication;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Endpoints\Labels
-     */
+    /** @var \Mvdnbrk\DhlParcel\Endpoints\Labels */
     public $labels;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Endpoints\ServicePoints
-     */
+    /** @var \Mvdnbrk\DhlParcel\Endpoints\ServicePoints */
     public $servicePoints;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Endpoints\Shipments
-     */
+    /** @var \Mvdnbrk\DhlParcel\Endpoints\Shipments */
     public $shipments;
 
-    /**
-     * @var \Mvdnbrk\DhlParcel\Endpoints\TrackTrace
-     */
+    /** @var \Mvdnbrk\DhlParcel\Endpoints\TrackTrace */
     public $tracktrace;
 
-    /**
-     * Create a new Client instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->httpClient = new HttpClient([
@@ -85,12 +57,7 @@ class Client
         $this->initializeEndpoints();
     }
 
-    /**
-     * Initialize the API endpoints used by this client.
-     *
-     * @return void
-     */
-    public function initializeEndpoints()
+    public function initializeEndpoints(): void
     {
         $this->authentication = new Authentication($this);
         $this->labels = new Labels($this);
@@ -134,49 +101,26 @@ class Client
         return $response;
     }
 
-    /**
-     * Get the account id.
-     *
-     * @return string
-     */
-    public function getAccountId()
+    public function getAccountId(): ?string
     {
         return $this->accountId;
     }
 
-    /**
-     * Sets the account id.
-     *
-     * @param  string  $value
-     * @return \Mvdnbrk\DhlParcel\Client
-     */
-    public function setAccountId(string $value)
+    public function setAccountId(string $value): self
     {
         $this->accountId = trim($value);
 
         return $this;
     }
 
-    /**
-     * Sets the API key.
-     *
-     * @param  string  $value
-     * @return \Mvdnbrk\DhlParcel\Client
-     */
-    public function setApiKey(string $value)
+    public function setApiKey(string $value): self
     {
         $this->apiKey = trim($value);
 
         return $this;
     }
 
-    /**
-     * Sets the user Id.
-     *
-     * @param  string  $value
-     * @return \Mvdnbrk\DhlParcel\Client
-     */
-    public function setUserId(string $value)
+    public function setUserId(string $value): self
     {
         $this->userId = trim($value);
 
@@ -184,13 +128,9 @@ class Client
     }
 
     /**
-     * Retrieve the credentials.
-     *
-     * @return array
-     *
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
-    public function credentials()
+    public function credentials(): array
     {
         if (empty($this->userId)) {
             throw new DhlParcelException('You have not set a user id. Please use setUserId() to set the user id.');

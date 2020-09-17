@@ -6,12 +6,7 @@ use Mvdnbrk\DhlParcel\Support\Str;
 
 trait HasAttributes
 {
-    /**
-     * Convert the recource's attributes to an array.
-     *
-     * @return array
-     */
-    public function attributesToArray()
+    public function attributesToArray(): array
     {
         return get_object_vars($this);
     }
@@ -48,24 +43,12 @@ trait HasAttributes
         }
     }
 
-    /**
-     * Determine if a get mutator exists for an attribute.
-     *
-     * @param  string  $key
-     * @return bool
-     */
-    public function hasGetMutator($key)
+    public function hasGetMutator(string $key): bool
     {
         return method_exists($this, 'get'.Str::studly($key).'Attribute');
     }
 
-    /**
-     * Determine if a set mutator exists for an attribute.
-     *
-     * @param  string  $key
-     * @return bool
-     */
-    public function hasSetMutator($key)
+    public function hasSetMutator(string $key): bool
     {
         return method_exists($this, 'set'.Str::studly($key).'Attribute');
     }
@@ -77,7 +60,7 @@ trait HasAttributes
      * @param  mixed  $value
      * @return mixed
      */
-    public function setAttribute($key, $value)
+    public function setAttribute(string $key, $value)
     {
         if ($this->hasSetMutator($key)) {
             return $this->setMutatedAttributeValue($key, $value);
@@ -86,8 +69,6 @@ trait HasAttributes
         if (property_exists($this, $key)) {
             $this->{$key} = $value;
         }
-
-        return $this;
     }
 
     /**
@@ -97,7 +78,7 @@ trait HasAttributes
      * @param  mixed  $value
      * @return mixed
      */
-    protected function setMutatedAttributeValue($key, $value)
+    protected function setMutatedAttributeValue(string $key, $value)
     {
         return $this->{'set'.Str::studly($key).'Attribute'}($value);
     }

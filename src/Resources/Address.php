@@ -6,110 +6,56 @@ use Mvdnbrk\DhlParcel\Support\Str;
 
 class Address extends BaseResource
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     public $street;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $additional_address_line;
 
-    /**
-     * @var int|string
-     */
+    /** @var string|int */
     public $number;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $number_suffix;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $postal_code;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $city;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $region;
 
-    /**
-     * ISO3166-1 country code.
-     * https://en.wikipedia.org/wiki/ISO_3166-1.
-     *
-     * @var string
-     */
+    /** @var string */
     public $cc;
 
-    /**
-     * Set the number suffix. Alias for number_suffix.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setAdditionAttribute($value)
+    public function setAdditionAttribute(string $value): void
     {
         $this->number_suffix = $value;
     }
 
-    /**
-     * Set the country code.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setCcAttribute($value)
+    public function setCcAttribute(string $value): void
     {
         $this->cc = Str::upper($value);
     }
 
-    /**
-     * Set the country code. Alias for cc.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setCountryCodeAttribute($value)
+    public function setCountryCodeAttribute(string $value): void
     {
         $this->setCcAttribute($value);
     }
 
-    /**
-     * Set the postal code.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setPostalCodeAttribute($value)
+    public function setPostalCodeAttribute(string $value): void
     {
         $this->postal_code = Str::upper($value);
     }
 
-    /**
-     * Set the zipcode. Alias for postal_code.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setZipcodeAttribute($value)
+    public function setZipcodeAttribute(string $value): void
     {
         $this->setPostalCodeAttribute($value);
     }
 
-    /**
-     * Convert the Address resource to an array.
-     *
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return collect(parent::toArray())
             ->transform(function ($value, $key) {
