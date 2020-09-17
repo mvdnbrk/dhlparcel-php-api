@@ -8,13 +8,13 @@ use Tightenco\Collect\Support\Collection;
 
 class ServicePoints extends BaseEndpoint
 {
-    /** @var string  */
+    /** @var string */
     public $postal_code;
 
-    /** @var string  */
+    /** @var string */
     public $housenumber;
 
-    /** @var string  */
+    /** @var string */
     public $country = 'NL';
 
     public function get(array $filters = []): Collection
