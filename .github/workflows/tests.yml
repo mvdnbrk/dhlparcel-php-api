@@ -14,6 +14,10 @@ jobs:
 
     name: PHP ${{ matrix.php }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 
+    env:
+      DHLPARCEL_ID: ${{ secrets.DHLPARCEL_ID }}
+      DHLPARCEL_SECRET: ${{ secrets.DHLPARCEL_SECRET }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
