@@ -8,7 +8,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Changed
 - Use PHP 7 types and return type declarations where possible. [`#55`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/55)
-- The minimum version for `ramsey/uuid` is now `4.0'. [`091304e`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/091304edff77d9f547f497cdba4f2ad4736c70b0#diff-b5d0ee8c97c7abd7e3fa29b9a27d1780)
+- The minimum version for `ramsey/uuid` is now ^4.0. [`091304e`](https://github.com/mvdnbrk/dhlparcel-php-api/commit/091304edff77d9f547f497cdba4f2ad4736c70b0)
 
 ### Fixed
 - Conflicts with the `collection` package. [`#56`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/56)
