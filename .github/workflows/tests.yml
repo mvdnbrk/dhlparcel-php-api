@@ -39,7 +39,7 @@ jobs:
 
       - name: Require illuminate/collections
         run: composer require illuminate/collections
-        if: matrix.php >= 7.4
+        if: matrix.php >= 7.3
 
       - name: Execute tests
         run: vendor/bin/phpunit
