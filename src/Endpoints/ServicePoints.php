@@ -26,9 +26,11 @@ class ServicePoints extends BaseEndpoint
 
         $collection = new Collection();
 
-        return (new Collection($response))->each(function ($item) use ($collection) {
+        collect($response)->each(function ($item) use ($collection) {
             $collection->push(new ServicePointResource($item));
         });
+
+        return $collection;
     }
 
     protected function getFilters(array $filters): array
