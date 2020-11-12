@@ -8,10 +8,10 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [7.2, 7.3, 7.4]
-        dependency-version: [prefer-lowest, prefer-stable]
+        php: [7.4, 7.3, 7.2]
+        stability: [prefer-lowest, prefer-stable]
 
-    name: PHP ${{ matrix.php }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     env:
       DHLPARCEL_ACCOUNT_ID: ${{ secrets.DHLPARCEL_ACCOUNT_ID }}
@@ -22,20 +22,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/files
-          key: dependencies-composer-${{ hashFiles('composer.json') }}
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: none
 
+      - name: Setup problem matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
       - name: Install dependencies
-        run: composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+        run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-suggest
 
       - name: Require illuminate/collections
         run: composer require illuminate/collections
