@@ -53,7 +53,7 @@ class LabelsTest extends TestCase
     public function getting_a_label_with_an_invalid_shipment_id_should_throw_an_error()
     {
         $this->expectException(\Mvdnbrk\DhlParcel\Exceptions\DhlParcelException::class);
-        $this->expectExceptionMessage('Error executing API call: Could not parse LabelId from 999999');
+        $this->expectExceptionMessage("Error executing API call: Could not parse id from '999999'");
 
         $this->client->labels->get('999999');
     }
