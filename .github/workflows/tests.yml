@@ -34,7 +34,7 @@ jobs:
           echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: Install dependencies
-        run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-suggest
+        run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Require illuminate/collections
         run: composer require illuminate/collections
