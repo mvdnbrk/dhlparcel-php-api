@@ -2,9 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
-use \DateInterval;
-use \DateTimeImmutable;
-use Lcobucci\JWT\Builder;
+use DateInterval;
+use DateTimeImmutable;
 use Lcobucci\JWT\Configuration;
 use Mvdnbrk\DhlParcel\Resources\AccessToken;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
