@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.2 || ^8.0",
         "ext-json": "*",
         "composer/ca-bundle": "^1.2",
         "guzzlehttp/guzzle": "^6.4 || ^7.1",
