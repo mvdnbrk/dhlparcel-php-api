@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.3.1] - 2020-12-17
+
+### Fixed
+- Breaking change introduced by `lcobucci/jwt:^3.4`. [`#59`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/59)
+
 ## [v1.3.0] - 2020-09-17
 
 ### Changed
@@ -65,7 +70,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 ## [v0.7.0] - 2019-11-14
 
 ### Removed
-- Removed support for Laravel. Please use this [package](https://github.com/mvdnbrk/laravel-dhlparcel) instead. [`#16`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/16) 
+- Removed support for Laravel. Please use this [package](https://github.com/mvdnbrk/laravel-dhlparcel) instead. [`#16`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/16)
 
 ## [v0.6.2] - 2019-11-14
 
@@ -150,7 +155,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.3.1...HEAD
+[v1.3.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.2.1...v1.3.0
 [v1.2.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.2.0...v1.2.1
 [v1.2.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.1.1...v1.2.0
