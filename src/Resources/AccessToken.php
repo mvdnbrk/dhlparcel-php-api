@@ -3,7 +3,7 @@
 namespace Mvdnbrk\DhlParcel\Resources;
 
 use DateTimeImmutable;
-use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\Configuration;
 
 class AccessToken
 {
@@ -28,7 +28,7 @@ class AccessToken
 
     private function parseToken(): void
     {
-        $token = (new Parser)->parse($this->token);
+        $token = Configuration::forUnsecuredSigner()->parser()->parse($this->token);
 
         $this->expiresAt = $token->claims()->get('exp') ?: new DateTimeImmutable;
         $this->accounts = $token->claims()->get('accounts');
