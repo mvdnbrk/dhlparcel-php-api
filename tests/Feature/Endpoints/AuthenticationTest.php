@@ -3,7 +3,6 @@
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
 use Lcobucci\JWT\Configuration;
-use Lcobucci\JWT\Validation\Validator;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 /** @group integration */
@@ -16,7 +15,7 @@ class AuthenticationTest extends TestCase
         $parsedToken = Configuration::forUnsecuredSigner()->parser()->parse($accessToken->token);
 
         $this->assertTrue(
-            (new Validator)->validate(
+            Configuration::forUnsecuredSigner()->validator()->validate(
                 $parsedToken,
                 new \Lcobucci\JWT\Validation\Constraint\IdentifiedBy($parsedToken->claims()->get('jti'))
             )
