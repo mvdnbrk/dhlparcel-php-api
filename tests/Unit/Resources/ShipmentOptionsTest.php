@@ -17,6 +17,7 @@ class ShipmentOptionsTest extends TestCase
         $this->assertEquals('Test', $options->label_description);
         $this->assertFalse($options->signature);
         $this->assertFalse($options->only_recipient);
+        $this->assertFalse($options->insured);
     }
 
     /** @test */
@@ -116,6 +117,27 @@ class ShipmentOptionsTest extends TestCase
             ],
             [
                 'key' => 'NBB',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_insured()
+    {
+        $options = new ShipmentOptions([
+            'insured' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'INS',
             ],
         ], $array);
     }

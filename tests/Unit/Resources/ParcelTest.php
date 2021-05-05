@@ -50,6 +50,7 @@ class ParcelTest extends TestCase
                 'description' => 'Test 123',
                 'only_recipient' => true,
                 'signature' => true,
+                'insured' => true,
             ],
             'pieces' => [
                 [
@@ -71,6 +72,7 @@ class ParcelTest extends TestCase
         $this->assertEquals(1, $parcel->pieces->first()->weight);
         $this->assertSame(true, $parcel->options->only_recipient);
         $this->assertSame(true, $parcel->options->signature);
+        $this->assertSame(true, $parcel->options->insured);
     }
 
     /** @test */
@@ -165,6 +167,26 @@ class ParcelTest extends TestCase
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->onlyRecipient());
+    }
+
+    /** @test */
+    public function it_can_set_a_parcel_to_be_insured()
+    {
+        $parcel = new Parcel();
+
+        $this->assertFalse($parcel->options->insured);
+
+        $parcel->insured();
+
+        $this->assertTrue($parcel->options->insured);
+    }
+
+    /** @test */
+    public function calling_the_insured_method_returns_the_same_parcel_instance()
+    {
+        $parcel = new Parcel();
+
+        $this->assertSame($parcel, $parcel->insured());
     }
 
     /** @test */

@@ -22,6 +22,9 @@ class ShipmentOptions extends BaseResource
     public $only_recipient;
 
     /** @var bool */
+    public $insured;
+
+    /** @var bool */
     public $signature;
 
     public function __construct(array $attributes = [])
@@ -36,6 +39,7 @@ class ShipmentOptions extends BaseResource
         $this->delivery_type = 'DOOR';
         $this->signature = false;
         $this->only_recipient = false;
+        $this->insured = false;
 
         return $this;
     }
@@ -116,6 +120,11 @@ class ShipmentOptions extends BaseResource
             ->when($this->only_recipient, function ($collection) {
                 return $collection->push([
                     'key' => 'NBB',
+                ]);
+            })
+            ->when($this->insured, function ($collection) {
+                return $collection->push([
+                    'key' => 'INS',
                 ]);
             })
             ->all();

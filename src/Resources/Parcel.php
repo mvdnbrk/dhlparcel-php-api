@@ -55,6 +55,13 @@ class Parcel extends BaseResource
         return $this;
     }
 
+    public function insured(): self
+    {
+        $this->options->insured = true;
+
+        return $this;
+    }
+
     public function signature(): self
     {
         $this->options->signature = true;
