@@ -182,6 +182,7 @@ class ParcelTest extends TestCase
 
         $this->assertTrue($parcel->options->extra_assurance);
     }
+    
     /** @test */
     public function it_can_set_a_parcel_to_be_evening_delivery()
     {
