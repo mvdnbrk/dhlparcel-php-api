@@ -7,7 +7,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 ## [v1.4.1] - 2021-05-26
 
 ### Fixed
-- Changed `Content-Type` to `application/pdf`. [`#60`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/65)
+- Changed `Content-Type` to `application/pdf`. [`#65`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/65)
 
 ## [v1.4.0] - 2020-12-18
 
