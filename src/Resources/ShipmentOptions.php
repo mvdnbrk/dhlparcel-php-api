@@ -22,7 +22,10 @@ class ShipmentOptions extends BaseResource
     public $only_recipient;
 
     /** @var bool */
-    public $insured;
+    public $extra_assurance;
+
+    /** @var bool */
+    public $evening_delivery;
 
     /** @var bool */
     public $signature;
@@ -39,7 +42,8 @@ class ShipmentOptions extends BaseResource
         $this->delivery_type = 'DOOR';
         $this->signature = false;
         $this->only_recipient = false;
-        $this->insured = false;
+        $this->extra_assurance = false;
+        $this->evening_delivery = false;
 
         return $this;
     }
@@ -122,9 +126,14 @@ class ShipmentOptions extends BaseResource
                     'key' => 'NBB',
                 ]);
             })
-            ->when($this->insured, function ($collection) {
+            ->when($this->extra_assurance, function ($collection) {
                 return $collection->push([
-                    'key' => 'INS',
+                    'key' => 'EA',
+                ]);
+            })
+            ->when($this->evening_delivery, function ($collection) {
+                return $collection->push([
+                    'key' => 'EVE',
                 ]);
             })
             ->all();

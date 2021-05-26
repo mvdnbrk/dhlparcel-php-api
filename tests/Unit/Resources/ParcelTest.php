@@ -50,7 +50,8 @@ class ParcelTest extends TestCase
                 'description' => 'Test 123',
                 'only_recipient' => true,
                 'signature' => true,
-                'insured' => true,
+                'extra_assurance' => true,
+                'evening_delivery' => true,
             ],
             'pieces' => [
                 [
@@ -72,7 +73,8 @@ class ParcelTest extends TestCase
         $this->assertEquals(1, $parcel->pieces->first()->weight);
         $this->assertSame(true, $parcel->options->only_recipient);
         $this->assertSame(true, $parcel->options->signature);
-        $this->assertSame(true, $parcel->options->insured);
+        $this->assertSame(true, $parcel->options->extra_assurance);
+        $this->assertSame(true, $parcel->options->evening_delivery);
     }
 
     /** @test */
@@ -170,23 +172,42 @@ class ParcelTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_a_parcel_to_be_insured()
+    public function it_can_set_a_parcel_to_be_extra_assured()
     {
         $parcel = new Parcel();
 
-        $this->assertFalse($parcel->options->insured);
+        $this->assertFalse($parcel->options->extra_assurance);
 
-        $parcel->insured();
+        $parcel->extraAssurance();
 
-        $this->assertTrue($parcel->options->insured);
+        $this->assertTrue($parcel->options->extra_assurance);
+    }
+    /** @test */
+    public function it_can_set_a_parcel_to_be_evening_delivery()
+    {
+        $parcel = new Parcel();
+
+        $this->assertFalse($parcel->options->evening_delivery);
+
+        $parcel->eveningDelivery();
+
+        $this->assertTrue($parcel->options->evening_delivery);
     }
 
     /** @test */
-    public function calling_the_insured_method_returns_the_same_parcel_instance()
+    public function calling_the_extra_assurance_method_returns_the_same_parcel_instance()
     {
         $parcel = new Parcel();
 
-        $this->assertSame($parcel, $parcel->insured());
+        $this->assertSame($parcel, $parcel->extraAssurance());
+    }
+
+    /** @test */
+    public function calling_the_evening_delivery_method_returns_the_same_parcel_instance()
+    {
+        $parcel = new Parcel();
+
+        $this->assertSame($parcel, $parcel->eveningDelivery());
     }
 
     /** @test */
