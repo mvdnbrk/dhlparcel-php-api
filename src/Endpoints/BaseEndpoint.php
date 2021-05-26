@@ -56,7 +56,7 @@ abstract class BaseEndpoint
             $this->getRequestHeaders($requestHeaders)
         );
 
-        if (collect($response->getHeader('Content-Type'))->first() == 'application/octet-stream') {
+        if (collect($response->getHeader('Content-Type'))->first() == 'application/pdf') {
             return $response->getBody()->getContents();
         }
 
