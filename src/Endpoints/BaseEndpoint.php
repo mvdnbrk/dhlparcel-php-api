@@ -56,22 +56,20 @@ abstract class BaseEndpoint
             $this->getRequestHeaders($requestHeaders)
         );
 
-        if (collect($response->getHeader('Content-Type'))->first() == 'application/pdf') {
-            return $response->getBody()->getContents();
-        }
-
-        $body = $response->getBody()->getContents();
-
-        $object = @json_decode($body);
-
-        if (json_last_error() != JSON_ERROR_NONE) {
-            throw new DhlParcelException("Unable to decode DHL Parcel response: '{$body}'.");
-        }
-
         if ($response->getStatusCode() >= 400) {
             throw DhlParcelException::createFromResponse($response);
         }
 
-        return $object;
+        $body = $response->getBody()->getContents();
+        if (collect($response->getHeader('Content-Type'))->first() == 'application/json') {
+            $object = @json_decode($body);
+
+            if (json_last_error() != JSON_ERROR_NONE) {
+                throw new DhlParcelException("Unable to decode DHL Parcel response: '{$body}'.");
+            }
+            return $object;
+        }
+
+        return $body;
     }
 }
