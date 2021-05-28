@@ -116,19 +116,22 @@ $parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
         'signature' => true,
         'only_recipient' => true,
         'cash_on_delivery' => 9.95,
+        'evening_delivery' => true,
+        'extra_assurance' => true,
         ...
     ],
 ]);
 ```
 
-Or you may use a method like `signature()`, `onlyRecipient()`, `labelDescription()` and `cashOnDelivery()`.
-You may call any of these after constructing the parcel.
+Or you may use a method like `signature()` and others after constructing the parcel:
 
 ``` php
 $parcel->onlyRecipient()
        ->signature()
        ->labelDescription('Order #123')
-       ->cashOnDelivery(9.95);
+       ->cashOnDelivery(9.95)
+       ->eveningDelivery()
+       ->extraAssurance();
 ```
 
 **Mailbox package**
