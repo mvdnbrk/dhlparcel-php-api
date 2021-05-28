@@ -17,6 +17,8 @@ class ShipmentOptionsTest extends TestCase
         $this->assertEquals('Test', $options->label_description);
         $this->assertFalse($options->signature);
         $this->assertFalse($options->only_recipient);
+        $this->assertFalse($options->extra_assurance);
+        $this->assertFalse($options->evening_delivery);
     }
 
     /** @test */
@@ -116,6 +118,48 @@ class ShipmentOptionsTest extends TestCase
             ],
             [
                 'key' => 'NBB',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_extra_assurance()
+    {
+        $options = new ShipmentOptions([
+            'extra_assurance' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'EA',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_evening_delivery()
+    {
+        $options = new ShipmentOptions([
+            'evening_delivery' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'EVE',
             ],
         ], $array);
     }
