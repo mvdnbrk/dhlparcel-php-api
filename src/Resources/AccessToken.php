@@ -30,9 +30,9 @@ class AccessToken
     {
         $token = Configuration::forUnsecuredSigner()->parser()->parse($this->token);
 
-        $this->expiresAt = $token->claims()->get('exp') ?: new DateTimeImmutable;
-        $this->accounts = $token->claims()->get('accounts');
-        $this->roles = $token->claims()->get('roles');
+        $this->expiresAt = (new DateTimeImmutable)->setTimestamp($token->getClaim('exp')) ?: new DateTimeImmutable;
+        $this->accounts = $token->getClaim('accounts');
+        $this->roles = $token->getClaim('roles');
     }
 
     public function isExpired(): bool

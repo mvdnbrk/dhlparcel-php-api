@@ -2,30 +2,17 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
-use DateInterval;
-use DateTimeImmutable;
-use Lcobucci\JWT\Configuration;
+use Lcobucci\JWT\Builder;
 use Mvdnbrk\DhlParcel\Resources\AccessToken;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 class AccessTokenTest extends TestCase
 {
-    /** @var \Lcobucci\JWT\Configuration */
-    protected $config;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->config = Configuration::forUnsecuredSigner();
-    }
-
     /** @test */
     public function create_a_new_access_token()
     {
-        $expires = (new DateTimeImmutable('1970-01-01 00:00:00'))->add(new DateInterval('PT9S'));
         $accessToken = new AccessToken(
-            $this->config->builder()->expiresAt($expires)->withClaim('accounts', [])->withClaim('roles', [])->getToken($this->config->signer(), $this->config->signingKey())->toString()
+            (new Builder)->setExpiration(9)->set('accounts', [])->set('roles', [])->getToken()->__toString()
         );
 
         $this->assertSame('eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJleHAiOjksImFjY291bnRzIjpbXSwicm9sZXMiOltdfQ.', $accessToken->token);
@@ -35,16 +22,14 @@ class AccessTokenTest extends TestCase
     /** @test */
     public function it_can_determine_if_the_access_token_has_expired()
     {
-        $expires = (new DateTimeImmutable())->sub(new DateInterval('PT1S'));
         $accessToken = new AccessToken(
-            $this->config->builder()->expiresAt($expires)->withClaim('accounts', [])->withClaim('roles', [])->getToken($this->config->signer(), $this->config->signingKey())->toString()
+            (new Builder)->setExpiration(0)->set('accounts', [])->set('roles', [])->getToken()->__toString()
         );
 
         $this->assertTrue($accessToken->isExpired());
 
-        $expires = (new DateTimeImmutable())->add(new DateInterval('PT9S'));
         $accessToken = new AccessToken(
-            $this->config->builder()->expiresAt($expires)->withClaim('accounts', [])->withClaim('roles', [])->getToken($this->config->signer(), $this->config->signingKey())->toString()
+            (new Builder)->setExpiration(time() + 999)->set('accounts', [])->set('roles', [])->getToken()->__toString()
         );
 
         $this->assertFalse($accessToken->isExpired());
@@ -53,9 +38,8 @@ class AccessTokenTest extends TestCase
     /** @test */
     public function it_can_retrieve_the_account_id_from_the_token()
     {
-        $expires = new DateTimeImmutable();
         $accessToken = new AccessToken(
-            $this->config->builder()->expiresAt($expires)->withClaim('accounts', ['123456'])->withClaim('roles', [])->getToken($this->config->signer(), $this->config->signingKey())->toString()
+            (new Builder)->setExpiration(0)->set('accounts', ['123456'])->set('roles', [])->getToken()->__toString()
         );
 
         $this->assertEquals('123456', $accessToken->getAccountId());
@@ -64,9 +48,8 @@ class AccessTokenTest extends TestCase
     /** @test */
     public function it_can_set_the_account_id()
     {
-        $expires = new DateTimeImmutable();
         $accessToken = new AccessToken(
-            $this->config->builder()->expiresAt($expires)->withClaim('accounts', ['1111', '2222'])->withClaim('roles', [])->getToken($this->config->signer(), $this->config->signingKey())->toString()
+            (new Builder)->setExpiration(0)->set('accounts', ['1111', '2222'])->set('roles', [])->getToken()->__toString()
         );
 
         $accessToken->setAccountId('does-not-exist');
