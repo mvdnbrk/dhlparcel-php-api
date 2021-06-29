@@ -13,15 +13,16 @@
         {
             "name": "Mark van den Broek",
             "email": "mvdnbrk@gmail.com",
+            "homepage": "https://github.com/mvdnbrk",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^7.2",
         "ext-json": "*",
         "composer/ca-bundle": "^1.2",
         "guzzlehttp/guzzle": "^6.4 || ^7.1",
-        "lcobucci/jwt": "^3.3 || ^4.0",
+        "lcobucci/jwt": "^3.3",
         "ramsey/uuid": "^4.0",
         "tightenco/collect": "^5.8 || ^6.0 || ^7.0 || ^8.0"
     },

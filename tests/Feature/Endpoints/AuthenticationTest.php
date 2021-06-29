@@ -2,7 +2,8 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
-use Lcobucci\JWT\Configuration;
+use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\ValidationData;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 
 /** @group integration */
@@ -12,13 +13,9 @@ class AuthenticationTest extends TestCase
     public function it_can_retrieve_an_access_token()
     {
         $accessToken = $this->client->authentication->getAccessToken();
-        $parsedToken = Configuration::forUnsecuredSigner()->parser()->parse($accessToken->token);
 
         $this->assertTrue(
-            Configuration::forUnsecuredSigner()->validator()->validate(
-                $parsedToken,
-                new \Lcobucci\JWT\Validation\Constraint\IdentifiedBy($parsedToken->claims()->get('jti'))
-            )
+            (new Parser)->parse($accessToken->token)->validate(new ValidationData())
         );
         $this->assertFalse($accessToken->isExpired());
         $this->assertEquals(getenv('DHLPARCEL_ACCOUNT_ID'), $accessToken->getAccountId());
