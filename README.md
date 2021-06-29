@@ -1,4 +1,4 @@
-This repo is a forked version of mvdnbrk/dhlparcel-php-api
+This repo is a forked version of [mvdnbrk/dhlparcel-php-api](https://github.com/mvdnbrk/dhlparcel-php-api)
 # DHL Parcel API client for PHP
 
 ![PHP version][ico-php-version]
