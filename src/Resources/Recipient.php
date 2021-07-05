@@ -35,7 +35,7 @@ class Recipient extends Address
                 'phone' => '',
             ])
             ->when(! empty($this->company_name), function ($collection) {
-                return $collection->put('isBusiness', true);
+                return $collection->put('isBusiness', false);
             })
             ->all();
     }
