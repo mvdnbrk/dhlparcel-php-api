@@ -62,6 +62,13 @@ class Parcel extends BaseResource
         return $this;
     }
 
+    public function sameDayDelivery(): self
+    {
+        $this->options->same_day_delivery = true;
+
+        return $this;
+    }
+
     public function eveningDelivery(): self
     {
         $this->options->evening_delivery = true;
