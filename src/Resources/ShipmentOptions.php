@@ -29,6 +29,10 @@ class ShipmentOptions extends BaseResource
 
     /** @var bool */
     public $signature;
+    /**
+     * @var bool
+     */
+    public $same_day_delivery;
 
     public function __construct(array $attributes = [])
     {
@@ -44,6 +48,7 @@ class ShipmentOptions extends BaseResource
         $this->only_recipient = false;
         $this->extra_assurance = false;
         $this->evening_delivery = false;
+        $this->same_day_delivery = false;
 
         return $this;
     }
@@ -129,6 +134,11 @@ class ShipmentOptions extends BaseResource
             ->when($this->extra_assurance, function ($collection) {
                 return $collection->push([
                     'key' => 'EA',
+                ]);
+            })
+            ->when($this->same_day_delivery, function ($collection) {
+                return $collection->push([
+                    'key' => 'SDD',
                 ]);
             })
             ->when($this->evening_delivery, function ($collection) {
