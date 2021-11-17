@@ -76,6 +76,13 @@ class Parcel extends BaseResource
         return $this;
     }
 
+    public function same_day_delivery(): self
+    {
+        $this->options->same_day_delivery = true;
+
+        return $this;
+    }
+
     /**
      * Set the shipment options for this parcel.
      *

@@ -30,6 +30,9 @@ class ShipmentOptions extends BaseResource
     /** @var bool */
     public $signature;
 
+    /** @var bool */
+    public $same_day_delivery;
+
     public function __construct(array $attributes = [])
     {
         $this->setDefaultOptions();
@@ -41,6 +44,7 @@ class ShipmentOptions extends BaseResource
     {
         $this->delivery_type = 'DOOR';
         $this->signature = false;
+        $this->same_day_delivery = false;
         $this->only_recipient = false;
         $this->extra_assurance = false;
         $this->evening_delivery = false;
@@ -119,6 +123,11 @@ class ShipmentOptions extends BaseResource
             ->when($this->signature, function ($collection) {
                 return $collection->push([
                     'key' => 'HANDT',
+                ]);
+            })
+            ->when($this->same_day_delivery, function ($collection) {
+                return $collection->push([
+                    'key' => 'SDD',
                 ]);
             })
             ->when($this->only_recipient, function ($collection) {
