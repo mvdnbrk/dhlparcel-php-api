@@ -227,7 +227,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-code-style]: https://styleci.io/repos/171006427/shield?branch=main
 
 [link-packagist]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
-[link-tests]: https://github.com/mvdnbrk/dhlparcel-php-api/actions?query=workflow%3Atests
+[link-tests]: https://github.com/dutchwebs/dhlparcel-php-api/actions?query=workflow%3Atests
 [link-downloads]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
 [link-author]: https://github.com/mvdnbrk
 [link-contributors]: ../../contributors
