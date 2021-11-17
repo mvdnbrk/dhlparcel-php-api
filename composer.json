@@ -1,5 +1,5 @@
 {
-    "name": "mvdnbrk/dhlparcel-php-api",
+    "name": "dutchwebs/dhlparcel-php-api",
     "description": "DHL Parcel API client for PHP",
     "keywords": [
         "dhl",
@@ -10,8 +10,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Mark van den Broek",
-            "email": "mvdnbrk@gmail.com",
+            "name": "Nicky Kouffeld",
+            "email": "nicky@dutchwebs.com",
             "role": "Developer"
         }
     ],
