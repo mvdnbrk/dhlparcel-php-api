@@ -57,6 +57,7 @@ class ParcelTest extends TestCase
                 'track_trace_note' => 'Test note',
                 'add_return_label' => true,
                 'no_track_trace' => true,
+                'delivery_to_construction' => true,
             ],
             'pieces' => [
                 [
