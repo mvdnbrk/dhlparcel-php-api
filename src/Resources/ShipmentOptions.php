@@ -65,6 +65,7 @@ class ShipmentOptions extends BaseResource
         $this->expresser = false;
         $this->add_return_label = false;
         $this->no_track_trace = false;
+        $this->delivery_to_construction = false;
 
         return $this;
     }

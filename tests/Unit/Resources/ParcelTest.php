@@ -85,6 +85,7 @@ class ParcelTest extends TestCase
         $this->assertSame(true, $parcel->options->add_return_label);
         $this->assertSame(true, $parcel->options->no_track_trace);
         $this->assertSame(true, $parcel->options->expresser);
+        $this->assertSame(true, $parcel->options->delivery_to_construction);
     }
 
     /** @test */
