@@ -60,6 +60,11 @@ class ShipmentOptions extends BaseResource
         $this->delivery_type = 'DOOR';
         $this->signature = false;
         $this->only_recipient = false;
+        $this->extra_assurance = false;
+        $this->evening_delivery = false;
+        $this->expresser = false;
+        $this->add_return_label = false;
+        $this->no_track_trace = false;
 
         return $this;
     }
