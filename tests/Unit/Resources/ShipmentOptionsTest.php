@@ -150,6 +150,48 @@ class ShipmentOptionsTest extends TestCase
     }
 
     /** @test */
+    public function to_array_with_extra_assurance()
+    {
+        $options = new ShipmentOptions([
+            'extra_assurance' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'EA',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_evening_delivery()
+    {
+        $options = new ShipmentOptions([
+            'evening_delivery' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'EVE',
+            ],
+        ], $array);
+    }
+
+    /** @test */
     public function to_array_with_mailbox_package()
     {
         $options = new ShipmentOptions([
@@ -231,48 +273,6 @@ class ShipmentOptionsTest extends TestCase
     }
 
     /** @test */
-    public function to_array_with_evening_delivery()
-    {
-        $options = new ShipmentOptions([
-            'evening_delivery' => true,
-        ]);
-
-        $array = $options->toArray();
-
-        $this->assertIsArray($array);
-
-        $this->assertEquals([
-            [
-                'key' => 'DOOR',
-            ],
-            [
-                'key' => 'EVE',
-            ],
-        ], $array);
-    }
-
-    /** @test */
-    public function to_array_with_extra_assurance()
-    {
-        $options = new ShipmentOptions([
-            'extra_assurance' => true,
-        ]);
-
-        $array = $options->toArray();
-
-        $this->assertIsArray($array);
-
-        $this->assertEquals([
-            [
-                'key' => 'DOOR',
-            ],
-            [
-                'key' => 'EA',
-            ],
-        ], $array);
-    }
-
-    /** @test */
     public function to_array_with_delivery_to_construction()
     {
         $options = new ShipmentOptions([
@@ -339,8 +339,8 @@ class ShipmentOptionsTest extends TestCase
     public function to_array_with_label_description_extra()
     {
         $options = new ShipmentOptions([
-            'label_description' => 'Test',
-            'label_description_extra' => 'Test extra',
+            'description' => 'Test',
+            'description_extra' => 'Test extra',
         ]);
 
         $array = $options->toArray();

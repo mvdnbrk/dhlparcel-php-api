@@ -28,13 +28,13 @@ class ShipmentOptions extends BaseResource
     public $only_recipient;
 
     /** @var bool */
-    public $signature;
-
-    /** @var bool */
     public $extra_assurance;
 
     /** @var bool */
     public $evening_delivery;
+
+    /** @var bool */
+    public $signature;
 
     /** @var bool */
     public $expresser;
@@ -82,6 +82,16 @@ class ShipmentOptions extends BaseResource
     public function setDescriptionAttribute(string $value): void
     {
         $this->setLabelDescriptionAttribute($value);
+    }
+
+    public function setLabelDescriptionExtraAttribute(string $value): void
+    {
+        $this->label_description_extra = Str::limit(trim($value), 15, '');
+    }
+
+    public function setDescriptionExtraAttribute(string $value): void
+    {
+        $this->setLabelDescriptionExtraAttribute($value);
     }
 
     public function setMailboxPackage(): void
@@ -136,16 +146,6 @@ class ShipmentOptions extends BaseResource
                     'input' => $this->cash_on_delivery,
                 ]);
             })
-            ->when($this->extra_assurance, function ($collection) {
-                return $collection->push([
-                    'key' => 'EA',
-                ]);
-            })
-            ->when($this->evening_delivery, function ($collection) {
-                return $collection->push([
-                    'key' => 'EVE',
-                ]);
-            })
             ->when($this->expresser, function ($collection) {
                 return $collection->push([
                     'key' => 'EXP',
@@ -176,6 +176,16 @@ class ShipmentOptions extends BaseResource
             ->when($this->only_recipient, function ($collection) {
                 return $collection->push([
                     'key' => 'NBB',
+                ]);
+            })
+            ->when($this->extra_assurance, function ($collection) {
+                return $collection->push([
+                    'key' => 'EA',
+                ]);
+            })
+            ->when($this->evening_delivery, function ($collection) {
+                return $collection->push([
+                    'key' => 'EVE',
                 ]);
             })
             ->when($this->track_trace_note, function ($collection) {

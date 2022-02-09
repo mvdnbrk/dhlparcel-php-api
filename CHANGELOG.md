@@ -4,6 +4,15 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.5.0] - 2021-05-28
+
+- Add support for evening delivery and extra assurance. [`63`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/63)
+
+## [v1.4.1] - 2021-05-26
+
+### Fixed
+- Changed `Content-Type` to `application/pdf`. [`#65`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/65)
+
 ## [v1.4.0] - 2020-12-18
 
 ### Added
@@ -160,7 +169,9 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.5.0...HEAD
+[v1.5.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.4.1...v1.5.0
+[v1.4.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.3.1...v1.4.0
 [v1.3.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.2.1...v1.3.0

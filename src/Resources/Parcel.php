@@ -55,6 +55,20 @@ class Parcel extends BaseResource
         return $this;
     }
 
+    public function extraAssurance(): self
+    {
+        $this->options->extra_assurance = true;
+
+        return $this;
+    }
+
+    public function eveningDelivery(): self
+    {
+        $this->options->evening_delivery = true;
+
+        return $this;
+    }
+
     public function signature(): self
     {
         $this->options->signature = true;

@@ -56,8 +56,8 @@ abstract class BaseEndpoint
             $this->getRequestHeaders($requestHeaders)
         );
 
-        if ($response->getStatusCode() >= 400) {
-            throw DhlParcelException::createFromResponse($response);
+        if (collect($response->getHeader('Content-Type'))->first() == 'application/pdf') {
+            return $response->getBody()->getContents();
         }
 
         $body = $response->getBody()->getContents();
