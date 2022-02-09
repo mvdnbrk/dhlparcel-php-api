@@ -61,6 +61,7 @@ abstract class BaseEndpoint
         }
 
         $body = $response->getBody()->getContents();
+        
         $object = @json_decode($body);
 
         if (json_last_error() != JSON_ERROR_NONE) {

@@ -45,7 +45,6 @@ class TrackTraceTest extends TestCase
 
         $this->assertEquals($shipment->barcode, $tracktrace->barcode);
         $this->assertFalse($tracktrace->isDelivered);
-        $this->assertFalse($tracktrace->deliveredAt);
     }
 
     /** @test */
