@@ -267,7 +267,7 @@ class ShipmentOptionsTest extends TestCase
             ],
             [
                 'key' => 'PERS_NOTE',
-                'input' => 'Test'
+                'input' => 'Test',
             ],
         ], $array);
     }
