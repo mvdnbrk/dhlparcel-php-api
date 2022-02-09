@@ -48,10 +48,16 @@ class ParcelTest extends TestCase
             ],
             'options' => [
                 'description' => 'Test 123',
+                'description_extra' => 'Test extra',
                 'only_recipient' => true,
                 'signature' => true,
                 'extra_assurance' => true,
                 'evening_delivery' => true,
+                'expresser' => true,
+                'track_trace_note' => 'Test note',
+                'add_return_label' => true,
+                'no_track_trace' => true,
+                'delivery_to_construction' => true,
             ],
             'pieces' => [
                 [
@@ -68,6 +74,8 @@ class ParcelTest extends TestCase
         $this->assertEquals('Doe', $parcel->recipient->last_name);
         $this->assertEquals('Test Company B.V.', $parcel->sender->company_name);
         $this->assertEquals('Test 123', $parcel->options->label_description);
+        $this->assertEquals('Test extra', $parcel->options->label_description_extra);
+        $this->assertEquals('Test note', $parcel->options->track_trace_note);
         $this->assertEquals(Piece::PARCEL_TYPE_SMALL, $parcel->pieces->first()->parcel_type);
         $this->assertEquals(1, $parcel->pieces->first()->quantity);
         $this->assertEquals(1, $parcel->pieces->first()->weight);
@@ -75,6 +83,10 @@ class ParcelTest extends TestCase
         $this->assertSame(true, $parcel->options->signature);
         $this->assertSame(true, $parcel->options->extra_assurance);
         $this->assertSame(true, $parcel->options->evening_delivery);
+        $this->assertSame(true, $parcel->options->add_return_label);
+        $this->assertSame(true, $parcel->options->no_track_trace);
+        $this->assertSame(true, $parcel->options->expresser);
+        $this->assertSame(true, $parcel->options->delivery_to_construction);
     }
 
     /** @test */

@@ -18,6 +18,12 @@ class ShipmentOptions extends BaseResource
     /** @var string */
     public $label_description;
 
+    /** @var string */
+    public $label_description_extra;
+
+    /** @var bool */
+    public $delivery_to_construction;
+
     /** @var bool */
     public $only_recipient;
 
@@ -29,6 +35,18 @@ class ShipmentOptions extends BaseResource
 
     /** @var bool */
     public $signature;
+
+    /** @var bool */
+    public $expresser;
+
+    /** @var string */
+    public $track_trace_note;
+
+    /** @var bool */
+    public $add_return_label;
+
+    /** @var bool */
+    public $no_track_trace;
 
     public function __construct(array $attributes = [])
     {
@@ -44,6 +62,10 @@ class ShipmentOptions extends BaseResource
         $this->only_recipient = false;
         $this->extra_assurance = false;
         $this->evening_delivery = false;
+        $this->expresser = false;
+        $this->add_return_label = false;
+        $this->no_track_trace = false;
+        $this->delivery_to_construction = false;
 
         return $this;
     }
@@ -61,6 +83,16 @@ class ShipmentOptions extends BaseResource
     public function setDescriptionAttribute(string $value): void
     {
         $this->setLabelDescriptionAttribute($value);
+    }
+
+    public function setLabelDescriptionExtraAttribute(string $value): void
+    {
+        $this->label_description_extra = Str::limit(trim($value), 15, '');
+    }
+
+    public function setDescriptionExtraAttribute(string $value): void
+    {
+        $this->setLabelDescriptionExtraAttribute($value);
     }
 
     public function setMailboxPackage(): void
@@ -104,10 +136,20 @@ class ShipmentOptions extends BaseResource
                     'input' => $this->service_point_id,
                 ]);
             })
+            ->when($this->delivery_to_construction, function ($collection) {
+                return $collection->push([
+                    'key' => 'BOUW',
+                ]);
+            })
             ->when(! empty($this->cash_on_delivery), function ($collection) {
                 return $collection->push([
                     'key' => 'COD_CASH',
                     'input' => $this->cash_on_delivery,
+                ]);
+            })
+            ->when($this->expresser, function ($collection) {
+                return $collection->push([
+                    'key' => 'EXP',
                 ]);
             })
             ->when(! empty($this->label_description), function ($collection) {
@@ -116,7 +158,18 @@ class ShipmentOptions extends BaseResource
                     'input' => $this->label_description,
                 ]);
             })
-            ->when($this->signature, function ($collection) {
+            ->when(! empty($this->label_description_extra), function ($collection) {
+                return $collection->push([
+                    'key' => 'REFERENCE2',
+                    'input' => $this->label_description_extra,
+                ]);
+            })
+            ->when($this->signature && $this->delivery_type === 'PS', function ($collection) {
+                return $collection->push([
+                    'key' => 'HANDTPS',
+                ]);
+            })
+            ->when($this->signature && $this->delivery_type !== 'PS', function ($collection) {
                 return $collection->push([
                     'key' => 'HANDT',
                 ]);
@@ -134,6 +187,22 @@ class ShipmentOptions extends BaseResource
             ->when($this->evening_delivery, function ($collection) {
                 return $collection->push([
                     'key' => 'EVE',
+                ]);
+            })
+            ->when($this->track_trace_note, function ($collection) {
+                return $collection->push([
+                    'key' => 'PERS_NOTE',
+                    'input' => $this->track_trace_note,
+                ]);
+            })
+            ->when($this->add_return_label, function ($collection) {
+                return $collection->push([
+                    'key' => 'ADD_RETURN_LABEL',
+                ]);
+            })
+            ->when($this->no_track_trace, function ($collection) {
+                return $collection->push([
+                    'key' => 'NO_TRACK_TRACE',
                 ]);
             })
             ->all();

@@ -19,6 +19,9 @@ class ShipmentOptionsTest extends TestCase
         $this->assertFalse($options->only_recipient);
         $this->assertFalse($options->extra_assurance);
         $this->assertFalse($options->evening_delivery);
+        $this->assertFalse($options->expresser);
+        $this->assertFalse($options->add_return_label);
+        $this->assertFalse($options->no_track_trace);
     }
 
     /** @test */
@@ -76,6 +79,30 @@ class ShipmentOptionsTest extends TestCase
             [
                 'key' => 'REFERENCE',
                 'input' => 'Test',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_parcelshop_with_signature()
+    {
+        $options = new ShipmentOptions([
+            'delivery_type' => 'PS',
+            'service_point_id' => '12345',
+            'signature' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'PS',
+                'input' => '12345',
+            ],
+            [
+                'key' => 'HANDTPS',
             ],
         ], $array);
     }
@@ -198,6 +225,139 @@ class ShipmentOptionsTest extends TestCase
             [
                 'key' => 'COD_CASH',
                 'input' => '9.99',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_no_track_trace()
+    {
+        $options = new ShipmentOptions([
+            'no_track_trace' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'NO_TRACK_TRACE',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_track_trace_note()
+    {
+        $options = new ShipmentOptions([
+            'track_trace_note' => 'Test',
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'PERS_NOTE',
+                'input' => 'Test',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_delivery_to_construction()
+    {
+        $options = new ShipmentOptions([
+            'delivery_to_construction' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'BOUW',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_expresser()
+    {
+        $options = new ShipmentOptions([
+            'expresser' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'EXP',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_add_return_label()
+    {
+        $options = new ShipmentOptions([
+            'add_return_label' => true,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'ADD_RETURN_LABEL',
+            ],
+        ], $array);
+    }
+
+    /** @test */
+    public function to_array_with_label_description_extra()
+    {
+        $options = new ShipmentOptions([
+            'description' => 'Test',
+            'description_extra' => 'Test extra',
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'REFERENCE',
+                'input' => 'Test',
+            ],
+            [
+                'key' => 'REFERENCE2',
+                'input' => 'Test extra',
             ],
         ], $array);
     }
