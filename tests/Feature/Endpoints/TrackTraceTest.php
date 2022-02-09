@@ -52,7 +52,7 @@ class TrackTraceTest extends TestCase
     public function getting_track_and_trace_information_with_an_invalid_barcode_should_throw_an_error()
     {
         $this->expectException(\Mvdnbrk\DhlParcel\Exceptions\DhlParcelException::class);
-        $this->expectExceptionMessage("No parcel found for the given key(s)'.");
+        $this->expectExceptionMessage("Unable to decode DHL Parcel response: 'No parcel found for the given key(s)'.");
 
         $response = $this->client->tracktrace->get('invalid');
     }

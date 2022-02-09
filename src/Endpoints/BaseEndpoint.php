@@ -61,15 +61,16 @@ abstract class BaseEndpoint
         }
 
         $body = $response->getBody()->getContents();
-        if (collect($response->getHeader('Content-Type'))->first() == 'application/json') {
-            $object = @json_decode($body);
+        $object = @json_decode($body);
 
-            if (json_last_error() != JSON_ERROR_NONE) {
-                throw new DhlParcelException("Unable to decode DHL Parcel response: '{$body}'.");
-            }
-            return $object;
+        if (json_last_error() != JSON_ERROR_NONE) {
+            throw new DhlParcelException("Unable to decode DHL Parcel response: '{$body}'.");
         }
 
-        return $body;
+        if ($response->getStatusCode() >= 400) {
+            throw DhlParcelException::createFromResponse($response);
+        }
+
+        return $object;
     }
 }
