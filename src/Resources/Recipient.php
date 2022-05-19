@@ -5,6 +5,9 @@ namespace Mvdnbrk\DhlParcel\Resources;
 class Recipient extends Address
 {
     /** @var string */
+    public $is_business = null;
+
+    /** @var string */
     public $company_name;
 
     /** @var string */
@@ -27,6 +30,9 @@ class Recipient extends Address
     private function addressToArray(): array
     {
         return collect(parent::toArray())
+            ->reject(function ($value, $key) {
+                return $key === 'is_business';
+            })
             ->diffKeys([
                 'company_name' => '',
                 'first_name' => '',
@@ -34,8 +40,11 @@ class Recipient extends Address
                 'email' => '',
                 'phone' => '',
             ])
+            ->when($this->is_business !== null, function ($collection) {
+                return $collection->put('isBusiness', $this->is_business);
+            })
             ->when(! empty($this->company_name), function ($collection) {
-                return $collection->put('isBusiness', false);
+                return $collection->put('isBusiness', $this->is_business === null ? false : $this->is_business);
             })
             ->all();
     }
