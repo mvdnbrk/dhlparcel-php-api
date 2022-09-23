@@ -34,6 +34,11 @@ class ShipmentOptions extends BaseResource
      */
     public $same_day_delivery;
 
+    /**
+     * @var bool
+     */
+    public $add_return_label;
+
     public function __construct(array $attributes = [])
     {
         $this->setDefaultOptions();
@@ -49,6 +54,7 @@ class ShipmentOptions extends BaseResource
         $this->extra_assurance = false;
         $this->evening_delivery = false;
         $this->same_day_delivery = false;
+        $this->add_return_label = false;
 
         return $this;
     }
@@ -139,6 +145,11 @@ class ShipmentOptions extends BaseResource
             ->when($this->same_day_delivery, function ($collection) {
                 return $collection->push([
                     'key' => 'SDD',
+                ]);
+            })
+            ->when($this->add_return_label, function ($collection) {
+                return $collection->push([
+                    'key' => 'ADD_RETURN_LABEL',
                 ]);
             })
             ->when($this->evening_delivery, function ($collection) {
