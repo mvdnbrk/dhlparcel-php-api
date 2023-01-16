@@ -25,6 +25,12 @@ class ShipmentOptions extends BaseResource
     public $extra_assurance;
 
     /** @var bool */
+    public $insured;
+
+    /** @var int */
+    public $insured_value;
+
+    /** @var bool */
     public $evening_delivery;
 
     /** @var bool */
@@ -48,13 +54,15 @@ class ShipmentOptions extends BaseResource
 
     public function setDefaultOptions(): self
     {
-        $this->delivery_type = 'DOOR';
-        $this->signature = false;
-        $this->only_recipient = false;
-        $this->extra_assurance = false;
-        $this->evening_delivery = false;
+        $this->delivery_type     = 'DOOR';
+        $this->signature         = false;
+        $this->only_recipient    = false;
+        $this->extra_assurance   = false;
+        $this->insured           = false;
+        $this->insured_value     = 0;
+        $this->evening_delivery  = false;
         $this->same_day_delivery = false;
-        $this->add_return_label = false;
+        $this->add_return_label  = false;
 
         return $this;
     }
@@ -140,6 +148,12 @@ class ShipmentOptions extends BaseResource
             ->when($this->extra_assurance, function ($collection) {
                 return $collection->push([
                     'key' => 'EA',
+                ]);
+            })
+            ->when($this->insured, function ($collection) {
+                return $collection->push([
+                    'key'   => 'INS',
+                    'input' => $this->insured_value,
                 ]);
             })
             ->when($this->same_day_delivery, function ($collection) {

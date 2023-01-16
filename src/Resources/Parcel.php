@@ -62,6 +62,17 @@ class Parcel extends BaseResource
         return $this;
     }
 
+    public function insured(int $insuredValue = null): self
+    {
+        $this->options->insured = true;
+
+        if ($insuredValue) {
+            $this->options->insured_value = $insuredValue;
+        }
+
+        return $this;
+    }
+
     public function sameDayDelivery(): self
     {
         $this->options->same_day_delivery = true;
