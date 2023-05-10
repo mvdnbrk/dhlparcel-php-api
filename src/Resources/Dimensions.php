@@ -12,6 +12,4 @@ class Dimensions extends BaseResource
 
     /** @var int */
     public $maxHeightCm;
-
-
 }

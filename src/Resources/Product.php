@@ -16,15 +16,15 @@ class Product extends BaseResource
     /** @var string */
     public $menuCode;
 
-    /** @var boolean */
+    /** @var bool */
     public $businessProduct;
 
-    /** @var boolean */
+    /** @var bool */
     public $monoColloProduct;
 
     /** @var string */
     public $softwareCharacteristic;
 
-    /** @var boolean */
+    /** @var bool */
     public $returnProduct;
 }
