@@ -24,7 +24,6 @@ class Capability extends BaseResource
     /** @var \Tightenco\Collect\Support\Collection */
     public $options;
 
-
     public function __construct(array $attributes = [])
     {
         $this->options = new Collection;
