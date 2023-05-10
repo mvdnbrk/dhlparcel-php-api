@@ -150,7 +150,7 @@ class ShipmentOptions extends BaseResource
                     'key' => 'EVE',
                 ]);
             })
-            ->when($this->insured, function($collection) {
+            ->when($this->insured, function ($collection) {
                 return $collection->push([
                     'key' => 'INS',
                     'input' => $this->insured,
