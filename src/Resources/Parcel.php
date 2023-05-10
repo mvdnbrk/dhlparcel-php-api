@@ -80,7 +80,7 @@ class Parcel extends BaseResource
      * Set the amount for "Insured" in EUR.
      *
      * @param  int|float  $value
-     * @return  $this
+     * @return $this
      */
     public function setInsured($value): self
     {
