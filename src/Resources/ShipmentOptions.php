@@ -30,6 +30,9 @@ class ShipmentOptions extends BaseResource
     /** @var bool */
     public $signature;
 
+    /** @var int|float */
+    protected $insured;
+
     public function __construct(array $attributes = [])
     {
         $this->setDefaultOptions();
@@ -90,6 +93,17 @@ class ShipmentOptions extends BaseResource
         $this->cash_on_delivery = $value;
     }
 
+    /**
+     * Set the amount for the option "INS" in EUR.
+     *
+     * @param  int|float  $value
+     * @return void
+     */
+    public function setInsured($value): void
+    {
+        $this->insured = $value;
+    }
+
     public function toArray(): array
     {
         return collect()
@@ -134,6 +148,12 @@ class ShipmentOptions extends BaseResource
             ->when($this->evening_delivery, function ($collection) {
                 return $collection->push([
                     'key' => 'EVE',
+                ]);
+            })
+            ->when($this->insured, function($collection) {
+                return $collection->push([
+                    'key' => 'INS',
+                    'input' => $this->insured,
                 ]);
             })
             ->all();

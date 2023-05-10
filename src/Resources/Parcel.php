@@ -77,6 +77,19 @@ class Parcel extends BaseResource
     }
 
     /**
+     * Set the amount for "Insured" in EUR.
+     *
+     * @param  int|float  $value
+     * @return  $this
+     */
+    public function setInsured($value): self
+    {
+        $this->options->setInsured($value);
+
+        return $this;
+    }
+
+    /**
      * Set the shipment options for this parcel.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\ShipmentOptions|array  $value
