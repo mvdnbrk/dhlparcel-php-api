@@ -4,7 +4,6 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
 use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 use Mvdnbrk\DhlParcel\Resources\Capability;
-use Mvdnbrk\DhlParcel\Resources\Dimensions;
 use Mvdnbrk\DhlParcel\Resources\Option;
 use Mvdnbrk\DhlParcel\Resources\ParcelType;
 use Mvdnbrk\DhlParcel\Resources\Product;
