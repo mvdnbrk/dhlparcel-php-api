@@ -12,7 +12,7 @@ class Labels extends BaseEndpoint implements ShouldAuthenticate
      *
      * @return string
      */
-    public function get(Shipment|string $value)
+    public function get(Shipment|string $value, string $accept = 'application/pdf')
     {
         if ($value instanceof Shipment) {
             $value = $value->label_id;
@@ -22,7 +22,7 @@ class Labels extends BaseEndpoint implements ShouldAuthenticate
             'GET',
             'labels/'.$value,
             null,
-            ['Accept' => 'application/pdf']
+            ['Accept' => $accept]
         );
 
         return $response;
