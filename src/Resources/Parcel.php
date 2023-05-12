@@ -77,10 +77,23 @@ class Parcel extends BaseResource
     }
 
     /**
+     * Set the amount for "Insured" in EUR.
+     *
+     * @param  int|float  $value
+     * @return $this
+     */
+    public function setInsured($value): self
+    {
+        $this->options->setInsured($value);
+
+        return $this;
+    }
+
+    /**
      * Set the shipment options for this parcel.
      *
      * @param  \Mvdnbrk\DhlParcel\Resources\ShipmentOptions|array  $value
-     * @return  void
+     * @return void
      */
     public function setOptionsAttribute($value): void
     {
@@ -115,7 +128,7 @@ class Parcel extends BaseResource
      * Set the amount for "Cash On Delivery" in EUR.
      *
      * @param  int|float  $value
-     * @return  $this
+     * @return $this
      */
     public function cashOnDelivery($value): self
     {
