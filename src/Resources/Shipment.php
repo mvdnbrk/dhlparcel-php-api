@@ -2,6 +2,7 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
+use Mvdnbrk\DhlParcel\Resources\Shipment as ShipmentResource;
 use Tightenco\Collect\Support\Collection;
 
 class Shipment extends BaseResource
@@ -17,6 +18,9 @@ class Shipment extends BaseResource
 
     /** @var \Tightenco\Collect\Support\Collection */
     public $pieces;
+
+    /** @var ShipmentResource */
+    public $returnShipment;
 
     public function __construct(array $attributes = [])
     {

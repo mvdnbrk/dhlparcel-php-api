@@ -34,6 +34,24 @@ class Shipments extends BaseEndpoint implements ShouldAuthenticate
             ]));
         });
 
+        if (isset($response->returnShipment) && $response->returnShipment) {
+            $shipment->returnShipment = new ShipmentResource([
+                'id' => $response->returnShipment->shipmentId,
+                'barcode' => $response->returnShipment->pieces[0]->trackerCode,
+                'label_id' => $response->returnShipment->pieces[0]->labelId,
+            ]);
+
+            collect($response->returnShipment->pieces)->each(function ($item) use ($shipment) {
+                $shipment->returnShipment->pieces->add(new ShipmentPiece([
+                    'label_id' => $item->labelId,
+                    'label_type' => $item->labelType,
+                    'parcel_type' => $item->parcelType,
+                    'piece_number' => $item->pieceNumber,
+                    'tracker_code' => $item->trackerCode,
+                ]));
+            });
+        }
+
         return $shipment;
     }
 
