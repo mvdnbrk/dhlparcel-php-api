@@ -87,6 +87,14 @@ class Parcel extends BaseResource
         return $this;
     }
 
+    public function notifyRecipient(string $notifyInput): self
+    {
+        $this->options->notify_recipient       = true;
+        $this->options->notify_recipient_input = $notifyInput;
+
+        return $this;
+    }
+
     public function eveningDelivery(): self
     {
         $this->options->evening_delivery = true;
