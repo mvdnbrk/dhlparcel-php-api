@@ -45,6 +45,16 @@ class ShipmentOptions extends BaseResource
      */
     public $add_return_label;
 
+    /**
+     * @var bool
+     */
+    public $notify_recipient;
+
+    /**
+     * @var string
+     */
+    public $notify_recipient_input;
+
     public function __construct(array $attributes = [])
     {
         $this->setDefaultOptions();
@@ -54,15 +64,17 @@ class ShipmentOptions extends BaseResource
 
     public function setDefaultOptions(): self
     {
-        $this->delivery_type     = 'DOOR';
-        $this->signature         = false;
-        $this->only_recipient    = false;
-        $this->extra_assurance   = false;
-        $this->insured           = false;
-        $this->insured_value     = 0;
-        $this->evening_delivery  = false;
-        $this->same_day_delivery = false;
-        $this->add_return_label  = false;
+        $this->delivery_type          = 'DOOR';
+        $this->signature              = false;
+        $this->only_recipient         = false;
+        $this->extra_assurance        = false;
+        $this->insured                = false;
+        $this->insured_value          = 0;
+        $this->evening_delivery       = false;
+        $this->same_day_delivery      = false;
+        $this->add_return_label       = false;
+        $this->notify_recipient       = false;
+        $this->notify_recipient_input = '';
 
         return $this;
     }
@@ -121,6 +133,12 @@ class ShipmentOptions extends BaseResource
                 return $collection->push([
                     'key' => $this->delivery_type,
                     'input' => $this->service_point_id,
+                ]);
+            })
+            ->when($this->notify_recipient, function ($collection) {
+                return $collection->push([
+                    'key' => 'PERS_NOTE',
+                    'input' => $this->notify_recipient_input,
                 ]);
             })
             ->when(! empty($this->cash_on_delivery), function ($collection) {
