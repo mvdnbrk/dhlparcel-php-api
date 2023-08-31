@@ -40,6 +40,9 @@ class ShipmentOptions extends BaseResource
      */
     public $same_day_delivery;
 
+    /** @var bool */
+    public $saturday_delivery;
+
     /**
      * @var bool
      */
@@ -72,6 +75,7 @@ class ShipmentOptions extends BaseResource
         $this->insured_value          = 0;
         $this->evening_delivery       = false;
         $this->same_day_delivery      = false;
+        $this->saturday_delivery      = false;
         $this->add_return_label       = false;
         $this->notify_recipient       = false;
         $this->notify_recipient_input = '';
@@ -187,6 +191,11 @@ class ShipmentOptions extends BaseResource
             ->when($this->evening_delivery, function ($collection) {
                 return $collection->push([
                     'key' => 'EVE',
+                ]);
+            })
+            ->when($this->saturday_delivery, function ($collection) {
+                return $collection->push([
+                    'key' => 'S',
                 ]);
             })
             ->all();
