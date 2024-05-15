@@ -55,6 +55,10 @@ abstract class BaseEndpoint
             return $response->getBody()->getContents();
         }
 
+        if ($response->getStatusCode() == 401) {
+            throw new DhlParcelException('Authentication failed', 0, $response);
+        }
+
         $body = $response->getBody()->getContents();
 
         $object = @json_decode($body);
