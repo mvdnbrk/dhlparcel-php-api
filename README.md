@@ -104,6 +104,24 @@ $dhlparcel->labels->get($shipment);
 
 > Passing a `Shipment` instance will only retrieve the label for a shipment with a single piece, or the first piece if you have created a shipment with multiple pieces. If you have created a shipment with multiple pieces you should retrieve the labels one by one for each piece your shipment contains.
 
+### Retrieving capabilities
+
+Capabilities tell you which products and options DHL offers for a shipment.
+You may pass any of the filters from the [DHL Parcel API documentation](https://api-gw.dhlparcel.nl/docs/), like `fromCountry`, `toCountry` or `toBusiness`:
+
+```php
+$capabilities = $dhlparcel->capabilities->get([
+    'fromCountry' => 'NL',
+    'toCountry' => 'BE',
+]);
+
+foreach ($capabilities as $capability) {
+    $capability->product->key;
+    $capability->parcelType->key;
+    $capability->options->pluck('key');
+}
+```
+
 ### Setting delivery options for a parcel
 
 You can set delivery options for a parcel by passing in the options directly when you create a parcel:
