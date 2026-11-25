@@ -78,6 +78,7 @@ class CapabilitiesTest extends TestCase
         $this->assertSame('DFY-B2C', $capability->product->key);
         $this->assertInstanceOf(ParcelType::class, $capability->parcelType);
         $this->assertSame('SMALL', $capability->parcelType->key);
+        $this->assertSame('PARCEL', $capability->parcelType->category);
         $this->assertInstanceOf(Dimensions::class, $capability->parcelType->dimensions);
         $this->assertSame(80, $capability->parcelType->dimensions->maxLengthCm);
         $this->assertInstanceOf(Option::class, $capability->options->first());

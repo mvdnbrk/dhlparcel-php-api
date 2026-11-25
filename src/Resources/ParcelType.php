@@ -7,7 +7,7 @@ class ParcelType extends BaseResource
     /** @var string */
     public $key;
 
-    /** @var string */
+    /** @var string|null */
     public $category;
 
     /** @var int */

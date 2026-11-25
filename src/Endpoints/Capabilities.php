@@ -45,7 +45,7 @@ class Capabilities extends BaseEndpoint
 
             $capabilityResource->parcelType = new ParcelType([
                 'key' => $capability->parcelType->key,
-                'category' => $capability->parcelType->category,
+                'category' => $capability->parcelType->category->value ?? null,
                 'minWeightKg' => $capability->parcelType->minWeightKg,
                 'maxWeightKg' => $capability->parcelType->maxWeightKg,
                 'defaultWeightKg' => $capability->parcelType->defaultWeightKg,
