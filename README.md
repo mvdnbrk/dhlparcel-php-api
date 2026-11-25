@@ -204,7 +204,11 @@ You may incorporate this package in your Laravel application by using [this pack
 composer test
 ```
 
-The integration tests call the DHL Parcel API and need the `DHLPARCEL_ID`, `DHLPARCEL_SECRET` and `DHLPARCEL_ACCOUNT_ID` environment variables, for example in a `.env` file.
+The integration tests in `tests/Feature` call the live DHL Parcel API and need the `DHLPARCEL_ID`, `DHLPARCEL_SECRET` and `DHLPARCEL_ACCOUNT_ID` environment variables, for example in a `.env` file. They create real shipments and labels, so CI only runs the unit tests:
+
+```bash
+vendor/bin/phpunit tests/Unit
+```
 
 ## Changelog
 

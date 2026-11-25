@@ -22,7 +22,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Fixed
 - Service points no longer fail when DHL returns `"addition": null` in an address.
-- Read the account numbers from DHL's authentication response when the access token has none. Without an account number, shipments failed with "The supplied body could not be parsed correctly". A missing account number now throws a clear exception.
+- Read the account numbers from DHL's authentication response when the access token has none. Without an account number, shipments failed with "The supplied body could not be parsed correctly". A missing account number now throws a clear exception. This follows DHL's API specification and has not been tested against a live account.
 
 ### Removed
 - Dropped support for PHP 7.2 to 8.1.
