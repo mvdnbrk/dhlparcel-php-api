@@ -4,19 +4,20 @@ namespace Mvdnbrk\DhlParcel\Tests\Support;
 
 use Mvdnbrk\DhlParcel\Support\Str;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class StrTest extends TestCase
 {
-    /** @test */
-    public function limit()
+    #[Test]
+    public function limit(): void
     {
         $this->assertEquals('Lorem', Str::limit('Lorem', 5));
         $this->assertEquals('Lorem ipsu', Str::limit('Lorem ipsu', 10));
         $this->assertEquals('Lorem ipsu...', Str::limit('Lorem ipsum dolor sit amet', 10));
     }
 
-    /** @test */
-    public function studly()
+    #[Test]
+    public function studly(): void
     {
         $this->assertSame('LoremPHPIpsum', Str::studly('lorem_p_h_p_ipsum'));
         $this->assertSame('LoremPhpIpsum', Str::studly('lorem_php_ipsum'));
@@ -31,8 +32,8 @@ class StrTest extends TestCase
         $this->assertSame('FooBarBaz', Str::studly('foo-bar_baz'));
     }
 
-    /** @test */
-    public function upper()
+    #[Test]
+    public function upper(): void
     {
         $this->assertSame('FOO BAR BAZ', Str::upper('foo bar baz'));
         $this->assertSame('FOO BAR BAZ', Str::upper('foO bAr BaZ'));

@@ -4,11 +4,12 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\TrackTrace;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class TrackTraceTest extends TestCase
 {
-    /** @test */
-    public function creating_a_new_track_trace_resource()
+    #[Test]
+    public function creating_a_new_track_trace_resource(): void
     {
         $tracktrace = new TrackTrace([
             'barcode' => 'JVGL11112222333344445555',
@@ -18,8 +19,8 @@ class TrackTraceTest extends TestCase
         $this->assertFalse($tracktrace->isDelivered);
     }
 
-    /** @test */
-    public function it_can_determine_if_the_parcel_is_delivered()
+    #[Test]
+    public function it_can_determine_if_the_parcel_is_delivered(): void
     {
         $tracktrace = new TrackTrace();
 

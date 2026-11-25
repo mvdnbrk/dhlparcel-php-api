@@ -7,12 +7,14 @@ use Lcobucci\JWT\Token\Parser;
 use Lcobucci\JWT\Validation\Constraint\IdentifiedBy;
 use Lcobucci\JWT\Validation\Validator;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 
-/** @group integration */
+#[Group('integration')]
 class AuthenticationTest extends TestCase
 {
-    /** @test */
-    public function it_can_retrieve_an_access_token()
+    #[Test]
+    public function it_can_retrieve_an_access_token(): void
     {
         $accessToken = $this->client->authentication->getAccessToken();
         $parsedToken = (new Parser(new JoseEncoder))->parse($accessToken->token);

@@ -11,6 +11,7 @@ use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token\Builder;
 use Mvdnbrk\DhlParcel\Resources\AccessToken;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class AccessTokenTest extends TestCase
 {
@@ -24,8 +25,8 @@ class AccessTokenTest extends TestCase
             ->toString();
     }
 
-    /** @test */
-    public function create_a_new_access_token()
+    #[Test]
+    public function create_a_new_access_token(): void
     {
         $expires = (new DateTimeImmutable('1970-01-01 00:00:00'))->add(new DateInterval('PT9S'));
         $token = $this->createToken($expires);
@@ -35,8 +36,8 @@ class AccessTokenTest extends TestCase
         $this->assertEquals('1970-01-01 00:00:09', $accessToken->expiresAt->format('Y-m-d H:i:s'));
     }
 
-    /** @test */
-    public function it_can_determine_if_the_access_token_has_expired()
+    #[Test]
+    public function it_can_determine_if_the_access_token_has_expired(): void
     {
         $expires = (new DateTimeImmutable())->sub(new DateInterval('PT1S'));
         $accessToken = new AccessToken($this->createToken($expires));
@@ -49,8 +50,8 @@ class AccessTokenTest extends TestCase
         $this->assertFalse($accessToken->isExpired());
     }
 
-    /** @test */
-    public function it_can_retrieve_the_account_id_from_the_token()
+    #[Test]
+    public function it_can_retrieve_the_account_id_from_the_token(): void
     {
         $expires = new DateTimeImmutable();
         $accessToken = new AccessToken($this->createToken($expires, ['123456']));
@@ -58,8 +59,8 @@ class AccessTokenTest extends TestCase
         $this->assertEquals('123456', $accessToken->getAccountId());
     }
 
-    /** @test */
-    public function it_can_set_the_account_id()
+    #[Test]
+    public function it_can_set_the_account_id(): void
     {
         $expires = new DateTimeImmutable();
         $accessToken = new AccessToken($this->createToken($expires, ['1111', '2222']));

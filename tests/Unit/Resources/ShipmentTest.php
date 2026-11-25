@@ -5,19 +5,20 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Resources\Shipment;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ShipmentTest extends TestCase
 {
-    /** @test */
-    public function it_has_a_pieces_collection()
+    #[Test]
+    public function it_has_a_pieces_collection(): void
     {
         $shipment = new Shipment;
 
         $this->assertInstanceOf(Collection::class, $shipment->pieces);
     }
 
-    /** @test */
-    public function creating_a_new_shipment_resource()
+    #[Test]
+    public function creating_a_new_shipment_resource(): void
     {
         $shipment = new Shipment([
             'id' => '123456',

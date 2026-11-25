@@ -4,11 +4,12 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\Piece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class PieceTest extends TestCase
 {
-    /** @test */
-    public function creating_a_new_default_piece_resource()
+    #[Test]
+    public function creating_a_new_default_piece_resource(): void
     {
         $piece = new Piece;
 
@@ -17,8 +18,8 @@ class PieceTest extends TestCase
         $this->assertNull($piece->weight);
     }
 
-    /** @test */
-    public function creating_a_new_piece_resource()
+    #[Test]
+    public function creating_a_new_piece_resource(): void
     {
         $piece = new Piece([
             'parcel_type' => Piece::PARCEL_TYPE_MEDIUM,
@@ -31,8 +32,8 @@ class PieceTest extends TestCase
         $this->assertSame(3, $piece->weight);
     }
 
-    /** @test */
-    public function quantity_should_be_converted_to_an_integer()
+    #[Test]
+    public function quantity_should_be_converted_to_an_integer(): void
     {
         $piece = new Piece([
             'quantity' => '1',
@@ -42,8 +43,8 @@ class PieceTest extends TestCase
         $this->assertSame(1, $piece->toArray()['quantity']);
     }
 
-    /** @test */
-    public function weight_should_be_converted_to_an_integer()
+    #[Test]
+    public function weight_should_be_converted_to_an_integer(): void
     {
         $piece = new Piece([
             'weight' => '1',
@@ -53,8 +54,8 @@ class PieceTest extends TestCase
         $this->assertSame(1, $piece->toArray()['weight']);
     }
 
-    /** @test */
-    public function to_array()
+    #[Test]
+    public function to_array(): void
     {
         $piece = new Piece([
             'parcel_type' => Piece::PARCEL_TYPE_LARGE,

@@ -6,12 +6,14 @@ use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
 use Mvdnbrk\DhlParcel\Resources\ServicePoint as ServicePointResource;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 
-/** @group integration */
+#[Group('integration')]
 class ServicePointsTest extends TestCase
 {
-    /** @test */
-    public function it_can_set_the_postal_code()
+    #[Test]
+    public function it_can_set_the_postal_code(): void
     {
         $servicePoints = new ServicePoints($this->client);
 
@@ -25,8 +27,8 @@ class ServicePointsTest extends TestCase
         $this->assertEquals('1234AA', $servicePoints->postal_code);
     }
 
-    /** @test */
-    public function it_can_set_the_housenumber()
+    #[Test]
+    public function it_can_set_the_housenumber(): void
     {
         $servicePoints = new ServicePoints($this->client);
 
@@ -34,8 +36,8 @@ class ServicePointsTest extends TestCase
         $this->assertEquals('111', $servicePoints->housenumber);
     }
 
-    /** @test */
-    public function it_can_retrieve_service_points()
+    #[Test]
+    public function it_can_retrieve_service_points(): void
     {
         $servicepoints = $this->client->servicePoints->setPostalcode('1012AA')->setHousenumber('1')->get();
 
@@ -43,8 +45,8 @@ class ServicePointsTest extends TestCase
         $this->assertInstanceOf(ServicePointResource::class, $servicepoints->first());
     }
 
-    /** @test */
-    public function it_can_retrieve_service_points_with_country()
+    #[Test]
+    public function it_can_retrieve_service_points_with_country(): void
     {
         $servicepoints = $this->client->servicePoints->setPostalcode('10115')->setHousenumber('1')->setCountry('DE')->get();
 
