@@ -4,6 +4,10 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+- A rejected login (HTTP 401) now throws "Authentication failed" instead of a JSON decode error. Thanks @WeTurkstra for [`#81`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/81).
+- An error response without a JSON body now throws an exception with the HTTP status code instead of a JSON decode error.
+
 ## [v2.0.0] - 2026-11-25
 
 ### Added
