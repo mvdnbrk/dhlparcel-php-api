@@ -15,7 +15,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 - Requires PHP 8.2 or higher.
 - Replaced the abandoned `tightenco/collect` with `illuminate/collections` 12 or 13. Collections are now instances of `Illuminate\Support\Collection` instead of `Tightenco\Collect\Support\Collection`. Thanks @jacobdekeizer for [`#83`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/83).
 - Requires `lcobucci/jwt` 5.6 or higher.
-- Requires `guzzlehttp/guzzle` 7.9 or higher.
+- Requires `guzzlehttp/guzzle` 7.15.2 or higher, which excludes Guzzle versions with known security advisories.
 - Requires `ramsey/uuid` 4.7 or higher.
 - Requires `composer/ca-bundle` 1.5 or higher.
 - Vulnerabilities are reported through GitHub's security advisories.
