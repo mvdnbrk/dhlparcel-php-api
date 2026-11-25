@@ -13,11 +13,6 @@ jobs:
 
     name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
 
-    env:
-      DHLPARCEL_ACCOUNT_ID: ${{ secrets.DHLPARCEL_ACCOUNT_ID }}
-      DHLPARCEL_ID: ${{ secrets.DHLPARCEL_ID }}
-      DHLPARCEL_SECRET: ${{ secrets.DHLPARCEL_SECRET }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,5 +35,5 @@ jobs:
         run: composer require illuminate/collections
         if: matrix.php >= 7.3
 
-      - name: Execute tests
-        run: vendor/bin/phpunit
+      - name: Execute unit tests
+        run: vendor/bin/phpunit tests/Unit

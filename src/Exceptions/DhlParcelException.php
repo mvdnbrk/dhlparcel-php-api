@@ -20,7 +20,7 @@ class DhlParcelException extends Exception
      * @param  \GuzzleHttp\Psr7\Response|null  $response
      * @param  \Throwable|null  $previous
      */
-    public function __construct(string $message = '', int $code = 0, ResponseInterface $response = null, Throwable $previous = null)
+    public function __construct(string $message = '', int $code = 0, ?ResponseInterface $response = null, ?Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
 
@@ -50,7 +50,7 @@ class DhlParcelException extends Exception
      * @param  \Throwable|null  $previous
      * @return static
      */
-    public static function createFromResponse(ResponseInterface $response, Throwable $previous = null)
+    public static function createFromResponse(ResponseInterface $response, ?Throwable $previous = null)
     {
         $object = static::parseResponseBody($response);
 
@@ -77,6 +77,7 @@ class DhlParcelException extends Exception
      *
      * @param  \Psr\Http\Message\ResponseInterface  $response
      * @return object
+     *
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
     protected static function parseResponseBody(ResponseInterface $response)
