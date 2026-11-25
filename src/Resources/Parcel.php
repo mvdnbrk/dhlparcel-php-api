@@ -77,11 +77,9 @@ class Parcel extends BaseResource
     }
 
     /**
-     * Set the amount for "Insured" in EUR.
-     *
-     * @return $this
+     * Insure the parcel for the given amount in EUR.
      */
-    public function setInsured(int|float $value): self
+    public function insured(int|float $value): self
     {
         $this->options->setInsured($value);
 

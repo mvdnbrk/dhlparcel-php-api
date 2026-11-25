@@ -185,6 +185,16 @@ class ParcelTest extends TestCase
     }
 
     #[Test]
+    public function it_can_insure_a_parcel_for_an_amount(): void
+    {
+        $parcel = new Parcel;
+
+        $this->assertSame($parcel, $parcel->insured(150));
+
+        $this->assertContains(['key' => 'INS', 'input' => 150], $parcel->options->toArray());
+    }
+
+    #[Test]
     public function it_can_set_a_parcel_to_be_evening_delivery(): void
     {
         $parcel = new Parcel;
