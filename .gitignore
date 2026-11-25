@@ -1,10 +1,6 @@
-.env
-.idea
 .DS_Store
-build
+.env
+.phpunit.cache
 composer.lock
-docs
 vendor
-coverage
 phpunit.xml
-.phpunit.result.cache
