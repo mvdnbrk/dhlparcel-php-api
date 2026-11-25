@@ -4,6 +4,26 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v2.0.0] - Unreleased
+
+### Added
+- Added support for PHP 8.2, 8.3, 8.4 and 8.5.
+- Added support for PHPUnit 11 and 12.
+- Added native parameter, return and property types.
+
+### Changed
+- Requires PHP 8.2 or higher.
+- Replaced the abandoned `tightenco/collect` with `illuminate/collections` 12 or 13. Collections are now instances of `Illuminate\Support\Collection` instead of `Tightenco\Collect\Support\Collection`. Thanks @jacobdekeizer for [`#83`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/83).
+- Requires `lcobucci/jwt` 5.6 or higher.
+- Requires `guzzlehttp/guzzle` 7.9 or higher.
+- Requires `ramsey/uuid` 4.7 or higher.
+- Requires `composer/ca-bundle` 1.5 or higher.
+- Vulnerabilities are reported through GitHub's security advisories.
+
+### Removed
+- Dropped support for PHP 7.2 to 8.1.
+- Dropped support for `guzzlehttp/guzzle` 6.
+
 ## [v1.5.0] - 2021-05-28
 
 - Add support for evening delivery and extra assurance. [`63`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/63)
@@ -169,7 +189,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v2.0.0...HEAD
+[v2.0.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.5.0...v2.0.0
 [v1.5.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.4.1...v1.5.0
 [v1.4.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.3.1...v1.4.0
