@@ -30,4 +30,7 @@ class ParcelType extends BaseResource
 
     /** @var int */
     public $defaultWeightGrams;
+
+    /** @var Price|null */
+    public $price;
 }

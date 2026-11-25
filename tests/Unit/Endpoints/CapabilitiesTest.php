@@ -9,9 +9,11 @@ use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 use Mvdnbrk\DhlParcel\Client;
 use Mvdnbrk\DhlParcel\Resources\Capability;
+use Mvdnbrk\DhlParcel\Resources\DeliveryArea;
 use Mvdnbrk\DhlParcel\Resources\Dimensions;
 use Mvdnbrk\DhlParcel\Resources\Option;
 use Mvdnbrk\DhlParcel\Resources\ParcelType;
+use Mvdnbrk\DhlParcel\Resources\Price;
 use Mvdnbrk\DhlParcel\Resources\Product;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -48,6 +50,7 @@ class CapabilitiesTest extends TestCase
                     'minWeightGrams' => 0,
                     'maxWeightGrams' => 2000,
                     'defaultWeightGrams' => 1000,
+                    'price' => ['withTax' => 6.95, 'withoutTax' => 5.74, 'vatRate' => 21.0, 'currency' => 'EUR'],
                 ],
                 'options' => [[
                     'key' => 'DOOR',
@@ -56,7 +59,7 @@ class CapabilitiesTest extends TestCase
                     'code' => 0,
                     'optionType' => 'DELIVERY_OPTION',
                 ]],
-                'deliveryArea' => ['remote' => false, 'type' => 'DEFAULT'],
+                'deliveryArea' => ['remote' => true, 'type' => 'WADDEN'],
             ]])),
         ]));
         $stack->push(Middleware::history($history));
@@ -83,5 +86,16 @@ class CapabilitiesTest extends TestCase
         $this->assertSame(80, $capability->parcelType->dimensions->maxLengthCm);
         $this->assertInstanceOf(Option::class, $capability->options->first());
         $this->assertSame('DOOR', $capability->options->first()->key);
+
+        $this->assertInstanceOf(Price::class, $capability->parcelType->price);
+        $this->assertSame(6.95, $capability->parcelType->price->withTax);
+        $this->assertSame(5.74, $capability->parcelType->price->withoutTax);
+        $this->assertEquals(21, $capability->parcelType->price->vatRate);
+        $this->assertSame('EUR', $capability->parcelType->price->currency);
+        $this->assertNull($capability->options->first()->price);
+
+        $this->assertInstanceOf(DeliveryArea::class, $capability->deliveryArea);
+        $this->assertTrue($capability->deliveryArea->remote);
+        $this->assertSame('WADDEN', $capability->deliveryArea->type);
     }
 }

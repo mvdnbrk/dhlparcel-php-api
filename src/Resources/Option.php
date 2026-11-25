@@ -18,4 +18,7 @@ class Option extends BaseResource
 
     /** @var string */
     public $optionType;
+
+    /** @var Price|null */
+    public $price;
 }

@@ -24,6 +24,9 @@ class Capability extends BaseResource
     /** @var Collection<int, Option> */
     public $options;
 
+    /** @var DeliveryArea|null */
+    public $deliveryArea;
+
     public function __construct(array $attributes = [])
     {
         $this->options = new Collection;

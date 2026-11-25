@@ -4,9 +4,11 @@ namespace Mvdnbrk\DhlParcel\Endpoints;
 
 use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Resources\Capability as CapabilityResource;
+use Mvdnbrk\DhlParcel\Resources\DeliveryArea;
 use Mvdnbrk\DhlParcel\Resources\Dimensions;
 use Mvdnbrk\DhlParcel\Resources\Option;
 use Mvdnbrk\DhlParcel\Resources\ParcelType;
+use Mvdnbrk\DhlParcel\Resources\Price;
 use Mvdnbrk\DhlParcel\Resources\Product;
 
 class Capabilities extends BaseEndpoint
@@ -52,6 +54,7 @@ class Capabilities extends BaseEndpoint
                 'minWeightGrams' => $capability->parcelType->minWeightGrams,
                 'maxWeightGrams' => $capability->parcelType->maxWeightGrams,
                 'defaultWeightGrams' => $capability->parcelType->defaultWeightGrams,
+                'price' => $this->price($capability->parcelType->price ?? null),
             ]);
 
             $capabilityResource->parcelType->dimensions = new Dimensions([
@@ -67,12 +70,34 @@ class Capabilities extends BaseEndpoint
                     'rank' => $option->rank,
                     'code' => $option->code,
                     'optionType' => $option->optionType,
+                    'price' => $this->price($option->price ?? null),
                 ]));
             });
+
+            if (isset($capability->deliveryArea)) {
+                $capabilityResource->deliveryArea = new DeliveryArea([
+                    'remote' => $capability->deliveryArea->remote,
+                    'type' => $capability->deliveryArea->type,
+                ]);
+            }
 
             $capabilities->add($capabilityResource);
         });
 
         return $capabilities;
+    }
+
+    protected function price(?object $price): ?Price
+    {
+        if ($price === null) {
+            return null;
+        }
+
+        return new Price([
+            'withTax' => $price->withTax,
+            'withoutTax' => $price->withoutTax,
+            'vatRate' => $price->vatRate,
+            'currency' => $price->currency,
+        ]);
     }
 }
