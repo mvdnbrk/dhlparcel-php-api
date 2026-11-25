@@ -203,7 +203,7 @@ class ShipmentOptionsTest extends TestCase
         ], $array);
     }
 
-    /** @test */
+    #[Test]
     public function to_array_with_insured()
     {
         $options = new ShipmentOptions([

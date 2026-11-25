@@ -30,8 +30,7 @@ class ShipmentOptions extends BaseResource
     /** @var bool */
     public $signature;
 
-    /** @var int|float */
-    protected $insured;
+    protected int|float|null $insured = null;
 
     public function __construct(array $attributes = [])
     {
@@ -94,11 +93,8 @@ class ShipmentOptions extends BaseResource
 
     /**
      * Set the amount for the option "INS" in EUR.
-     *
-     * @param  int|float  $value
-     * @return void
      */
-    public function setInsured($value): void
+    public function setInsured(int|float $value): void
     {
         $this->insured = $value;
     }
