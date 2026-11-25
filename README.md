@@ -4,7 +4,6 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Tests][ico-tests]][link-tests]
-[![StyleCI][ico-styleci]][link-styleci]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 [DHL Parcel API documentation](https://api-gw.dhlparcel.nl/docs/)
@@ -236,11 +235,9 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-tests]: https://img.shields.io/github/actions/workflow/status/mvdnbrk/dhlparcel-php-api/tests.yml?branch=main&label=tests&style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/mvdnbrk/dhlparcel-php-api.svg?style=flat-square
-[ico-styleci]: https://github.styleci.io/repos/171006427/shield?style=flat-square&branch=main
 
 [link-packagist]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
 [link-tests]: https://github.com/mvdnbrk/dhlparcel-php-api/actions?query=workflow%3Atests
 [link-downloads]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
 [link-author]: https://github.com/mvdnbrk
 [link-contributors]: ../../contributors
-[link-styleci]: https://github.styleci.io/repos/171006427
