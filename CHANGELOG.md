@@ -20,6 +20,9 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 - Requires `composer/ca-bundle` 1.5 or higher.
 - Vulnerabilities are reported through GitHub's security advisories.
 
+### Fixed
+- Service points no longer fail when DHL returns `"addition": null` in an address.
+
 ### Removed
 - Dropped support for PHP 7.2 to 8.1.
 - Dropped support for `guzzlehttp/guzzle` 6.

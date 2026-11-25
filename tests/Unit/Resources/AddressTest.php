@@ -57,6 +57,16 @@ class AddressTest extends TestCase
     }
 
     #[Test]
+    public function addition_may_be_null(): void
+    {
+        $address = new Address([
+            'addition' => null,
+        ]);
+
+        $this->assertNull($address->number_suffix);
+    }
+
+    #[Test]
     public function country_code_may_be_used_as_an_alias_to_cc(): void
     {
         $address = new Address([
