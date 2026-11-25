@@ -8,6 +8,9 @@ class Recipient extends Address
     public $company_name;
 
     /** @var string */
+    public $additional_name;
+
+    /** @var string */
     public $first_name;
 
     /** @var string */
@@ -29,6 +32,7 @@ class Recipient extends Address
         return collect(parent::toArray())
             ->diffKeys([
                 'company_name' => '',
+                'additional_name' => '',
                 'first_name' => '',
                 'last_name' => '',
                 'email' => '',
@@ -46,6 +50,7 @@ class Recipient extends Address
             'firstName' => $this->first_name,
             'lastName' => $this->last_name,
             'companyName' => $this->company_name,
+            'additionalName' => $this->additional_name,
         ])
             ->filter()
             ->all();
