@@ -2,12 +2,12 @@
 
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
+use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Resources\Capability as CapabilityResource;
 use Mvdnbrk\DhlParcel\Resources\Dimensions;
 use Mvdnbrk\DhlParcel\Resources\Option;
 use Mvdnbrk\DhlParcel\Resources\ParcelType;
 use Mvdnbrk\DhlParcel\Resources\Product;
-use Tightenco\Collect\Support\Collection;
 
 class Capabilities extends BaseEndpoint
 {
@@ -20,7 +20,7 @@ class Capabilities extends BaseEndpoint
             'capabilities/'.$senderType.$queryString
         );
 
-        $capabilities = new Collection();
+        $capabilities = new Collection;
 
         collect($response)->each(function ($capability) use ($capabilities) {
             $capabilityResource = new CapabilityResource([

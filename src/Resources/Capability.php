@@ -2,7 +2,7 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-use Tightenco\Collect\Support\Collection;
+use Illuminate\Support\Collection;
 
 class Capability extends BaseResource
 {
@@ -21,7 +21,7 @@ class Capability extends BaseResource
     /** @var ParcelType */
     public $parcelType;
 
-    /** @var \Tightenco\Collect\Support\Collection */
+    /** @var Collection<int, Option> */
     public $options;
 
     public function __construct(array $attributes = [])

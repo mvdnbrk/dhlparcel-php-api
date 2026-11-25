@@ -8,10 +8,11 @@ use Mvdnbrk\DhlParcel\Resources\Option;
 use Mvdnbrk\DhlParcel\Resources\ParcelType;
 use Mvdnbrk\DhlParcel\Resources\Product;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class CapabilitiesTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function get_capabilities()
     {
         $capabilities = $this->client->capabilities->get('business');

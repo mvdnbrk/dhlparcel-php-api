@@ -40,8 +40,7 @@ class Client
 
     public TrackTrace $tracktrace;
 
-    /** @var Capabilities */
-    public $capabilities;
+    public Capabilities $capabilities;
 
     public function __construct()
     {
