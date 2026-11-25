@@ -4,8 +4,16 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v2.1.0] - 2026-11-25
+
+### Added
+- Capabilities endpoint: `$dhlparcel->capabilities->get($filters)` returns the products and options DHL offers for a shipment, with prices and the delivery area. Thanks @WeTurkstra for [`#77`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/77).
+- Insured parcels: `$parcel->insured(150)` or the `insured` option sends DHL's `INS` option with the amount in EUR. Thanks @WeTurkstra for [`#78`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/78).
+- ZPL labels for thermal printers: `$dhlparcel->labels->zpl($id)`, or `get($id, Labels::ZPL)`. Labels are still PDF by default, also with `pdf($id)`. Thanks @WeTurkstra for [`#79`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/79).
+- Additional name for recipients and senders: the `additional_name` attribute is sent as DHL's `additionalName`, for example a department under the company name. [`#94`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/94)
+
 ### Fixed
-- A rejected login (HTTP 401) now throws "Authentication failed" instead of a JSON decode error. Thanks @WeTurkstra for [`#81`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/81).
+- A rejected login (HTTP 401) now throws "Authentication failed" instead of a JSON decode error. Thanks @WeTurkstra for [`#81`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/81) and [`#92`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/92).
 - An error response without a JSON body now throws an exception with the HTTP status code instead of a JSON decode error.
 
 ## [v2.0.0] - 2026-11-25
