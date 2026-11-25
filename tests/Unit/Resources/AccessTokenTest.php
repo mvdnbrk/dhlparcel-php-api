@@ -9,6 +9,7 @@ use Lcobucci\JWT\Encoding\JoseEncoder;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token\Builder;
+use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 use Mvdnbrk\DhlParcel\Resources\AccessToken;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
@@ -72,5 +73,32 @@ class AccessTokenTest extends TestCase
         $accessToken->setAccountId('2222');
 
         $this->assertEquals('2222', $accessToken->getAccountId());
+    }
+
+    #[Test]
+    public function it_uses_the_account_numbers_from_the_response_when_the_token_has_none(): void
+    {
+        $expires = new DateTimeImmutable();
+        $accessToken = new AccessToken($this->createToken($expires), ['654321']);
+
+        $this->assertEquals('654321', $accessToken->getAccountId());
+    }
+
+    #[Test]
+    public function the_account_numbers_in_the_token_take_precedence(): void
+    {
+        $expires = new DateTimeImmutable();
+        $accessToken = new AccessToken($this->createToken($expires, ['123456']), ['654321']);
+
+        $this->assertEquals('123456', $accessToken->getAccountId());
+    }
+
+    #[Test]
+    public function it_throws_an_exception_when_there_is_no_account_number(): void
+    {
+        $this->expectException(DhlParcelException::class);
+        $this->expectExceptionMessage('No DHL account number found for this API key.');
+
+        (new AccessToken($this->createToken(new DateTimeImmutable())))->getAccountId();
     }
 }

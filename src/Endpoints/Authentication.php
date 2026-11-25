@@ -19,7 +19,7 @@ class Authentication extends BaseEndpoint
             $this->getHttpBody()
         );
 
-        return new AccessToken($response->accessToken);
+        return new AccessToken($response->accessToken, $response->accountNumbers ?? []);
     }
 
     /**
