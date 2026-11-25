@@ -94,6 +94,26 @@ class RecipientTest extends TestCase
     }
 
     #[Test]
+    public function an_additional_name_is_sent_in_the_name_section(): void
+    {
+        $recipient = new Recipient([
+            'company_name' => 'ACME Corp.',
+            'additional_name' => 'Benelux',
+            'street' => 'Poststraat',
+            'cc' => 'NL',
+        ]);
+
+        $array = $recipient->toArray();
+
+        $this->assertSame('Benelux', $array['name']['additionalName']);
+        $this->assertArrayNotHasKey('additional_name', $array['address']);
+        $this->assertArrayNotHasKey('additionalName', $array['address']);
+
+        $recipient->additional_name = null;
+        $this->assertArrayNotHasKey('additionalName', $recipient->toArray()['name']);
+    }
+
+    #[Test]
     public function company_may_be_used_as_an_alias_to_company_name(): void
     {
         $recipient = new Recipient([
