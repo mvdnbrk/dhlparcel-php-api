@@ -21,7 +21,7 @@ class ServicePoints extends BaseEndpoint
             'parcel-shop-locations/'.$this->country.$this->buildQueryString($this->getFilters($filters))
         );
 
-        $collection = new Collection();
+        $collection = new Collection;
 
         collect($response)->each(function ($item) use ($collection) {
             $collection->push(new ServicePointResource($item));

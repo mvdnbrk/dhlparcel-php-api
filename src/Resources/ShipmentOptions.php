@@ -83,7 +83,6 @@ class ShipmentOptions extends BaseResource
      * Set the amount for "Cash On Delivery" in EUR.
      *
      * @param  int|float  $value
-     * @return void
      */
     public function setCashOnDelivery($value): void
     {

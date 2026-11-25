@@ -2,6 +2,7 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
+use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\Shipment;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
@@ -57,7 +58,7 @@ class LabelsTest extends TestCase
     #[Test]
     public function getting_a_label_with_an_invalid_shipment_id_should_throw_an_error(): void
     {
-        $this->expectException(\Mvdnbrk\DhlParcel\Exceptions\DhlParcelException::class);
+        $this->expectException(DhlParcelException::class);
         $this->expectExceptionMessage("Error executing API call: Could not parse id from '999999'");
 
         $this->client->labels->get('999999');

@@ -22,7 +22,7 @@ class BaseResourceTest extends TestCase
     #[Test]
     public function set_attribute(): void
     {
-        $resource = new ResourceStub();
+        $resource = new ResourceStub;
         $resource->setAttribute('foo', 'bar');
 
         $this->assertEquals('bar', $resource->foo);
@@ -31,7 +31,7 @@ class BaseResourceTest extends TestCase
     #[Test]
     public function set_mutator(): void
     {
-        $resource = new ResourceStub();
+        $resource = new ResourceStub;
 
         $this->assertTrue($resource->hasSetMutator('testMutator'));
 
@@ -47,7 +47,7 @@ class BaseResourceTest extends TestCase
     #[Test]
     public function get_mutator(): void
     {
-        $resource = new ResourceStub();
+        $resource = new ResourceStub;
 
         $this->assertNull($resource->getAttribute(null));
         $this->assertNull($resource->getAttribute('not-existent'));
@@ -59,7 +59,7 @@ class BaseResourceTest extends TestCase
     #[Test]
     public function get_attribute_value(): void
     {
-        $resource = new ResourceStub();
+        $resource = new ResourceStub;
         $resource->foo = 'test';
 
         $this->assertEquals('test', $resource->getAttributeValue('foo'));

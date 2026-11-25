@@ -39,8 +39,7 @@ class ServicePoint extends Address
     /**
      * Set the address details.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Address|array  $value
-     * @return void
+     * @param  Address|array  $value
      */
     public function setAddressAttribute($value): void
     {
@@ -51,7 +50,6 @@ class ServicePoint extends Address
      * Set latitude and longitude based on a geolocation object.
      *
      * @param  object|array  $value
-     * @return void
      */
     public function setGeoLocationAttribute($value): void
     {

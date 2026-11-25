@@ -40,12 +40,12 @@ class AccessTokenTest extends TestCase
     #[Test]
     public function it_can_determine_if_the_access_token_has_expired(): void
     {
-        $expires = (new DateTimeImmutable())->sub(new DateInterval('PT1S'));
+        $expires = (new DateTimeImmutable)->sub(new DateInterval('PT1S'));
         $accessToken = new AccessToken($this->createToken($expires));
 
         $this->assertTrue($accessToken->isExpired());
 
-        $expires = (new DateTimeImmutable())->add(new DateInterval('PT9S'));
+        $expires = (new DateTimeImmutable)->add(new DateInterval('PT9S'));
         $accessToken = new AccessToken($this->createToken($expires));
 
         $this->assertFalse($accessToken->isExpired());
@@ -54,7 +54,7 @@ class AccessTokenTest extends TestCase
     #[Test]
     public function it_can_retrieve_the_account_id_from_the_token(): void
     {
-        $expires = new DateTimeImmutable();
+        $expires = new DateTimeImmutable;
         $accessToken = new AccessToken($this->createToken($expires, ['123456']));
 
         $this->assertEquals('123456', $accessToken->getAccountId());
@@ -63,7 +63,7 @@ class AccessTokenTest extends TestCase
     #[Test]
     public function it_can_set_the_account_id(): void
     {
-        $expires = new DateTimeImmutable();
+        $expires = new DateTimeImmutable;
         $accessToken = new AccessToken($this->createToken($expires, ['1111', '2222']));
 
         $accessToken->setAccountId('does-not-exist');
@@ -78,7 +78,7 @@ class AccessTokenTest extends TestCase
     #[Test]
     public function it_uses_the_account_numbers_from_the_response_when_the_token_has_none(): void
     {
-        $expires = new DateTimeImmutable();
+        $expires = new DateTimeImmutable;
         $accessToken = new AccessToken($this->createToken($expires), ['654321']);
 
         $this->assertEquals('654321', $accessToken->getAccountId());
@@ -87,7 +87,7 @@ class AccessTokenTest extends TestCase
     #[Test]
     public function the_account_numbers_in_the_token_take_precedence(): void
     {
-        $expires = new DateTimeImmutable();
+        $expires = new DateTimeImmutable;
         $accessToken = new AccessToken($this->createToken($expires, ['123456']), ['654321']);
 
         $this->assertEquals('123456', $accessToken->getAccountId());
@@ -99,6 +99,6 @@ class AccessTokenTest extends TestCase
         $this->expectException(DhlParcelException::class);
         $this->expectExceptionMessage('No DHL account number found for this API key.');
 
-        (new AccessToken($this->createToken(new DateTimeImmutable())))->getAccountId();
+        (new AccessToken($this->createToken(new DateTimeImmutable)))->getAccountId();
     }
 }

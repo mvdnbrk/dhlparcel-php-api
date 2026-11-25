@@ -51,13 +51,13 @@ abstract class BaseResource implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * @throws \Mvdnbrk\DhlParcel\Exceptions\JsonEncodingException
+     * @throws JsonEncodingException
      */
     public function toJson(int $options = 0): string
     {
         $json = json_encode($this->jsonSerialize(), $options);
 
-        if (JSON_ERROR_NONE !== json_last_error()) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             throw JsonEncodingException::forResource($this, json_last_error_msg());
         }
 
