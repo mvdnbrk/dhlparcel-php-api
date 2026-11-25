@@ -15,6 +15,7 @@ use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token\Builder;
 use Mvdnbrk\DhlParcel\Client;
+use Mvdnbrk\DhlParcel\Endpoints\Labels;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use ReflectionProperty;
@@ -58,7 +59,25 @@ class LabelsTest extends TestCase
     {
         $client = $this->clientReturning(new Response(200, ['Content-Type' => 'application/zpl'], '^XA^XZ'));
 
-        $this->assertSame('^XA^XZ', $client->labels->get('label-id', 'application/zpl'));
+        $this->assertSame('^XA^XZ', $client->labels->get('label-id', Labels::ZPL));
         $this->assertSame('application/zpl', $this->history[1]['request']->getHeaderLine('Accept'));
+    }
+
+    #[Test]
+    public function the_zpl_method_retrieves_a_zpl_label(): void
+    {
+        $client = $this->clientReturning(new Response(200, ['Content-Type' => 'application/zpl'], '^XA^XZ'));
+
+        $this->assertSame('^XA^XZ', $client->labels->zpl('label-id'));
+        $this->assertSame('application/zpl', $this->history[1]['request']->getHeaderLine('Accept'));
+    }
+
+    #[Test]
+    public function the_pdf_method_retrieves_a_pdf_label(): void
+    {
+        $client = $this->clientReturning(new Response(200, ['Content-Type' => 'application/pdf'], '%PDF-label'));
+
+        $this->assertSame('%PDF-label', $client->labels->pdf('label-id'));
+        $this->assertSame('application/pdf', $this->history[1]['request']->getHeaderLine('Accept'));
     }
 }

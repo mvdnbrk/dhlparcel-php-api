@@ -104,10 +104,16 @@ $dhlparcel->labels->get($shipment);
 
 > Passing a `Shipment` instance will only retrieve the label for a shipment with a single piece, or the first piece if you have created a shipment with multiple pieces. If you have created a shipment with multiple pieces you should retrieve the labels one by one for each piece your shipment contains.
 
-A ZPL label for a thermal printer can be retrieved by passing the content type:
+A label is a PDF by default. For a thermal printer you may retrieve a ZPL label instead:
 
 ```php
-$dhlparcel->labels->get($shipment->label_id, 'application/zpl');
+use Mvdnbrk\DhlParcel\Endpoints\Labels;
+
+$dhlparcel->labels->get($shipment->label_id, Labels::ZPL);
+
+// Or use the shortcuts:
+$dhlparcel->labels->zpl($shipment->label_id);
+$dhlparcel->labels->pdf($shipment->label_id);
 ```
 
 ### Retrieving capabilities
