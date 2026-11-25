@@ -16,13 +16,13 @@
         }
     ],
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^8.2",
         "ext-json": "*",
         "composer/ca-bundle": "^1.2",
         "guzzlehttp/guzzle": "^6.4 || ^7.1",
         "lcobucci/jwt": "^3.4 || ^4.0",
         "ramsey/uuid": "^4.0",
-        "tightenco/collect": "^5.8 || ^6.0 || ^7.0 || ^8.0"
+        "illuminate/collections": "^11.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0 || ^9.4",

@@ -2,9 +2,9 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
+use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Resources\Shipment;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
-use Tightenco\Collect\Support\Collection;
 
 class ShipmentTest extends TestCase
 {

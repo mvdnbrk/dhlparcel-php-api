@@ -2,9 +2,9 @@
 
 namespace Mvdnbrk\DhlParcel\Endpoints;
 
+use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Resources\ServicePoint as ServicePointResource;
 use Mvdnbrk\DhlParcel\Support\Str;
-use Tightenco\Collect\Support\Collection;
 
 class ServicePoints extends BaseEndpoint
 {

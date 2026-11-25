@@ -2,7 +2,7 @@
 
 namespace Mvdnbrk\DhlParcel\Resources;
 
-use Tightenco\Collect\Support\Collection;
+use Illuminate\Support\Collection;
 
 class PiecesCollection extends Collection
 {

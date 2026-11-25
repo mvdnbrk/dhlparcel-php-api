@@ -2,10 +2,10 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
+use Illuminate\Support\Collection;
 use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
 use Mvdnbrk\DhlParcel\Resources\ServicePoint as ServicePointResource;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
-use Tightenco\Collect\Support\Collection;
 
 /** @group integration */
 class ServicePointsTest extends TestCase
