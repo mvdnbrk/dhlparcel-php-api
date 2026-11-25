@@ -64,7 +64,7 @@ class CapabilitiesTest extends TestCase
         $client = new Client;
         (new ReflectionProperty(Client::class, 'httpClient'))->setValue($client, new HttpClient(['handler' => $stack]));
 
-        $capabilities = $client->capabilities->get('business', ['fromCountry' => 'NL', 'toCountry' => 'NL']);
+        $capabilities = $client->capabilities->get(['fromCountry' => 'NL', 'toCountry' => 'NL']);
 
         $this->assertSame('/capabilities/business', $history[0]['request']->getUri()->getPath());
         $this->assertSame('fromCountry=NL&toCountry=NL', $history[0]['request']->getUri()->getQuery());

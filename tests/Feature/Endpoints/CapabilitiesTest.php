@@ -2,7 +2,6 @@
 
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
-use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 use Mvdnbrk\DhlParcel\Resources\Capability;
 use Mvdnbrk\DhlParcel\Resources\Option;
 use Mvdnbrk\DhlParcel\Resources\ParcelType;
@@ -15,7 +14,7 @@ class CapabilitiesTest extends TestCase
     #[Test]
     public function get_capabilities()
     {
-        $capabilities = $this->client->capabilities->get('business');
+        $capabilities = $this->client->capabilities->get();
 
         $this->assertGreaterThan(0, $capabilities->count());
         $this->assertInstanceOf(Capability::class, $capabilities->get(0));
@@ -56,16 +55,10 @@ class CapabilitiesTest extends TestCase
         $this->assertNotNull($capabilities->get(0)->options->get(0)->optionType);
     }
 
-    public function invalid_sender_type()
+    #[Test]
+    public function specific_to_and_from_country()
     {
-        $this->expectException(DhlParcelException::class);
-
-        $this->client->capabilities->get('somethingnonexisting');
-    }
-
-    public function test_specific_to_and_from_country()
-    {
-        $capabilities = $this->client->capabilities->get('business', [
+        $capabilities = $this->client->capabilities->get([
             'fromCountry' => 'NL',
             'toCountry' => 'BE',
         ]);

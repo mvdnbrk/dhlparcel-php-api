@@ -11,13 +11,16 @@ use Mvdnbrk\DhlParcel\Resources\Product;
 
 class Capabilities extends BaseEndpoint
 {
-    public function get(string $senderType, array $filters = []): Collection
+    /**
+     * Get the products and options DHL offers for the given filters.
+     *
+     * @return Collection<int, CapabilityResource>
+     */
+    public function get(array $filters = []): Collection
     {
-        $queryString = $this->buildQueryString($filters);
-
         $response = $this->performApiCall(
             'GET',
-            'capabilities/'.$senderType.$queryString
+            'capabilities/business'.$this->buildQueryString($filters)
         );
 
         $capabilities = new Collection;
