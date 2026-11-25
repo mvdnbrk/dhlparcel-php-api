@@ -7,16 +7,16 @@ class Parcel extends BaseResource
     /** @var string */
     public $reference_identifier;
 
-    /** @var \Mvdnbrk\DhlParcel\Resources\ShipmentOptions */
+    /** @var ShipmentOptions */
     public $options;
 
-    /** @var \Mvdnbrk\DhlParcel\Resources\Recipient */
+    /** @var Recipient */
     public $recipient;
 
-    /** @var \Mvdnbrk\DhlParcel\Resources\Recipient */
+    /** @var Recipient */
     public $sender;
 
-    /** @var \Mvdnbrk\DhlParcel\Resources\PiecesCollection */
+    /** @var PiecesCollection */
     public $pieces;
 
     public function __construct(array $attributes = [])
@@ -79,8 +79,7 @@ class Parcel extends BaseResource
     /**
      * Set the shipment options for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\ShipmentOptions|array  $value
-     * @return void
+     * @param  ShipmentOptions|array  $value
      */
     public function setOptionsAttribute($value): void
     {
@@ -90,8 +89,7 @@ class Parcel extends BaseResource
     /**
      * Set the recipient for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Recipient|array  $value
-     * @return void
+     * @param  Recipient|array  $value
      */
     public function setRecipientAttribute($value): void
     {
@@ -127,8 +125,7 @@ class Parcel extends BaseResource
     /**
      * Set the sender for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Recipient|array  $value
-     * @return void
+     * @param  Recipient|array  $value
      */
     public function setSenderAttribute($value): void
     {
@@ -144,8 +141,7 @@ class Parcel extends BaseResource
     /**
      * Set the pieces for this parcel.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\PiecesCollection|array  $value
-     * @return void
+     * @param  PiecesCollection|array  $value
      */
     public function setPiecesAttribute($value): void
     {

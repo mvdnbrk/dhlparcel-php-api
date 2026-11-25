@@ -60,7 +60,7 @@ class Client
     /**
      * Performs a HTTP call to the API endpoint.
      *
-     * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
+     * @throws DhlParcelException
      */
     public function performHttpCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = []): ResponseInterface
     {
@@ -113,7 +113,7 @@ class Client
     }
 
     /**
-     * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
+     * @throws DhlParcelException
      */
     public function credentials(): array
     {

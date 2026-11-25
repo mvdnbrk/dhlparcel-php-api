@@ -22,7 +22,7 @@ class TrackTraceTest extends TestCase
     #[Test]
     public function it_can_determine_if_the_parcel_is_delivered(): void
     {
-        $tracktrace = new TrackTrace();
+        $tracktrace = new TrackTrace;
 
         $this->assertFalse($tracktrace->isDelivered);
 

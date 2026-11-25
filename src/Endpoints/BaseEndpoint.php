@@ -40,7 +40,7 @@ abstract class BaseEndpoint
      *
      * @return string|object|array|null
      *
-     * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
+     * @throws DhlParcelException
      */
     protected function performApiCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = []): mixed
     {

@@ -16,7 +16,7 @@ class PiecesCollection extends Collection
     /**
      * Add a piece item to this collection.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Piece|array  $value
+     * @param  Piece|array  $value
      * @return $this
      */
     public function add($value): self
