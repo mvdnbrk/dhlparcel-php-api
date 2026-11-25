@@ -4,6 +4,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\Recipient;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class RecipientTest extends TestCase
 {
@@ -18,8 +19,8 @@ class RecipientTest extends TestCase
         ], $overrides);
     }
 
-    /** @test */
-    public function creating_a_valid_recipient_resource()
+    #[Test]
+    public function creating_a_valid_recipient_resource(): void
     {
         $recipient = new Recipient([
             'company_name' => 'Test Company B.V.',
@@ -36,8 +37,8 @@ class RecipientTest extends TestCase
         $this->assertEquals('0101111111', $recipient->phone);
     }
 
-    /** @test */
-    public function to_array()
+    #[Test]
+    public function to_array(): void
     {
         $attributes = [
             'company_name' => 'Test Company B.V.',
@@ -92,8 +93,8 @@ class RecipientTest extends TestCase
         $this->assertFalse($array['address']['isBusiness']);
     }
 
-    /** @test */
-    public function company_may_be_used_as_an_alias_to_company_name()
+    #[Test]
+    public function company_may_be_used_as_an_alias_to_company_name(): void
     {
         $recipient = new Recipient([
             'company' => 'Test Company B.V.',

@@ -13,14 +13,11 @@ trait HasAttributes
 
     /**
      * Get an attribute from the resource.
-     *
-     * @param  string  $key
-     * @return mixed
      */
-    public function getAttribute($key)
+    public function getAttribute(?string $key): mixed
     {
         if (! $key) {
-            return;
+            return null;
         }
 
         return $this->getAttributeValue($key);
@@ -28,11 +25,8 @@ trait HasAttributes
 
     /**
      * Get a plain attribute value.
-     *
-     * @param  string  $key
-     * @return mixed
      */
-    public function getAttributeValue($key)
+    public function getAttributeValue(string $key): mixed
     {
         if ($this->hasGetMutator($key)) {
             return $this->{'get'.Str::studly($key).'Attribute'}();
@@ -41,6 +35,8 @@ trait HasAttributes
         if (property_exists($this, $key)) {
             return $this->{$key};
         }
+
+        return null;
     }
 
     public function hasGetMutator(string $key): bool
@@ -55,12 +51,8 @@ trait HasAttributes
 
     /**
      * Set a given attribute on the resource.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return mixed
      */
-    public function setAttribute(string $key, $value)
+    public function setAttribute(string $key, mixed $value): mixed
     {
         if ($this->hasSetMutator($key)) {
             return $this->setMutatedAttributeValue($key, $value);
@@ -69,16 +61,14 @@ trait HasAttributes
         if (property_exists($this, $key)) {
             $this->{$key} = $value;
         }
+
+        return null;
     }
 
     /**
      * Set the value of an attribute using its mutator.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return mixed
      */
-    protected function setMutatedAttributeValue(string $key, $value)
+    protected function setMutatedAttributeValue(string $key, mixed $value): mixed
     {
         return $this->{'set'.Str::studly($key).'Attribute'}($value);
     }

@@ -6,17 +6,12 @@ use Mvdnbrk\DhlParcel\Resources\AccessToken;
 
 class Authentication extends BaseEndpoint
 {
-    /**
-     * @var \Mvdnbrk\DhlParcel\Resources\AccessToken
-     */
-    protected $accessToken;
+    protected ?AccessToken $accessToken = null;
 
     /**
      * Retrieve a new access token.
-     *
-     * @return \Mvdnbrk\DhlParcel\Resources\AccessToken
      */
-    protected function retrieveAccessToken()
+    protected function retrieveAccessToken(): AccessToken
     {
         $response = $this->performApiCall(
             'POST',
@@ -24,15 +19,13 @@ class Authentication extends BaseEndpoint
             $this->getHttpBody()
         );
 
-        return new AccessToken($response->accessToken);
+        return new AccessToken($response->accessToken, $response->accountNumbers ?? []);
     }
 
     /**
      * Get the access token.
-     *
-     * @return \Mvdnbrk\DhlParcel\Resources\AccessToken
      */
-    public function getAccessToken()
+    public function getAccessToken(): AccessToken
     {
         if (! $this->accessToken || $this->accessToken->isExpired()) {
             $this->accessToken = $this->retrieveAccessToken();
@@ -45,10 +38,8 @@ class Authentication extends BaseEndpoint
 
     /**
      * Get the http body for the API request.
-     *
-     * @return string
      */
-    protected function getHttpBody()
+    protected function getHttpBody(): string
     {
         return json_encode($this->apiClient->credentials());
     }

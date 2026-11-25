@@ -4,10 +4,13 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Tests][ico-tests]][link-tests]
-[![Code style][ico-code-style]][link-code-style]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 [DHL Parcel API documentation](https://api-gw.dhlparcel.nl/docs/)
+
+## Requirements
+
+- PHP 8.2 or higher
 
 ## Installation
 
@@ -21,16 +24,16 @@ composer require mvdnbrk/dhlparcel-php-api
 
 Initialize the DHL Parcel client and set your credentials.
 
-``` php
+```php
 $dhlparcel = new \Mvdnbrk\DhlParcel\Client();
 
 $dhlparcel->setUserId('your-user-id');
 $dhlparcel->setApiKey('your-api-key');
 ```
 
-If you have multipe accounts, you may optionally set an account id:
+If you have multiple accounts, you may optionally set an account id:
 
-```
+```php
 $dhlparcel->setAccountId('123456');
 ```
 
@@ -70,7 +73,7 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
 
 ### Create the shipment
 
-``` php
+```php
 $shipment = $dhlparcel->shipments->create($parcel);
 
 $shipment->id;
@@ -89,24 +92,24 @@ $shipment->barcode;
 A label can be retrieved by using the `label_id`.
 This will return a PDF label as a string.
 
-```
+```php
 $dhlparcel->labels->get($shipment->label_id);
 ```
 
 Or you may pass the `Shipment` instance directly to this method:
 
-```
+```php
 $dhlparcel->labels->get($shipment);
 ```
 
-> Passing a `Shipment` instance will only retrieve the label for a shipment with a single piece, or the first piece if you have created a shipment with multple pieces. If you have created a shipment with multiple pieces you should retrieve the labels one by one for each piece your shipment contains.
+> Passing a `Shipment` instance will only retrieve the label for a shipment with a single piece, or the first piece if you have created a shipment with multiple pieces. If you have created a shipment with multiple pieces you should retrieve the labels one by one for each piece your shipment contains.
 
 ### Setting delivery options for a parcel
 
 You can set delivery options for a parcel by passing in the options directly when you create a parcel:
 
-``` php
-$parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
+```php
+$parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
     ...
     'recipient' => [
         ...
@@ -125,7 +128,7 @@ $parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
 
 Or you may use a method like `signature()` and others after constructing the parcel:
 
-``` php
+```php
 $parcel->onlyRecipient()
        ->signature()
        ->labelDescription('Order #123')
@@ -138,7 +141,7 @@ $parcel->onlyRecipient()
 
 If you would like to send a parcel that fits in a standard mailbox you may use the `mailboxpackage()` method:
 
-``` php
+```php
 $parcel->mailboxpackage();
 ```
 
@@ -148,8 +151,8 @@ You may send a parcel to a DHL service point where a customer can pick up the pa
 The ID of the service point can be set directly when creating a parcel
 or with the `servicePoint` method:
 
-``` php
-$parcel = new \Mvdnbrk\MyParcel\Resources\Parcel([
+```php
+$parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
     ...
     'options' => [
         'service_point_id' => '8004-NL-272403',
@@ -162,7 +165,7 @@ $parcel->servicePoint('8004-NL-272403');
 
 ### Tracking a shipment
 
-``` php
+```php
 $tracktrace = $dhlparcel->tracktrace->get('JVGL...');
 
 // Check if the shipment is delivered:
@@ -177,7 +180,7 @@ $servicepoints = $dhlparcel->servicePoints->setPostalcode('1012AA')->setHousenum
 
 This will return a collection of `ServicePoint` objects:
 
-```
+```php
 $servicepoints->each(function ($item) {
     $item->id;
     $item->name;
@@ -188,19 +191,27 @@ $servicepoints->each(function ($item) {
 });
 ```
 
+The collections are instances of `Illuminate\Support\Collection`.
+
 ## Usage with Laravel
 
 You may incorporate this package in your Laravel application by using [this package](https://github.com/mvdnbrk/laravel-dhlparcel).
 
 ## Testing
 
-``` bash
+```bash
 composer test
+```
+
+The integration tests in `tests/Feature` call the live DHL Parcel API and need the `DHLPARCEL_ID`, `DHLPARCEL_SECRET` and `DHLPARCEL_ACCOUNT_ID` environment variables, for example in a `.env` file. They create real shipments and labels, so CI only runs the unit tests:
+
+```bash
+vendor/bin/phpunit tests/Unit
 ```
 
 ## Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
@@ -212,8 +223,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Mark van den Broek](https://github.com/mvdnbrk)
-- [All Contributors](../../contributors)
+- [Mark van den Broek][link-author]
+- [All Contributors][link-contributors]
 
 ## License
 
@@ -222,13 +233,11 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-php-version]: https://img.shields.io/packagist/php-v/mvdnbrk/dhlparcel-php-api?style=flat-square
 [ico-version]: https://img.shields.io/packagist/v/mvdnbrk/dhlparcel-php-api.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-tests]: https://img.shields.io/github/workflow/status/mvdnbrk/dhlparcel-php-api/tests/main?label=tests&style=flat-square
+[ico-tests]: https://img.shields.io/github/actions/workflow/status/mvdnbrk/dhlparcel-php-api/tests.yml?branch=main&label=tests&style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/mvdnbrk/dhlparcel-php-api.svg?style=flat-square
-[ico-code-style]: https://styleci.io/repos/171006427/shield?branch=main
 
 [link-packagist]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
 [link-tests]: https://github.com/mvdnbrk/dhlparcel-php-api/actions?query=workflow%3Atests
 [link-downloads]: https://packagist.org/packages/mvdnbrk/dhlparcel-php-api
 [link-author]: https://github.com/mvdnbrk
 [link-contributors]: ../../contributors
-[link-code-style]: https://styleci.io/repos/171006427

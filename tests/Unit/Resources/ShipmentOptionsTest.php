@@ -4,11 +4,12 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\ShipmentOptions;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ShipmentOptionsTest extends TestCase
 {
-    /** @test */
-    public function creating_a_shipments_options_resource()
+    #[Test]
+    public function creating_a_shipments_options_resource(): void
     {
         $options = new ShipmentOptions([
             'label_description' => 'Test',
@@ -21,8 +22,8 @@ class ShipmentOptionsTest extends TestCase
         $this->assertFalse($options->evening_delivery);
     }
 
-    /** @test */
-    public function description_may_be_used_as_an_alias_to_label_description()
+    #[Test]
+    public function description_may_be_used_as_an_alias_to_label_description(): void
     {
         $options = new ShipmentOptions([
             'description' => 'Test',
@@ -32,8 +33,8 @@ class ShipmentOptionsTest extends TestCase
         $this->assertEquals('Test', $options->description);
     }
 
-    /** @test */
-    public function description_gets_truncated_to_fifteen_characters()
+    #[Test]
+    public function description_gets_truncated_to_fifteen_characters(): void
     {
         $options = new ShipmentOptions([
             'label_description' => 'Long Description Test',
@@ -46,8 +47,8 @@ class ShipmentOptionsTest extends TestCase
         $this->assertEquals('Another Long De', $options->description);
     }
 
-    /** @test */
-    public function to_array()
+    #[Test]
+    public function to_array(): void
     {
         $options = new ShipmentOptions;
 
@@ -58,8 +59,8 @@ class ShipmentOptionsTest extends TestCase
         $this->assertEquals(['key' => 'DOOR'], $array[0]);
     }
 
-    /** @test */
-    public function to_array_with_label_description()
+    #[Test]
+    public function to_array_with_label_description(): void
     {
         $options = new ShipmentOptions([
             'label_description' => 'Test',
@@ -80,8 +81,8 @@ class ShipmentOptionsTest extends TestCase
         ], $array);
     }
 
-    /** @test */
-    public function to_array_with_signature()
+    #[Test]
+    public function to_array_with_signature(): void
     {
         $options = new ShipmentOptions([
             'signature' => true,
@@ -101,8 +102,8 @@ class ShipmentOptionsTest extends TestCase
         ], $array);
     }
 
-    /** @test */
-    public function to_array_with_recipient_only()
+    #[Test]
+    public function to_array_with_recipient_only(): void
     {
         $options = new ShipmentOptions([
             'only_recipient' => true,
@@ -122,8 +123,8 @@ class ShipmentOptionsTest extends TestCase
         ], $array);
     }
 
-    /** @test */
-    public function to_array_with_extra_assurance()
+    #[Test]
+    public function to_array_with_extra_assurance(): void
     {
         $options = new ShipmentOptions([
             'extra_assurance' => true,
@@ -143,8 +144,8 @@ class ShipmentOptionsTest extends TestCase
         ], $array);
     }
 
-    /** @test */
-    public function to_array_with_evening_delivery()
+    #[Test]
+    public function to_array_with_evening_delivery(): void
     {
         $options = new ShipmentOptions([
             'evening_delivery' => true,
@@ -164,8 +165,8 @@ class ShipmentOptionsTest extends TestCase
         ], $array);
     }
 
-    /** @test */
-    public function to_array_with_mailbox_package()
+    #[Test]
+    public function to_array_with_mailbox_package(): void
     {
         $options = new ShipmentOptions([
             'signature' => true,
@@ -180,8 +181,8 @@ class ShipmentOptionsTest extends TestCase
         $this->assertEquals(['key' => 'BP'], $array[0]);
     }
 
-    /** @test */
-    public function to_array_with_cash_on_delivery()
+    #[Test]
+    public function to_array_with_cash_on_delivery(): void
     {
         $options = new ShipmentOptions([
             'cash_on_delivery' => 9.99,

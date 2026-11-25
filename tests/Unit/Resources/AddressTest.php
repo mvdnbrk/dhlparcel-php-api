@@ -4,6 +4,7 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\Address;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class AddressTest extends TestCase
 {
@@ -21,8 +22,8 @@ class AddressTest extends TestCase
         ], $overrides);
     }
 
-    /** @test */
-    public function creating_a_valid_address_resource()
+    #[Test]
+    public function creating_a_valid_address_resource(): void
     {
         $address = new Address([
             'street' => 'Poststraat',
@@ -45,8 +46,8 @@ class AddressTest extends TestCase
         $this->assertEquals('NL', $address->cc);
     }
 
-    /** @test */
-    public function addition_may_be_used_as_an_alias_to_number_suffix()
+    #[Test]
+    public function addition_may_be_used_as_an_alias_to_number_suffix(): void
     {
         $address = new Address([
             'addition' => 'A',
@@ -55,8 +56,18 @@ class AddressTest extends TestCase
         $this->assertEquals('A', $address->number_suffix);
     }
 
-    /** @test */
-    public function country_code_may_be_used_as_an_alias_to_cc()
+    #[Test]
+    public function addition_may_be_null(): void
+    {
+        $address = new Address([
+            'addition' => null,
+        ]);
+
+        $this->assertNull($address->number_suffix);
+    }
+
+    #[Test]
+    public function country_code_may_be_used_as_an_alias_to_cc(): void
     {
         $address = new Address([
             'country_code' => 'NL',
@@ -65,8 +76,8 @@ class AddressTest extends TestCase
         $this->assertEquals('NL', $address->cc);
     }
 
-    /** @test */
-    public function zipcode_may_be_used_as_an_alias_to_postal_code()
+    #[Test]
+    public function zipcode_may_be_used_as_an_alias_to_postal_code(): void
     {
         $address = new Address([
             'zipcode' => '9999ZZ',
@@ -75,8 +86,8 @@ class AddressTest extends TestCase
         $this->assertEquals('9999ZZ', $address->postal_code);
     }
 
-    /** @test */
-    public function lower_case_country_code_is_converted_to_uppercase()
+    #[Test]
+    public function lower_case_country_code_is_converted_to_uppercase(): void
     {
         $address = new Address($this->validParams([
             'cc' => 'nl',
@@ -85,8 +96,8 @@ class AddressTest extends TestCase
         $this->assertEquals('NL', $address->cc);
     }
 
-    /** @test */
-    public function lower_case_postal_code_is_converted_to_uppercase()
+    #[Test]
+    public function lower_case_postal_code_is_converted_to_uppercase(): void
     {
         $address = new Address($this->validParams([
             'postal_code' => '1234aa',
@@ -95,8 +106,8 @@ class AddressTest extends TestCase
         $this->assertEquals('1234AA', $address->postal_code);
     }
 
-    /** @test */
-    public function number_should_be_casted_to_a_string()
+    #[Test]
+    public function number_should_be_casted_to_a_string(): void
     {
         $address = new Address($this->validParams([
             'number' => 999,
@@ -108,8 +119,8 @@ class AddressTest extends TestCase
         $this->assertEquals('999', $array['number']);
     }
 
-    /** @test */
-    public function to_array()
+    #[Test]
+    public function to_array(): void
     {
         $attributes = [
             'street' => 'Poststraat',

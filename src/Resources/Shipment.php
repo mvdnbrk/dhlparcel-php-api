@@ -15,7 +15,7 @@ class Shipment extends BaseResource
     /** @var string */
     public $label_id;
 
-    /** @var Collection */
+    /** @var \Illuminate\Support\Collection */
     public $pieces;
 
     public function __construct(array $attributes = [])

@@ -5,11 +5,12 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 use Mvdnbrk\DhlParcel\Resources\Piece;
 use Mvdnbrk\DhlParcel\Resources\PiecesCollection;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class PiecesCollectionTest extends TestCase
 {
-    /** @test */
-    public function it_can_add_a_new_piece_with_a_piece_object()
+    #[Test]
+    public function it_can_add_a_new_piece_with_a_piece_object(): void
     {
         $pieces = new PiecesCollection;
 
@@ -19,8 +20,8 @@ class PiecesCollectionTest extends TestCase
         $this->assertInstanceOf(Piece::class, $pieces->first());
     }
 
-    /** @test */
-    public function it_can_add_a_new_piece_with_an_array()
+    #[Test]
+    public function it_can_add_a_new_piece_with_an_array(): void
     {
         $pieces = new PiecesCollection;
 
@@ -36,8 +37,8 @@ class PiecesCollectionTest extends TestCase
         $this->assertSame(1, $pieces->first()->weight);
     }
 
-    /** @test */
-    public function it_does_not_add_invalid_values_to_the_collection()
+    #[Test]
+    public function it_does_not_add_invalid_values_to_the_collection(): void
     {
         $pieces = new PiecesCollection;
 
@@ -46,8 +47,8 @@ class PiecesCollectionTest extends TestCase
         $this->assertCount(0, $pieces);
     }
 
-    /** @test */
-    public function creating_a_new_pieces_resource_with_array()
+    #[Test]
+    public function creating_a_new_pieces_resource_with_array(): void
     {
         $pieces = new PiecesCollection([
             [
@@ -73,8 +74,8 @@ class PiecesCollectionTest extends TestCase
         $this->assertSame(2, $pieces->last()->weight);
     }
 
-    /** @test */
-    public function creating_a_new_pieces_resource_with_array_of_piece_objects()
+    #[Test]
+    public function creating_a_new_pieces_resource_with_array_of_piece_objects(): void
     {
         $pieces = new PiecesCollection([
             new Piece,
@@ -84,8 +85,8 @@ class PiecesCollectionTest extends TestCase
         $this->assertInstanceOf(Piece::class, $pieces->first());
     }
 
-    /** @test */
-    public function to_array()
+    #[Test]
+    public function to_array(): void
     {
         $pieces = new PiecesCollection([
             [

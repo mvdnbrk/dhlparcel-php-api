@@ -4,12 +4,14 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 
-/** @group integration */
+#[Group('integration')]
 class TrackTraceTest extends TestCase
 {
-    /** @test */
-    public function getting_track_and_trace_information()
+    #[Test]
+    public function getting_track_and_trace_information(): void
     {
         $this->markTestSkipped('This test does not work in the sandbox.');
 
@@ -47,8 +49,8 @@ class TrackTraceTest extends TestCase
         $this->assertFalse($tracktrace->isDelivered);
     }
 
-    /** @test */
-    public function getting_track_and_trace_information_with_an_invalid_barcode_should_throw_an_error()
+    #[Test]
+    public function getting_track_and_trace_information_with_an_invalid_barcode_should_throw_an_error(): void
     {
         $this->expectException(\Mvdnbrk\DhlParcel\Exceptions\DhlParcelException::class);
         $this->expectExceptionMessage("Unable to decode DHL Parcel response: 'No parcel found for the given key(s)'.");

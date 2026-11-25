@@ -4,11 +4,12 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ShipmentPieceTest extends TestCase
 {
-    /** @test */
-    public function creating_a_new_shipment_piece_resource()
+    #[Test]
+    public function creating_a_new_shipment_piece_resource(): void
     {
         $piece = new ShipmentPiece([
             'label_id' => '123456',
@@ -25,8 +26,8 @@ class ShipmentPieceTest extends TestCase
         $this->assertEquals('SAMPLE0000001234', $piece->tracker_code);
     }
 
-    /** @test */
-    public function barcode_may_be_used_as_an_alias_for_tracker_code()
+    #[Test]
+    public function barcode_may_be_used_as_an_alias_for_tracker_code(): void
     {
         $piece = new ShipmentPiece([
             'tracker_code' => 'SAMPLE0000001234',
@@ -35,8 +36,8 @@ class ShipmentPieceTest extends TestCase
         $this->assertEquals('SAMPLE0000001234', $piece->barcode);
     }
 
-    /** @test */
-    public function piece_number_should_be_converted_to_an_integer()
+    #[Test]
+    public function piece_number_should_be_converted_to_an_integer(): void
     {
         $piece = new ShipmentPiece([
             'piece_number' => '1',

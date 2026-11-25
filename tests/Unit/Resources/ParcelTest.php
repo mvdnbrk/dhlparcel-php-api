@@ -7,35 +7,36 @@ use Mvdnbrk\DhlParcel\Resources\Piece;
 use Mvdnbrk\DhlParcel\Resources\PiecesCollection;
 use Mvdnbrk\DhlParcel\Resources\Recipient;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ParcelTest extends TestCase
 {
-    /** @test */
-    public function it_has_a_recipient()
+    #[Test]
+    public function it_has_a_recipient(): void
     {
         $parcel = new Parcel;
 
         $this->assertInstanceOf(Recipient::class, $parcel->recipient);
     }
 
-    /** @test */
-    public function it_has_a_sender()
+    #[Test]
+    public function it_has_a_sender(): void
     {
         $parcel = new Parcel;
 
         $this->assertInstanceOf(Recipient::class, $parcel->sender);
     }
 
-    /** @test */
-    public function it_has_a_pieces_collection()
+    #[Test]
+    public function it_has_a_pieces_collection(): void
     {
         $parcel = new Parcel;
 
         $this->assertInstanceOf(PiecesCollection::class, $parcel->pieces);
     }
 
-    /** @test */
-    public function create_a_new_parcel()
+    #[Test]
+    public function create_a_new_parcel(): void
     {
         $parcel = new Parcel([
             'reference_identifier' => 'test-123',
@@ -77,8 +78,8 @@ class ParcelTest extends TestCase
         $this->assertSame(true, $parcel->options->evening_delivery);
     }
 
-    /** @test */
-    public function it_can_set_the_recipient_by_passing_a_recipient_object()
+    #[Test]
+    public function it_can_set_the_recipient_by_passing_a_recipient_object(): void
     {
         $recipient = new Recipient;
 
@@ -89,8 +90,8 @@ class ParcelTest extends TestCase
         $this->assertSame($recipient, $parcel->recipient);
     }
 
-    /** @test */
-    public function it_can_set_the_sender_by_passing_a_recipient_object()
+    #[Test]
+    public function it_can_set_the_sender_by_passing_a_recipient_object(): void
     {
         $sender = new Recipient;
 
@@ -101,8 +102,8 @@ class ParcelTest extends TestCase
         $this->assertSame($sender, $parcel->sender);
     }
 
-    /** @test */
-    public function it_can_set_the_pieces_by_passing_a_pieces_object()
+    #[Test]
+    public function it_can_set_the_pieces_by_passing_a_pieces_object(): void
     {
         $pieces = new PiecesCollection;
 
@@ -113,8 +114,8 @@ class ParcelTest extends TestCase
         $this->assertSame($pieces, $parcel->pieces);
     }
 
-    /** @test */
-    public function it_can_set_a_label_description()
+    #[Test]
+    public function it_can_set_a_label_description(): void
     {
         $parcel = new Parcel();
         $this->assertNull($parcel->options->label_description);
@@ -124,16 +125,16 @@ class ParcelTest extends TestCase
         $this->assertEquals('Test 123', $parcel->options->description);
     }
 
-    /** @test */
-    public function calling_the_label_description_method_returns_the_same_parcel_instance()
+    #[Test]
+    public function calling_the_label_description_method_returns_the_same_parcel_instance(): void
     {
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->labelDescription('Test 123'));
     }
 
-    /** @test */
-    public function it_can_require_a_signature_from_the_recipient_of_the_parcel()
+    #[Test]
+    public function it_can_require_a_signature_from_the_recipient_of_the_parcel(): void
     {
         $parcel = new Parcel();
         $this->assertFalse($parcel->options->signature);
@@ -143,16 +144,16 @@ class ParcelTest extends TestCase
         $this->assertTrue($parcel->options->signature);
     }
 
-    /** @test */
-    public function calling_the_signature_method_returns_the_same_parcel_instance()
+    #[Test]
+    public function calling_the_signature_method_returns_the_same_parcel_instance(): void
     {
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->signature());
     }
 
-    /** @test */
-    public function it_can_set_a_parcel_to_be_only_delivered_to_the_recipient()
+    #[Test]
+    public function it_can_set_a_parcel_to_be_only_delivered_to_the_recipient(): void
     {
         $parcel = new Parcel();
 
@@ -163,16 +164,16 @@ class ParcelTest extends TestCase
         $this->assertTrue($parcel->options->only_recipient);
     }
 
-    /** @test */
-    public function calling_the_only_recipient_method_returns_the_same_parcel_instance()
+    #[Test]
+    public function calling_the_only_recipient_method_returns_the_same_parcel_instance(): void
     {
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->onlyRecipient());
     }
 
-    /** @test */
-    public function it_can_set_a_parcel_to_be_extra_assured()
+    #[Test]
+    public function it_can_set_a_parcel_to_be_extra_assured(): void
     {
         $parcel = new Parcel();
 
@@ -183,8 +184,8 @@ class ParcelTest extends TestCase
         $this->assertTrue($parcel->options->extra_assurance);
     }
 
-    /** @test */
-    public function it_can_set_a_parcel_to_be_evening_delivery()
+    #[Test]
+    public function it_can_set_a_parcel_to_be_evening_delivery(): void
     {
         $parcel = new Parcel();
 
@@ -195,24 +196,24 @@ class ParcelTest extends TestCase
         $this->assertTrue($parcel->options->evening_delivery);
     }
 
-    /** @test */
-    public function calling_the_extra_assurance_method_returns_the_same_parcel_instance()
+    #[Test]
+    public function calling_the_extra_assurance_method_returns_the_same_parcel_instance(): void
     {
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->extraAssurance());
     }
 
-    /** @test */
-    public function calling_the_evening_delivery_method_returns_the_same_parcel_instance()
+    #[Test]
+    public function calling_the_evening_delivery_method_returns_the_same_parcel_instance(): void
     {
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->eveningDelivery());
     }
 
-    /** @test */
-    public function it_can_set_a_parcel_to_be_a_mailbox_package()
+    #[Test]
+    public function it_can_set_a_parcel_to_be_a_mailbox_package(): void
     {
         $parcel = new Parcel();
 
@@ -221,16 +222,16 @@ class ParcelTest extends TestCase
         $this->assertEquals(['key' => 'BP'], $parcel->options->toArray()[0]);
     }
 
-    /** @test */
-    public function calling_the_mailboxpackage_method_returns_the_same_parcel_instance()
+    #[Test]
+    public function calling_the_mailboxpackage_method_returns_the_same_parcel_instance(): void
     {
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->mailboxpackage());
     }
 
-    /** @test */
-    public function it_can_set_the_service_point_id()
+    #[Test]
+    public function it_can_set_the_service_point_id(): void
     {
         $parcel = new Parcel([
             'options' => [
@@ -252,16 +253,16 @@ class ParcelTest extends TestCase
         ], $parcel->options->toArray()[0]);
     }
 
-    /** @test */
-    public function calling_the_service_point_method_returns_the_same_parcel_instance()
+    #[Test]
+    public function calling_the_service_point_method_returns_the_same_parcel_instance(): void
     {
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->servicePoint('8004-NL-272403'));
     }
 
-    /** @test */
-    public function it_can_set_an_amount_for_cash_on_delivery()
+    #[Test]
+    public function it_can_set_an_amount_for_cash_on_delivery(): void
     {
         $parcel = new Parcel([
             'options' => [
@@ -283,16 +284,16 @@ class ParcelTest extends TestCase
         ], $parcel->options->toArray()[1]);
     }
 
-    /** @test */
-    public function calling_the_cash_on_delivery_method_returns_the_same_parcel_instance()
+    #[Test]
+    public function calling_the_cash_on_delivery_method_returns_the_same_parcel_instance(): void
     {
         $parcel = new Parcel();
 
         $this->assertSame($parcel, $parcel->cashOnDelivery(100));
     }
 
-    /** @test */
-    public function it_sets_the_pieces_to_a_default_value_when_pieces_is_empty()
+    #[Test]
+    public function it_sets_the_pieces_to_a_default_value_when_pieces_is_empty(): void
     {
         $parcel = new Parcel([
             'pieces' => [],
@@ -307,8 +308,8 @@ class ParcelTest extends TestCase
         $this->assertArrayNotHasKey('weight', $array['pieces'][0]);
     }
 
-    /** @test */
-    public function to_array()
+    #[Test]
+    public function to_array(): void
     {
         $parcel = new Parcel;
 

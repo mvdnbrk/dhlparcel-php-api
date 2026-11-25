@@ -8,14 +8,11 @@ use Mvdnbrk\DhlParcel\Support\Str;
 
 class ServicePoints extends BaseEndpoint
 {
-    /** @var string */
-    public $postal_code;
+    public ?string $postal_code = null;
 
-    /** @var string */
-    public $housenumber;
+    public ?string $housenumber = null;
 
-    /** @var string */
-    public $country = 'NL';
+    public string $country = 'NL';
 
     public function get(array $filters = []): Collection
     {

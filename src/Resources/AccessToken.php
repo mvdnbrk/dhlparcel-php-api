@@ -3,35 +3,41 @@
 namespace Mvdnbrk\DhlParcel\Resources;
 
 use DateTimeImmutable;
-use Lcobucci\JWT\Configuration;
+use Lcobucci\JWT\Encoding\JoseEncoder;
+use Lcobucci\JWT\Token\Parser;
+use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
 class AccessToken
 {
     /** @var array */
     public $accounts;
 
-    /** @var \DateTimeImmutable */
-    public $expiresAt;
+    public DateTimeImmutable $expiresAt;
 
     /** @var array */
     public $roles;
 
-    /** @var string */
-    public $token;
+    public string $token;
 
-    public function __construct(string $token)
+    /**
+     * Create a new access token.
+     *
+     * DHL returns the account numbers in the authentication response.
+     * Older tokens also carry them in the "accounts" claim.
+     */
+    public function __construct(string $token, array $accountNumbers = [])
     {
         $this->token = $token;
 
-        $this->parseToken();
+        $this->parseToken($accountNumbers);
     }
 
-    private function parseToken(): void
+    private function parseToken(array $accountNumbers): void
     {
-        $token = Configuration::forUnsecuredSigner()->parser()->parse($this->token);
+        $token = (new Parser(new JoseEncoder))->parse($this->token);
 
         $this->expiresAt = $token->claims()->get('exp') ?: new DateTimeImmutable;
-        $this->accounts = $token->claims()->get('accounts');
+        $this->accounts = $token->claims()->get('accounts') ?: $accountNumbers;
         $this->roles = $token->claims()->get('roles');
     }
 
@@ -42,7 +48,13 @@ class AccessToken
 
     public function getAccountId(): string
     {
-        return collect($this->accounts)->first();
+        $accountId = collect($this->accounts)->first();
+
+        if (empty($accountId)) {
+            throw new DhlParcelException('No DHL account number found for this API key.');
+        }
+
+        return $accountId;
     }
 
     public function setAccountId(?string $value): void

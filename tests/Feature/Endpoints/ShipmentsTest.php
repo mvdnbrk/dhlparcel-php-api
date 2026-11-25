@@ -5,12 +5,14 @@ namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 use Mvdnbrk\DhlParcel\Resources\Parcel;
 use Mvdnbrk\DhlParcel\Resources\ShipmentPiece;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 
-/** @group integration */
+#[Group('integration')]
 class ShipmentsTest extends TestCase
 {
-    /** @test */
-    public function create_a_new_shipment()
+    #[Test]
+    public function create_a_new_shipment(): void
     {
         $parcel = new Parcel([
             'reference' => 'test-123',

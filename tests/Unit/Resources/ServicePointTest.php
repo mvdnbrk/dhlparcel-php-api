@@ -4,11 +4,12 @@ namespace Mvdnbrk\DhlParcel\Tests\Unit\Resources;
 
 use Mvdnbrk\DhlParcel\Resources\ServicePoint;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ServicePointTest extends TestCase
 {
-    /** @test */
-    public function creating_a_valid_service_point()
+    #[Test]
+    public function creating_a_valid_service_point(): void
     {
         $servicepoint = new ServicePoint([
             'id' => '1234-NL-123456',
@@ -21,8 +22,8 @@ class ServicePointTest extends TestCase
         $this->assertEquals(1234, $servicepoint->distance);
     }
 
-    /** @test */
-    public function address_may_used_to_fill_address_details()
+    #[Test]
+    public function address_may_used_to_fill_address_details(): void
     {
         $servicepoint = new ServicePoint([
             'address' => [
@@ -35,8 +36,8 @@ class ServicePointTest extends TestCase
         $this->assertEquals('NL', $servicepoint->cc);
     }
 
-    /** @test */
-    public function gelocation_may_be_used_to_set_latitude_and_longitude()
+    #[Test]
+    public function gelocation_may_be_used_to_set_latitude_and_longitude(): void
     {
         $servicepoint = new ServicePoint([
             'geoLocation' => [
@@ -49,8 +50,8 @@ class ServicePointTest extends TestCase
         $this->assertEquals(5.678, $servicepoint->longitude);
     }
 
-    /** @test */
-    public function it_can_get_distance_in_a_human_readable_format()
+    #[Test]
+    public function it_can_get_distance_in_a_human_readable_format(): void
     {
         $servicepoint = new ServicePoint;
         $this->assertEquals('', $servicepoint->distanceForHumans());
@@ -74,8 +75,8 @@ class ServicePointTest extends TestCase
         $this->assertEquals('12 km', $servicepoint->distanceForHumans());
     }
 
-    /** @test */
-    public function to_array()
+    #[Test]
+    public function to_array(): void
     {
         $servicepoint = new ServicePoint([
             'id' => 'testcode1234',
@@ -103,8 +104,8 @@ class ServicePointTest extends TestCase
         $this->assertEquals('100 meter', $array['distance']);
     }
 
-    /** @test */
-    public function to_array_removes_empty_attributes()
+    #[Test]
+    public function to_array_removes_empty_attributes(): void
     {
         $servicepoint = new ServicePoint([
             'id' => null,

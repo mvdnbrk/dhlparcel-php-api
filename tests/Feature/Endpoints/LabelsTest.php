@@ -3,12 +3,17 @@
 namespace Mvdnbrk\DhlParcel\Tests\Feature\Endpoints;
 
 use Mvdnbrk\DhlParcel\Resources\Parcel;
+use Mvdnbrk\DhlParcel\Resources\Shipment;
 use Mvdnbrk\DhlParcel\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 
-/** @group integration */
+#[Group('integration')]
 class LabelsTest extends TestCase
 {
-    public function setUp(): void
+    protected Shipment $shipment;
+
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -33,24 +38,24 @@ class LabelsTest extends TestCase
         ], $overrides);
     }
 
-    /** @test */
-    public function get_a_label_by_id()
+    #[Test]
+    public function get_a_label_by_id(): void
     {
         $pdf = $this->client->labels->get($this->shipment->label_id);
 
-        $this->assertIsString('string', $pdf);
+        $this->assertIsString($pdf);
     }
 
-    /** @test */
-    public function get_a_label_by_shipment_object()
+    #[Test]
+    public function get_a_label_by_shipment_object(): void
     {
         $pdf = $this->client->labels->get($this->shipment);
 
-        $this->assertIsString('string', $pdf);
+        $this->assertIsString($pdf);
     }
 
-    /** @test */
-    public function getting_a_label_with_an_invalid_shipment_id_should_throw_an_error()
+    #[Test]
+    public function getting_a_label_with_an_invalid_shipment_id_should_throw_an_error(): void
     {
         $this->expectException(\Mvdnbrk\DhlParcel\Exceptions\DhlParcelException::class);
         $this->expectExceptionMessage("Error executing API call: Could not parse id from '999999'");
