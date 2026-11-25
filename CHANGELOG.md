@@ -4,7 +4,7 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
-## [v2.0.0] - Unreleased
+## [v2.0.0] - 2026-11-25
 
 ### Added
 - Added support for PHP 8.2, 8.3, 8.4 and 8.5.
@@ -27,6 +27,16 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 ### Removed
 - Dropped support for PHP 7.2 to 8.1.
 - Dropped support for `guzzlehttp/guzzle` 6.
+
+## [v1.5.2] - 2026-11-25
+
+### Fixed
+- Release v1.5.1 again: its first tag pointed to the v1.5.0 code without the fix below. No code changes.
+
+## [v1.5.1] - 2026-11-25
+
+### Fixed
+- Service points no longer fail when DHL returns `"addition": null` in an address.
 
 ## [v1.5.0] - 2021-05-28
 
