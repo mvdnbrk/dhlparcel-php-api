@@ -1,6 +1,6 @@
 name: tests
 
-on: [push, pull_request]
+on: [pull_request, push]
 
 jobs:
   tests:
@@ -8,8 +8,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.2, 8.3, 8.4]
-        stability: [prefer-lowest, prefer-stable]
+        php: ['8.2', '8.3', '8.4', '8.5']
+        stability: [prefer-stable]
 
     name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
 
@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -28,17 +28,8 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
 
-      - name: Setup problem matchers
-        run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-
       - name: Install dependencies
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
-
-      - name: Require illuminate/collections
-        run: composer require illuminate/collections
-        if: matrix.php >= 7.3
 
       - name: Execute tests
         run: vendor/bin/phpunit
