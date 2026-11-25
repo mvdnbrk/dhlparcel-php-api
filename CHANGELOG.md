@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.5.2] - 2026-11-25
+
+### Fixed
+- Release v1.5.1 again: its first tag pointed to the v1.5.0 code without the fix below. No code changes.
+
 ## [v1.5.1] - 2026-11-25
 
 ### Fixed
