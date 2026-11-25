@@ -202,4 +202,26 @@ class ShipmentOptionsTest extends TestCase
             ],
         ], $array);
     }
+
+    #[Test]
+    public function to_array_with_insured()
+    {
+        $options = new ShipmentOptions([
+            'insured' => 150,
+        ]);
+
+        $array = $options->toArray();
+
+        $this->assertIsArray($array);
+
+        $this->assertEquals([
+            [
+                'key' => 'DOOR',
+            ],
+            [
+                'key' => 'INS',
+                'input' => 150,
+            ],
+        ], $array);
+    }
 }

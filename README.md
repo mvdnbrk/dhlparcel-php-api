@@ -139,6 +139,7 @@ $parcel = new \Mvdnbrk\DhlParcel\Resources\Parcel([
         'cash_on_delivery' => 9.95,
         'evening_delivery' => true,
         'extra_assurance' => true,
+        'insured' => 150,
         ...
     ],
 ]);
@@ -152,7 +153,8 @@ $parcel->onlyRecipient()
        ->labelDescription('Order #123')
        ->cashOnDelivery(9.95)
        ->eveningDelivery()
-       ->extraAssurance();
+       ->extraAssurance()
+       ->insured(150);
 ```
 
 **Mailbox package**

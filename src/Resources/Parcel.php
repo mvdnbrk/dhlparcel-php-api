@@ -77,6 +77,16 @@ class Parcel extends BaseResource
     }
 
     /**
+     * Insure the parcel for the given amount in EUR.
+     */
+    public function insured(int|float $value): self
+    {
+        $this->options->setInsured($value);
+
+        return $this;
+    }
+
+    /**
      * Set the shipment options for this parcel.
      *
      * @param  ShipmentOptions|array  $value
