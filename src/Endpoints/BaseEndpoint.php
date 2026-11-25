@@ -56,7 +56,7 @@ abstract class BaseEndpoint
         }
 
         if ($response->getStatusCode() == 401) {
-            throw new DhlParcelException('Authentication failed', 0, $response);
+            throw new DhlParcelException('Authentication failed', 401, $response);
         }
 
         $body = $response->getBody()->getContents();
@@ -64,6 +64,14 @@ abstract class BaseEndpoint
         $object = @json_decode($body);
 
         if (json_last_error() != JSON_ERROR_NONE) {
+            if ($response->getStatusCode() >= 400) {
+                throw new DhlParcelException(
+                    "Error executing API call: HTTP {$response->getStatusCode()} {$response->getReasonPhrase()}.",
+                    $response->getStatusCode(),
+                    $response
+                );
+            }
+
             throw new DhlParcelException("Unable to decode DHL Parcel response: '{$body}'.");
         }
 
