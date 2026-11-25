@@ -4,6 +4,11 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.5.1] - 2026-11-25
+
+### Fixed
+- Service points no longer fail when DHL returns `"addition": null` in an address.
+
 ## [v1.5.0] - 2021-05-28
 
 - Add support for evening delivery and extra assurance. [`63`](https://github.com/mvdnbrk/dhlparcel-php-api/pull/63)
@@ -169,7 +174,8 @@ All notable changes to `dhlparcel-php-api` will be documented in this file.
 
 ### Initial release
 
-[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.5.1...HEAD
+[v1.5.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.5.0...v1.5.1
 [v1.5.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.4.1...v1.5.0
 [v1.4.1]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/mvdnbrk/dhlparcel-php-api/compare/v1.3.1...v1.4.0
