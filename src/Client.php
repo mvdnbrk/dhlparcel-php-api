@@ -13,40 +13,31 @@ use Mvdnbrk\DhlParcel\Endpoints\ServicePoints;
 use Mvdnbrk\DhlParcel\Endpoints\Shipments;
 use Mvdnbrk\DhlParcel\Endpoints\TrackTrace;
 use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
+use Psr\Http\Message\ResponseInterface;
 
 class Client
 {
     const API_ENDPOINT = 'https://api-gw.dhlparcel.nl';
 
-    /** @var string */
-    protected $apiEndpoint = self::API_ENDPOINT;
+    protected string $apiEndpoint = self::API_ENDPOINT;
 
-    /** @var string */
-    protected $accountId;
+    protected ?string $accountId = null;
 
-    /** @var string */
-    protected $apiKey;
+    protected ?string $apiKey = null;
 
-    /** @var string */
-    protected $userId;
+    protected ?string $userId = null;
 
-    /** @var \GuzzleHttp\Client */
-    protected $httpClient;
+    protected HttpClient $httpClient;
 
-    /** @var \Mvdnbrk\DhlParcel\Endpoints\Authentication */
-    public $authentication;
+    public Authentication $authentication;
 
-    /** @var \Mvdnbrk\DhlParcel\Endpoints\Labels */
-    public $labels;
+    public Labels $labels;
 
-    /** @var \Mvdnbrk\DhlParcel\Endpoints\ServicePoints */
-    public $servicePoints;
+    public ServicePoints $servicePoints;
 
-    /** @var \Mvdnbrk\DhlParcel\Endpoints\Shipments */
-    public $shipments;
+    public Shipments $shipments;
 
-    /** @var \Mvdnbrk\DhlParcel\Endpoints\TrackTrace */
-    public $tracktrace;
+    public TrackTrace $tracktrace;
 
     public function __construct()
     {
@@ -69,15 +60,9 @@ class Client
     /**
      * Performs a HTTP call to the API endpoint.
      *
-     * @param  string  $httpMethod
-     * @param  string  $apiMethod
-     * @param  string|null  $httpBody
-     * @param  array  $requestHeaders
-     * @return \Psr\Http\Message\ResponseInterface
-     *
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
-    public function performHttpCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = [])
+    public function performHttpCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = []): ResponseInterface
     {
         $url = $this->apiEndpoint.'/'.$apiMethod;
 

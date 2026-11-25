@@ -10,10 +10,9 @@ class Labels extends BaseEndpoint implements ShouldAuthenticate
     /**
      * Get a shipment label by shipment id.
      *
-     * @param  \Mvdnbrk\DhlParcel\Resources\Shipment|string  $value
      * @return string
      */
-    public function get($value)
+    public function get(Shipment|string $value)
     {
         if ($value instanceof Shipment) {
             $value = $value->label_id;

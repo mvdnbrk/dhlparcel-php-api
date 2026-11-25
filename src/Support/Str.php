@@ -4,8 +4,7 @@ namespace Mvdnbrk\DhlParcel\Support;
 
 class Str
 {
-    /** @var array */
-    protected static $studlyCache = [];
+    protected static array $studlyCache = [];
 
     public static function limit(string $value, int $limit = 100, string $end = '...'): string
     {

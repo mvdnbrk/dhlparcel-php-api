@@ -11,14 +11,12 @@ class AccessToken
     /** @var array */
     public $accounts;
 
-    /** @var \DateTimeImmutable */
-    public $expiresAt;
+    public DateTimeImmutable $expiresAt;
 
     /** @var array */
     public $roles;
 
-    /** @var string */
-    public $token;
+    public string $token;
 
     public function __construct(string $token)
     {

@@ -8,8 +8,7 @@ use Mvdnbrk\DhlParcel\Exceptions\DhlParcelException;
 
 abstract class BaseEndpoint
 {
-    /** @var \Mvdnbrk\DhlParcel\Client */
-    protected $apiClient;
+    protected Client $apiClient;
 
     public function __construct(Client $client)
     {
@@ -39,15 +38,11 @@ abstract class BaseEndpoint
     /**
      * Perform a HTTP call to the API endpoint.
      *
-     * @param  string  $httpMethod
-     * @param  string  $apiMethod
-     * @param  string|null  $httpBody
-     * @param  array  $requestHeaders
-     * @return string|object|null
+     * @return string|object|array|null
      *
      * @throws \Mvdnbrk\DhlParcel\Exceptions\DhlParcelException
      */
-    protected function performApiCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = [])
+    protected function performApiCall(string $httpMethod, string $apiMethod, ?string $httpBody = null, array $requestHeaders = []): mixed
     {
         $response = $this->apiClient->performHttpCall(
             $httpMethod,
